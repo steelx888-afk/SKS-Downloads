@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "appId": "proz",
+  "releases": [
+    {
+      "version": "0.1.5",
+      "title": "A smoother window. A more consistent start.",
+      "summary": "Refined window behavior and more reliable startup after updates.",
+      "highlights": [
+        "Rounded corners across restored Windows app windows, including sign-in and dialogs.",
+        "Window controls stay in sync when maximizing and restoring.",
+        "Installed apps consistently open the interface included with their update."
+      ],
+      "publishedAt": "2026-11-08T14:28:06.000Z",
+      "platforms": {
+        "windows": {
+          "filename": "SKS-PROZ-Setup-0.1.5-x64.exe",
+          "publishedAt": "2026-11-08T14:28:06.000Z"
+        }
+      }
+    }
+  ]
+}
