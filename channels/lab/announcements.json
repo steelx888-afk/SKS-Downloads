@@ -3,6 +3,25 @@
   "appId": "lab",
   "releases": [
     {
+      "version": "0.1.6",
+      "title": "A clearer identity. A more consistent workspace.",
+      "summary": "A new family of app and plugin marks, paired with real editor previews.",
+      "highlights": [
+        "Refined geometric logos for the app and its included plugins.",
+        "Matching identity across startup, desktop icons, workspace headers, and the plugin library.",
+        "Real document, spreadsheet, presentation, and creative-canvas previews.",
+        "More reliable FlowX canvas access while using managed accounts.",
+        "Cookbook Downloads searches the model catalog from the correct tab."
+      ],
+      "publishedAt": "2026-11-08T20:24:41.000Z",
+      "platforms": {
+        "windows": {
+          "filename": "SKS-LAB-Setup-0.1.6-x64.exe",
+          "publishedAt": "2026-11-08T20:24:41.000Z"
+        }
+      }
+    },
+    {
       "version": "0.1.5",
       "title": "A smoother window. A more consistent start.",
       "summary": "Refined window behavior and more reliable startup after updates.",
