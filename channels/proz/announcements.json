@@ -18,6 +18,23 @@
           "publishedAt": "2026-11-08T14:28:06.000Z"
         }
       }
+    },
+    {
+      "version": "0.1.4",
+      "title": "A fresh welcome to your workspace.",
+      "summary": "A redesigned sign-in experience and animated loading screen bring the app’s identity into its first moments.",
+      "highlights": [
+        "Branded floating-logo animation with subtle lighting and motion.",
+        "Clearer browser approval and connection recovery screens.",
+        "Verified restoration of valid saved sign-ins across restarts."
+      ],
+      "publishedAt": "2026-11-08T13:07:34.000Z",
+      "platforms": {
+        "windows": {
+          "filename": "SKS-PROZ-Setup-0.1.4-x64.exe",
+          "publishedAt": "2026-11-08T13:07:34.000Z"
+        }
+      }
     }
   ]
 }
