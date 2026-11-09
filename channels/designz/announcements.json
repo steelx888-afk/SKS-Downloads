@@ -3,6 +3,25 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "0.1.9",
+      "title": "Personal providers. Reliable desktop startup.",
+      "summary": "Company models remain the default, with the original API and local provider controls available alongside them.",
+      "highlights": [
+        "Fixed Windows startup when installer-only metadata is absent from the packaged app.",
+        "Restore self-configured API providers, custom endpoints, and local models after sign-in.",
+        "Keep provider discovery, model catalogs, probing, key management, and endpoint cleanup.",
+        "Select personal models and specialist fallback chains while keeping company credentials separate.",
+        "Retain the refreshed application and plugin logos throughout the workspace."
+      ],
+      "publishedAt": "2026-11-09T04:22:33.000Z",
+      "platforms": {
+        "windows": {
+          "filename": "SKS-DESIGNZ-Setup-0.1.9-x64.exe",
+          "publishedAt": "2026-11-09T04:22:33.000Z"
+        }
+      }
+    },
+    {
       "version": "0.1.6",
       "title": "A clearer identity. A more consistent workspace.",
       "summary": "A new family of app and plugin marks, paired with real editor previews.",
