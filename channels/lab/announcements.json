@@ -3,6 +3,25 @@
   "appId": "lab",
   "releases": [
     {
+      "version": "0.1.14",
+      "title": "Window mode restored. SKS SI Beta.",
+      "summary": "The compact top-right Frame preview returns in the installed desktop app, with SKS SI startup branding and a clear Beta label.",
+      "highlights": [
+        "Switch Frame into Window mode for a small floating preview at the top-right of your workspace.",
+        "Expand the same screen back beside Chat without reloading the editor or losing its layout and pane width.",
+        "Remember Window mode after reload; passive previews capture only the selected screen and never resize the native application.",
+        "See SKS SI branding and Beta version information during both native startup and the sign-in check.",
+        "Identify the Beta release in the app header, sign-in screen and Settings information page while keeping automatic updates enabled."
+      ],
+      "publishedAt": "2026-11-09T09:22:30.000Z",
+      "platforms": {
+        "windows": {
+          "filename": "SKS-LAB-Setup-0.1.14-x64.exe",
+          "publishedAt": "2026-11-09T09:22:30.000Z"
+        }
+      }
+    },
+    {
       "version": "0.1.13",
       "title": "A clearer plugin library. Your account in view.",
       "summary": "A refreshed Plugins page, verified account photos and consistent provider and model artwork throughout the desk.",
