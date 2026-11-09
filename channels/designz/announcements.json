@@ -3,6 +3,24 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "0.1.15",
+      "title": "Mei Xin follows through. Clearer Smart View.",
+      "summary": "Mei Xin completes authorized chat actions and presents Ask, Plan and CAD with clear mode icons, while retaining browser and Frame controls. Source/version notes only; no new installers. Existing downloads retain their published versions.",
+      "highlights": [
+        "Open and inspect real browser screens from the initial tool set.",
+        "Ask to show Frame or select an existing owned screen without opening a duplicate session.",
+        "Keep browser text and DOM observations usable with text-only models; send screenshots only to models advertising image input.",
+        "Text fetching reports content-only evidence and no longer advertises itself as opening a website.",
+        "Preserve screen ownership, closed screens, control leases and certificate verification.",
+        "Continue authorized actions after progress text and confirm completion after tool calls.",
+        "Use clear mode icons and descriptions, with the companion hidden in Ask, Plan and CAD.",
+        "Keep Mei Xin branding and artwork, product identity and existing browser/Frame capabilities."
+      ],
+      "publication": "version",
+      "publishedAt": "2026-11-09T16:40:50Z",
+      "platforms": {}
+    },
+    {
       "version": "0.1.14",
       "title": "Window mode restored. SKS SI Beta.",
       "summary": "The compact top-right Frame preview returns in the installed desktop app, with SKS SI startup branding and a clear Beta label.",
@@ -133,7 +151,7 @@
     {
       "version": "0.1.4",
       "title": "A fresh welcome to your workspace.",
-      "summary": "A redesigned sign-in experience and animated loading screen bring the app’s identity into its first moments.",
+      "summary": "A redesigned sign-in experience and animated loading screen bring the app\u2019s identity into its first moments.",
       "highlights": [
         "Branded floating-logo animation with subtle lighting and motion.",
         "Clearer browser approval and connection recovery screens.",
