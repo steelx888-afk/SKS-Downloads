@@ -3,6 +3,32 @@
   "appId": "lab",
   "releases": [
     {
+      "version": "0.1.16",
+      "title": "A clearer Smart View.",
+      "summary": "Smart View uses readable mode choices, stronger contrast and a cleaner layout. Source/version notes only; no new installers. Existing downloads retain their published versions.",
+      "highlights": [
+        "Choose Ask, Plan and CAD with clear icons and descriptions instead of repeated characters.",
+        "Keep the companion hidden in Ask, Plan and CAD while retaining the Orchestrate greeting.",
+        "Use improved spacing, contrast, keyboard focus and descriptive toolbar labels."
+      ],
+      "publication": "version",
+      "publishedAt": "2026-11-09T15:32:31Z",
+      "platforms": {}
+    },
+    {
+      "version": "0.1.15",
+      "title": "Keep action requests moving.",
+      "summary": "SERA continues website-opening requests after an introductory reply and confirms when a turn is complete. Source/version notes only; no new installers. Existing downloads retain their published versions.",
+      "highlights": [
+        "Continue an action request after a progress message instead of treating the message as completed work.",
+        "Confirm a final answer explicitly while keeping greetings and answers from context direct.",
+        "Show a clear blocked outcome when the model repeatedly fails to act or confirm completion."
+      ],
+      "publication": "version",
+      "publishedAt": "2026-11-09T15:28:24Z",
+      "platforms": {}
+    },
+    {
       "version": "0.1.14",
       "title": "Window mode restored. SKS SI Beta.",
       "summary": "The compact top-right Frame preview returns in the installed desktop app, with SKS SI startup branding and a clear Beta label.",
@@ -134,7 +160,7 @@
     {
       "version": "0.1.4",
       "title": "A fresh welcome to your workspace.",
-      "summary": "A redesigned sign-in experience and animated loading screen bring the app’s identity into its first moments.",
+      "summary": "A redesigned sign-in experience and animated loading screen bring the app\u2019s identity into its first moments.",
       "highlights": [
         "Branded floating-logo animation with subtle lighting and motion.",
         "Clearer browser approval and connection recovery screens.",
