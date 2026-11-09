@@ -3,6 +3,19 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "0.1.16",
+      "title": "Design mode. One companion in every size.",
+      "summary": "A premium mode selector adds Design mode while keeping one companion visible across modes and compact windows. Source/version notes only; no new installers. Existing downloads retain their published versions.",
+      "highlights": [
+        "Choose Design from the premium mode selector and retain its design workflow.",
+        "Keep a single Mei Xin visible when switching modes.",
+        "See the application name beside the mini companion in compact window mode."
+      ],
+      "publication": "version",
+      "publishedAt": "2026-11-09T19:00:59Z",
+      "platforms": {}
+    },
+    {
       "version": "0.1.15",
       "title": "Mei Xin follows through. Clearer Smart View.",
       "summary": "Mei Xin completes authorized chat actions and presents Ask, Plan and CAD with clear mode icons, while retaining browser and Frame controls. Source/version notes only; no new installers. Existing downloads retain their published versions.",
