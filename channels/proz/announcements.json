@@ -3,6 +3,23 @@
   "appId": "proz",
   "releases": [
     {
+      "version": "0.1.10",
+      "title": "Clear application availability.",
+      "summary": "Canva now shows its development status, with new connection setup paused.",
+      "highlights": [
+        "See Canva marked Under development in Apps and MCP.",
+        "New Canva connection attempts stop before browser sign-in.",
+        "Existing approved connections retain their Disconnect control."
+      ],
+      "publishedAt": "2026-11-09T04:59:20.000Z",
+      "platforms": {
+        "windows": {
+          "filename": "SKS-PROZ-Setup-0.1.10-x64.exe",
+          "publishedAt": "2026-11-09T04:59:20.000Z"
+        }
+      }
+    },
+    {
       "version": "0.1.9",
       "title": "Personal providers. Reliable desktop startup.",
       "summary": "Company models remain the default, with the original API and local provider controls available alongside them.",
