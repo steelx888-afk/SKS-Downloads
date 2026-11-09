@@ -3,6 +3,19 @@
   "appId": "lab",
   "releases": [
     {
+      "version": "0.1.17",
+      "title": "Simple actions that follow through.",
+      "summary": "Chat takes simple authorized actions directly and confirms completion after tool use. Source/version notes only; no new installers. Existing downloads retain their published versions.",
+      "highlights": [
+        "Make authorized browser opening available immediately for simple chat requests.",
+        "Skip unnecessary introductory planning and discovery when the required action is already available.",
+        "Confirm completion after tool calls and bound consecutive unconfirmed replies instead of stopping after progress text."
+      ],
+      "publication": "version",
+      "publishedAt": "2026-11-09T15:39:36Z",
+      "platforms": {}
+    },
+    {
       "version": "0.1.16",
       "title": "A clearer Smart View.",
       "summary": "Smart View uses readable mode choices, stronger contrast and a cleaner layout. Source/version notes only; no new installers. Existing downloads retain their published versions.",
