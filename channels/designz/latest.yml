@@ -1,8 +1,8 @@
-version: 0.1.6
+version: 0.1.9
 files:
-  - url: SKS-DESIGNZ-Setup-0.1.6-x64.exe
-    sha512: Yg+dTpIJhn2SQsjgvZSX784wjx1DO9fbhDgW+ZNOhVOz+N9qqV2B2jKBTnFyDya+Ouy9yN1gUIrFqhZoWagnyA==
-    size: 1726718179
-path: SKS-DESIGNZ-Setup-0.1.6-x64.exe
-sha512: Yg+dTpIJhn2SQsjgvZSX784wjx1DO9fbhDgW+ZNOhVOz+N9qqV2B2jKBTnFyDya+Ouy9yN1gUIrFqhZoWagnyA==
-releaseDate: '2026-11-08T20:22:25.721Z'
+  - url: SKS-DESIGNZ-Setup-0.1.9-x64.exe
+    sha512: VjZLRdLERrNba5sHF+LMfmmBdkoP5ihV47yxNfUtMM27LJPb15FaQDYu88PRtH3IryWzLwXOKB8GOuuh5mJ+5w==
+    size: 1723655999
+path: SKS-DESIGNZ-Setup-0.1.9-x64.exe
+sha512: VjZLRdLERrNba5sHF+LMfmmBdkoP5ihV47yxNfUtMM27LJPb15FaQDYu88PRtH3IryWzLwXOKB8GOuuh5mJ+5w==
+releaseDate: '2026-11-09T04:17:21.657Z'
