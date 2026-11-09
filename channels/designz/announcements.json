@@ -3,6 +3,25 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "0.1.13",
+      "title": "A clearer plugin library. Your account in view.",
+      "summary": "A refreshed Plugins page, verified account photos and consistent provider and model artwork throughout the desk.",
+      "highlights": [
+        "Browse a cleaner plugin library with search, status filters, working controls and real editor previews inside the cards.",
+        "Use a text-led Plugins header and a native toolbar without decorative banner images.",
+        "Show your verified Google account photo in the toolbar, sidebar and account settings, with initials if the photo is unavailable.",
+        "See provider and model logos in catalogs, model details and company models, with clear provider artwork when a model has no individual image.",
+        "Cloud-app availability still depends on vendor approval; this release does not enable public Google or Figma access."
+      ],
+      "publishedAt": "2026-11-09T08:26:33.000Z",
+      "platforms": {
+        "windows": {
+          "filename": "SKS-DESIGNZ-Setup-0.1.13-x64.exe",
+          "publishedAt": "2026-11-09T08:26:33.000Z"
+        }
+      }
+    },
+    {
       "version": "0.1.12",
       "title": "A clearer Workspace. Real app previews.",
       "summary": "Fresh geometric identities and actual interface previews for Deep Research, Calendar and Kanban.",
