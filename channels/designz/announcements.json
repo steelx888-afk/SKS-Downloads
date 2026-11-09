@@ -3,6 +3,25 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "0.1.12",
+      "title": "A clearer Workspace. Real app previews.",
+      "summary": "Fresh geometric identities and actual interface previews for Deep Research, Calendar and Kanban.",
+      "highlights": [
+        "New matching logos for Deep Research, Calendar and Kanban in the Workspace library, sidebar and app headers.",
+        "Real application screenshots with labelled sample projects replace the decorative illustrations.",
+        "Full 16:9 previews remain visible, with cleaner cards in both light and dark appearances.",
+        "Sample previews stay separate from live tasks and schedules on your own desk.",
+        "Remove a stale decorative backdrop reference while retaining the live theme effects."
+      ],
+      "publishedAt": "2026-11-09T07:50:15.000Z",
+      "platforms": {
+        "windows": {
+          "filename": "SKS-DESIGNZ-Setup-0.1.12-x64.exe",
+          "publishedAt": "2026-11-09T07:50:15.000Z"
+        }
+      }
+    },
+    {
       "version": "0.1.10",
       "title": "Clear application availability.",
       "summary": "Canva now shows its development status, with new connection setup paused.",
