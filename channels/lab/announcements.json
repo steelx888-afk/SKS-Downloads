@@ -3,6 +3,19 @@
   "appId": "lab",
   "releases": [
     {
+      "version": "0.1.18",
+      "title": "Design mode. One companion in every size.",
+      "summary": "A premium mode selector adds Design mode while keeping one companion visible across modes and compact windows. Source/version notes only; no new installers. Existing downloads retain their published versions.",
+      "highlights": [
+        "Choose Design from the premium mode selector and retain its design workflow.",
+        "Keep a single companion visible when switching modes.",
+        "See the application name beside the mini companion in compact window mode."
+      ],
+      "publication": "version",
+      "publishedAt": "2026-11-09T18:59:26Z",
+      "platforms": {}
+    },
+    {
       "version": "0.1.17",
       "title": "Simple actions that follow through.",
       "summary": "Chat takes simple authorized actions directly and confirms completion after tool use. Source/version notes only; no new installers. Existing downloads retain their published versions.",
