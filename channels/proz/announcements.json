@@ -4,15 +4,18 @@
   "releases": [
     {
       "version": "0.1.16",
-      "title": "Design mode. One companion in every size.",
-      "summary": "A premium mode selector adds Design mode while keeping one companion visible across modes and compact windows. Source/version notes only; no new installers. Existing downloads retain their published versions.",
+      "title": "PROZ shared source update",
+      "summary": "Shared chat, settings, Frame, Materials and CAD/Design improvements are now included in PROZ source. Source update only: version 0.1.16 is unchanged. No new installers; existing downloads retain their published versions.",
       "highlights": [
+        "Choose shared endpoints and use improved direct replies, attachments, follow-up handling and live action feedback.",
+        "Keep plugin windows owned by the app, fit Frame content and use the Materials overlay.",
+        "Use shared CAD precision and Design production/model controls while retaining PROZ identity and capabilities.",
         "Choose Design from the premium mode selector and retain its design workflow.",
         "Keep a single Mei Xin visible when switching modes.",
         "See the application name beside the mini companion in compact window mode."
       ],
-      "publication": "version",
-      "publishedAt": "2026-11-09T19:01:49Z",
+      "publication": "source",
+      "publishedAt": "2026-11-10T22:27:40.565583Z",
       "platforms": {}
     },
     {
@@ -164,7 +167,7 @@
     {
       "version": "0.1.4",
       "title": "A fresh welcome to your workspace.",
-      "summary": "A redesigned sign-in experience and animated loading screen bring the app\u2019s identity into its first moments.",
+      "summary": "A redesigned sign-in experience and animated loading screen bring the app’s identity into its first moments.",
       "highlights": [
         "Branded floating-logo animation with subtle lighting and motion.",
         "Clearer browser approval and connection recovery screens.",
