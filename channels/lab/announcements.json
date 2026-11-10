@@ -4,15 +4,18 @@
   "releases": [
     {
       "version": "0.1.18",
-      "title": "Design mode. One companion in every size.",
-      "summary": "A premium mode selector adds Design mode while keeping one companion visible across modes and compact windows. Source/version notes only; no new installers. Existing downloads retain their published versions.",
+      "title": "LAB source update",
+      "summary": "StudioX Workflow, MeshX, company agent, chat, settings and CAD/Design improvements are now included in LAB source. Version remains 0.1.18. Source update only: the existing version and tag are unchanged. No new installers; existing downloads retain their published versions.",
       "highlights": [
+        "Use the FlowX-based workflow canvas within StudioX, with separate saved StudioX workflows and image, video, audio and 3D media support.",
+        "Use improved MeshX local processing and company-connected StudioX agent creation.",
+        "Use improved chat replies, attachments, follow-up handling, endpoint selection and CAD/Design tools while retaining LAB capabilities.",
         "Choose Design from the premium mode selector and retain its design workflow.",
         "Keep a single companion visible when switching modes.",
         "See the application name beside the mini companion in compact window mode."
       ],
-      "publication": "version",
-      "publishedAt": "2026-11-09T18:59:26Z",
+      "publication": "source",
+      "publishedAt": "2026-11-10T22:35:40.841949Z",
       "platforms": {}
     },
     {
@@ -186,7 +189,7 @@
     {
       "version": "0.1.4",
       "title": "A fresh welcome to your workspace.",
-      "summary": "A redesigned sign-in experience and animated loading screen bring the app\u2019s identity into its first moments.",
+      "summary": "A redesigned sign-in experience and animated loading screen bring the app’s identity into its first moments.",
       "highlights": [
         "Branded floating-logo animation with subtle lighting and motion.",
         "Clearer browser approval and connection recovery screens.",
