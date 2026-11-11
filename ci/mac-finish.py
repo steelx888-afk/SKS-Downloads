@@ -198,7 +198,7 @@ def verify():
     while time.time()<min(deadline-3,start+100):
      try:
       status,pages=http('http://127.0.0.1:'+str(debug_port)+'/json/list')
-      if status==200 and any(p.get('type')=='page' and '/renderer/' in p.get('url','') and 'index.html' in p.get('url','') for p in pages):page_ready=True;break
+      if status==200 and any(p.get('type')=='page' and (p.get('url','').startswith('app://sks/index.html') or ('/renderer/' in p.get('url','') and 'index.html' in p.get('url',''))) for p in pages):page_ready=True;break
      except Exception:pass
      time.sleep(.3)
     assert page_ready,'Packaged renderer did not load.'
