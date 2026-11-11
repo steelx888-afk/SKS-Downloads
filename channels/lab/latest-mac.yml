@@ -1,0 +1,11 @@
+version: 0.1.19
+files:
+  - url: SKS-LAB-0.1.19-universal.zip
+    sha512: 8ehDQA9/cX+1h7kMP7BmLiHD982K3HgJgtAEN+mXtHEuFYKuX6gw5YNETley9rhjplcATaWOj/x02SVpJVlTaA==
+    size: 1984693348
+  - url: SKS-LAB-0.1.19-universal.dmg
+    sha512: s5LNeJzdvUfn6VO0mcy0WDycQzV/YUc2luZkzbZOYG7eT2+nRKMgYznCoXnBbUfNORHMjV77LuqNB7MfXwUvUw==
+    size: 1978966534
+path: SKS-LAB-0.1.19-universal.zip
+sha512: 8ehDQA9/cX+1h7kMP7BmLiHD982K3HgJgtAEN+mXtHEuFYKuX6gw5YNETley9rhjplcATaWOj/x02SVpJVlTaA==
+releaseDate: '2026-11-11T15:09:17.181Z'
