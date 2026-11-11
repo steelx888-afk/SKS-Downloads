@@ -179,7 +179,7 @@ def verify():
   with LOG.open('a') as log:
    child=subprocess.Popen([str(binary),'--no-first-run','--remote-debugging-port='+str(debug_port),'--enable-logging=stderr'],env=env,stdout=log,stderr=log,start_new_session=True)
    try:
-    ports=range(8765,8775)
+    ports={'lab':range(8765,8775),'designz':range(8851,8861),'proz':range(8861,8871)}[app]
     ready=None;start=time.time();end=min(deadline-3,start+100)
     while time.time()<end:
      if child.poll() is not None:raise RuntimeError(app+' native Mac app exited before startup.')

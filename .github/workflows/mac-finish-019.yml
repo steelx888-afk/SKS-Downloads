@@ -16,6 +16,11 @@ on:
         type: choice
         options: [original, approved-diagnostic]
         default: original
+      publish_product:
+        description: Publish only the selected product with completed native proofs
+        type: choice
+        options: [all, lab, designz, proz]
+        default: all
 permissions:
   contents: write
 concurrency:
@@ -99,7 +104,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        app: [lab, designz, proz]
+        app: ${{ fromJSON(inputs.publish_product == 'lab' && '["lab"]' || inputs.publish_product == 'designz' && '["designz"]' || inputs.publish_product == 'proz' && '["proz"]' || '["lab","designz","proz"]') }}
     env:
       PRODUCT: ${{ matrix.app }}
     steps:
