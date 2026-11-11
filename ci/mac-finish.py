@@ -6,9 +6,19 @@ assert TAG.startswith('mac-native-cache-019-') and TAG.rsplit('-',1)[1].isdigit(
 LOG=TEMP/('mac-finish-'+os.environ.get('PRODUCT','any')+'-'+os.environ.get('BUILD_ARCH','any')+'.log')
 def command(args,cwd=None,env=None,capture=False):
  with LOG.open('a') as log:
-  r=subprocess.run([str(a) for a in args],cwd=cwd,env=env,stdout=subprocess.PIPE if capture else log,stderr=log,text=True)
- if r.returncode:raise RuntimeError('Release command failed: '+pathlib.Path(str(args[0])).name+' (private log retained)')
- return r.stdout.strip() if capture else None
+  if capture:
+   r=subprocess.run([str(a) for a in args],cwd=cwd,env=env,stdout=subprocess.PIPE,stderr=log,text=True)
+   if r.returncode:raise RuntimeError('Release command failed: '+pathlib.Path(str(args[0])).name+' (private log retained)')
+   return r.stdout.strip()
+  child=subprocess.Popen([str(a) for a in args],cwd=cwd,env=env,stdout=log,stderr=log)
+  while True:
+   try:code=child.wait(timeout=60);break
+   except subprocess.TimeoutExpired:
+    progress=TEMP/('progress-'+LOG.name);shutil.copyfile(LOG,progress)
+    try:subprocess.run(['gh','release','upload',TAG,'-R',REPO,'--clobber',str(progress)],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=30)
+    except Exception:pass
+    print('Release preparation still running; private progress retained.',flush=True)
+ if code:raise RuntimeError('Release command failed: '+pathlib.Path(str(args[0])).name+' (private log retained)')
 def upload(*files):command(['gh','release','upload',TAG,'-R',REPO,'--clobber',*files])
 def download(pattern,folder):
  folder.mkdir(parents=True,exist_ok=True);command(['gh','release','download',TAG,'-R',REPO,'--pattern',pattern,'--dir',folder,'--clobber'])
