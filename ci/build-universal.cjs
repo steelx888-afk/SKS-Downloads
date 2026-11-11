@@ -1,7 +1,7 @@
 // The application owns dependency staging and installer configuration. Select
 // its supported universal target through electron-builder's public API.
-const path=require('node:path'),Module=require('node:module');
-const entry=path.resolve(process.argv[2]);const from=Module.createRequire(entry),original=Module._load;
+const path=require('node:path'),Module=require('node:module'),fs=require('node:fs');
+const entry=fs.realpathSync(path.resolve(process.argv[2]));const from=Module.createRequire(entry),original=Module._load;
 Module._load=function(name,parent,...rest){
  const value=original.call(this,name,parent,...rest);
  if(name==='electron-builder'&&parent?.filename===entry){

@@ -20,7 +20,7 @@ def source_root(app):
  return source
 def source_view(source):
  command(['npm','ci','--no-audit','--no-fund'],cwd=source)
- return pathlib.Path(command(['node','--input-type=module','-e',"import {prepareSourceView} from './scripts/source-view.mjs'; console.log(prepareSourceView());"],cwd=source,capture=True))
+ return pathlib.Path(command(['node','--input-type=module','-e',"import {prepareSourceView} from './scripts/source-view.mjs'; console.log(prepareSourceView());"],cwd=source,capture=True)).resolve()
 def remove_owned(target):
  target=pathlib.Path(target).resolve();assert target.is_relative_to(TEMP.resolve()) and target!=TEMP.resolve()
  if target.is_dir():shutil.rmtree(target)
@@ -73,7 +73,18 @@ def assemble():
  extract(cache/f'renderer-{app}.tar.gz',desktop);remove_owned(cache/f'renderer-{app}.tar.gz')
  env={**os.environ,'GITHUB_WORKSPACE':str(view),'CSC_IDENTITY_AUTO_DISCOVERY':'false','CI':'true','SKS_MAC_MINIMUM_SYSTEM_VERSION':native_minimum(desktop,app)}
  print('Preparing copied Mac delivery media for '+app,flush=True)
- command(['node','apps/desktop/scripts/optimize-mac-media.mjs'],cwd=view,env=env)
+ media_archive=cache/f'mac-media-{app}.tar.gz';media_receipt=cache/f'mac-media-{app}.json'
+ available={a['name'] for a in json.loads(command(['gh','release','view',TAG,'-R',REPO,'--json','assets'],capture=True))['assets'] if a['state']=='uploaded'}
+ if {media_archive.name,media_receipt.name}<=available:
+  download(media_archive.name,cache);download(media_receipt.name,cache)
+  receipt=json.loads(media_receipt.read_text());assert receipt['sourceCommit']==CONFIG['products'][app]['commit'] and receipt['sha256']==sha(media_archive)
+  extract(media_archive,desktop/'renderer/openflow/demo');print('Reused prepared Mac delivery previews.',flush=True)
+ else:
+  command(['node','apps/desktop/scripts/optimize-mac-media.mjs'],cwd=view,env=env)
+  demo=desktop/'renderer/openflow/demo';files=[f.name for f in demo.glob('marketing-*.mp4')]
+  command(['tar','-czf',media_archive,'-C',demo,*files])
+  media_receipt.write_text(json.dumps({'sourceCommit':CONFIG['products'][app]['commit'],'sha256':sha(media_archive)}));upload(media_archive,media_receipt)
+ remove_owned(media_archive)
  command(['node','apps/desktop/scripts/clean-ci-staging.mjs'],cwd=view,env=env)
  print('Assembling universal Mac app, DMG and update ZIP for '+app,flush=True)
  command(['node',ROOT/'ci/build-universal.cjs',desktop/'scripts/build-installer.cjs'],cwd=desktop,env=env)
