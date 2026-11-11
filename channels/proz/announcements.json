@@ -19,6 +19,10 @@
           "filename": "SKS-PROZ-Setup-0.1.19-x64.exe",
           "publishedAt": "2026-11-11T08:53:49.000Z"
         },
+        "mac": {
+          "filename": "SKS-PROZ-0.1.19-universal.dmg",
+          "publishedAt": "2026-11-11T16:24:40.000Z"
+        },
         "linux": {
           "filename": "SKS-PROZ-0.1.19-x64.AppImage",
           "publishedAt": "2026-11-11T09:02:18.000Z"
