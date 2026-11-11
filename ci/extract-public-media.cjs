@@ -1,5 +1,5 @@
 const fs=require('node:fs'),path=require('node:path');
-const asar=require(process.env.ASAR_MODULE);
+const asar=require('node:module').createRequire(process.env.ASAR_MODULE)('@electron/asar');
 const [input,output]=process.argv.slice(2);
 let count=0;
 for(const name of asar.listPackage(input)){

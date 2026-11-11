@@ -30,7 +30,7 @@ def prepare():
  asars=list((out/'squashfs-root').rglob('app.asar'));assert len(asars)==1
  tools=TEMP/'asar-tools';command(['npm','install','--prefix',tools,'--ignore-scripts','--no-audit','--no-fund','@electron/asar@4.0.1'])
  media=TEMP/'published-media';media.mkdir(exist_ok=True)
- command(['node',ROOT/'ci/extract-public-media.cjs',asars[0],media],env={**os.environ,'ASAR_MODULE':str(tools/'node_modules/@electron/asar')})
+ command(['node',ROOT/'ci/extract-public-media.cjs',asars[0],media],env={**os.environ,'ASAR_MODULE':str(tools/'package.json')})
  archive=TEMP/'public-media-019.tar.gz';command(['tar','-czf',archive,'-C',media,'.']);assert archive.stat().st_size<2*1024**3
  upload(archive)
  with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('cache_tag='+TAG+'\n')
