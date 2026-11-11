@@ -6,6 +6,11 @@ on:
         description: Exact private staging release from a completed 0.1.19 native build
         required: true
         type: string
+      stage:
+        description: Resume from packaging, native verification, or publication
+        type: choice
+        options: [assemble, verify, publish]
+        default: assemble
 permissions:
   contents: write
 concurrency:
@@ -18,7 +23,7 @@ env:
   GIT_LFS_SKIP_SMUDGE: '1'
 jobs:
   assemble:
-    if: ${{ github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'workflow_dispatch' && github.event.workflow_run.head_repository.full_name == github.repository) }}
+    if: ${{ inputs.stage != 'verify' && inputs.stage != 'publish' && github.event_name == 'workflow_dispatch' }}
     name: Assemble ${{ matrix.app }} universal Mac
     runs-on: macos-15
     timeout-minutes: 35
@@ -47,6 +52,7 @@ jobs:
       - run: python3 ci/mac-finish.py assemble
   clock:
     needs: assemble
+    if: ${{ always() && !cancelled() && inputs.stage != 'publish' && (needs.assemble.result == 'success' || inputs.stage == 'verify') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 3
     outputs:
@@ -58,6 +64,7 @@ jobs:
   verify:
     name: Verify actual Mac apps on ${{ matrix.arch }}
     needs: [assemble, clock]
+    if: ${{ always() && !cancelled() && needs.clock.result == 'success' }}
     runs-on: ${{ matrix.runner }}
     timeout-minutes: 10
     strategy:
@@ -80,6 +87,7 @@ jobs:
   publish:
     name: Publish ${{ matrix.app }} Mac downloads
     needs: verify
+    if: ${{ always() && !cancelled() && (needs.verify.result == 'success' || inputs.stage == 'publish') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     strategy:
