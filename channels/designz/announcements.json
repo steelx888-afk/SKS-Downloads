@@ -3,6 +3,25 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "0.1.19",
+      "title": "Updated creative and CAD workspace",
+      "summary": "Current LAB shared features arrive in SKS DESIGNZ, with a focused workspace for creative and CAD work.",
+      "highlights": [
+        "Use StudioX and MeshX through approved company MuAPI models.",
+        "Follow affordable specialist defaults and fallbacks, with personal settings and reset controls.",
+        "Use current chat, local speech, CAD, Materials and Frame improvements.",
+        "Company, Social and Deep Research are disabled in this edition for now; saved data is retained.",
+        "Preserve this application identity, private data directory, themes and update channel."
+      ],
+      "publishedAt": "2026-11-11T09:02:18.000Z",
+      "platforms": {
+        "linux": {
+          "filename": "SKS-DESIGNZ-0.1.19-x64.AppImage",
+          "publishedAt": "2026-11-11T09:02:18.000Z"
+        }
+      }
+    },
+    {
       "version": "0.1.16",
       "title": "DESIGNZ shared source update",
       "summary": "Shared chat, settings, Frame, Materials and CAD/Design improvements are now included in DESIGNZ source. Source update only: version 0.1.16 is unchanged. No new installers; existing downloads retain their published versions.",
