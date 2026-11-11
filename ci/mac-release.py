@@ -18,6 +18,10 @@ def command(args,cwd=None,env=None,capture=False):
     # Keep source-bearing diagnostics in the authenticated draft, never public Actions output.
     if os.environ.get('PRODUCT'):
      progress=TEMP/('progress-'+LOG.name);shutil.copyfile(LOG,progress)
+     if pathlib.Path(str(args[0])).name=='npm':
+      debug=sorted((pathlib.Path.home()/'.npm/_logs').glob('*debug*.log'),key=lambda p:p.stat().st_mtime)
+      if debug:
+       with progress.open('a') as f:f.write('\nDependency-manager progress:\n'+'\n'.join(debug[-1].read_text(errors='replace').splitlines()[-80:]))
      subprocess.run(['gh','release','upload',TAG,'-R',REPO,'--clobber',str(progress)],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=30)
      print('Build still running; private progress snapshot retained.',flush=True)
  if code:raise RuntimeError('Build command failed: '+pathlib.Path(str(args[0])).name+' (private log retained)')
