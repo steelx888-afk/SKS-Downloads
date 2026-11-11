@@ -4,9 +4,12 @@
   "releases": [
     {
       "version": "0.1.18",
-      "title": "LAB source update",
-      "summary": "StudioX Workflow, MeshX, company agent, chat, settings and CAD/Design improvements are now included in LAB source. Version remains 0.1.18. Source update only: the existing version and tag are unchanged. No new installers; existing downloads retain their published versions.",
+      "title": "LAB StudioX Workflow source update",
+      "summary": "StudioX Workflow consolidates the workflow entry while retaining the shared FlowX engine. Version remains 0.1.18. Source update only: the existing version and tag are unchanged. No new installers; existing downloads retain their published versions.",
       "highlights": [
+        "Open workflows from StudioX; the duplicate FlowX launcher and plugin library entry have been removed.",
+        "Import built-in templates and earlier FlowX canvases as separate StudioX copies, preserving original canvases.",
+        "Use the shared workflow tools and image, video, audio and 3D model categories. Shared engine, Brain tools and backend compatibility routes remain available.",
         "Use the FlowX-based workflow canvas within StudioX, with separate saved StudioX workflows and image, video, audio and 3D media support.",
         "Use improved MeshX local processing and company-connected StudioX agent creation.",
         "Use improved chat replies, attachments, follow-up handling, endpoint selection and CAD/Design tools while retaining LAB capabilities.",
@@ -15,7 +18,7 @@
         "See the application name beside the mini companion in compact window mode."
       ],
       "publication": "source",
-      "publishedAt": "2026-11-10T22:35:40.841949Z",
+      "publishedAt": "2026-11-11T01:33:04.311382Z",
       "platforms": {}
     },
     {
