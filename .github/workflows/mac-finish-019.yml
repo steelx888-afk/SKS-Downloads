@@ -11,6 +11,11 @@ on:
         type: choice
         options: [assemble, verify, publish]
         default: assemble
+      test_window:
+        description: Original window, or the separately human-approved diagnostic window
+        type: choice
+        options: [original, approved-diagnostic]
+        default: original
 permissions:
   contents: write
 concurrency:
@@ -21,6 +26,7 @@ env:
   CACHE_TAG: ${{ inputs.cache_tag || format('mac-native-cache-019-{0}', github.event.workflow_run.id) }}
   NODE_OPTIONS: --max-old-space-size=4096
   GIT_LFS_SKIP_SMUDGE: '1'
+  TEST_CLOCK_FILE: ${{ inputs.test_window == 'approved-diagnostic' && 'diagnostic-clock.json' || 'verification-clock.json' }}
 jobs:
   assemble:
     if: ${{ inputs.stage != 'verify' && inputs.stage != 'publish' && github.event_name == 'workflow_dispatch' }}

@@ -137,18 +137,19 @@ def assemble():
   else:upload(f)
  print('Universal '+app+' packages staged privately for native verification.',flush=True)
 def clock():
- folder=TEMP/'clock';folder.mkdir(exist_ok=True);file=folder/'verification-clock.json'
+ folder=TEMP/'clock';folder.mkdir(exist_ok=True);name=os.environ.get('TEST_CLOCK_FILE','verification-clock.json');assert name in ['verification-clock.json','diagnostic-clock.json'];file=folder/name
  result=subprocess.run(['gh','release','download',TAG,'-R',REPO,'--pattern',file.name,'--dir',folder],capture_output=True)
  if result.returncode:
+  if name!='verification-clock.json':raise RuntimeError('The explicitly approved diagnostic window has not started; refusing to create or reset it.')
   now=int(time.time()*1000);file.write_text(json.dumps({'startedAtMs':now,'deadlineMs':now+600000,'limitSeconds':600}));upload(file)
  value=json.loads(file.read_text());assert value['limitSeconds']==600
  with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('deadline='+str(value['deadlineMs'])+'\n')
- print('Using the original shared ten-minute native verification window.',flush=True)
+ print('Using the existing shared ten-minute window: '+name,flush=True)
 def http(url,body=None):
  data=json.dumps(body).encode() if body else None
  request=urllib.request.Request(url,data=data,headers={'content-type':'application/json'})
  try:
-  with urllib.request.urlopen(request,timeout=2) as r:return r.status,json.loads(r.read())
+  with urllib.request.build_opener(urllib.request.ProxyHandler({})).open(request,timeout=2) as r:return r.status,json.loads(r.read())
  except urllib.error.HTTPError as e:
   raw=e.read();return e.code,json.loads(raw) if raw else {}
 def verify():
@@ -174,10 +175,11 @@ def verify():
   flags=manifest['sks']['features'];assert all(flags[x] is (app=='lab') for x in ['company','social','deepResearch'])
   state=TEMP/('isolated-'+app);state.mkdir(exist_ok=True);debug_port=19300
   env={**os.environ,'HOME':str(state),'SKS_HOME':str(state/'agent-home'),'SKS_APP_ID':app};env.pop('ELECTRON_RUN_AS_NODE',None)
+  env.pop('NODE_OPTIONS',None)
   with LOG.open('a') as log:
    child=subprocess.Popen([str(binary),'--no-first-run','--remote-debugging-port='+str(debug_port),'--enable-logging=stderr'],env=env,stdout=log,stderr=log,start_new_session=True)
    try:
-    ports={'lab':range(8765,8785),'designz':range(8851,8861),'proz':range(8861,8871)}[app]
+    ports=range(8765,8775)
     ready=None;start=time.time();end=min(deadline-3,start+100)
     while time.time()<end:
      if child.poll() is not None:raise RuntimeError(app+' native Mac app exited before startup.')
@@ -204,6 +206,11 @@ def verify():
     result={'ok':True,'app':app,'arch':arch,'machine':os.uname().machine,'macOS':command(['sw_vers','-productVersion'],capture=True),'sourceCommit':CONFIG['products'][app]['commit'],'version':'0.1.19','archiveSha256':archive_hash,'universalShell':True,'signatureValid':True,'packagedAppStarted':True,'rendererLoaded':True,'nativeAgentReady':True,'productIdentity':app,'protectedDeskDeniedUnsigned':True,'signedOutAdapterReady':True,'featureAvailabilityCorrect':True,'testedAtMs':int(time.time()*1000),'deadlineMs':int(deadline*1000),'screenControlUsed':False}
     proof.write_text(json.dumps(result,indent=2));upload(proof);print('Passed native Mac '+app+' '+arch,flush=True)
    finally:
+    for parent in [state/'Library/Application Support',pathlib.Path.home()/'Library/Application Support']:
+     if parent.exists():
+      for file in parent.rglob('agent.log'):
+       if file.is_file():
+        with LOG.open('a') as log:log.write('\nPACKAGED AGENT LOG '+str(file)+'\n'+file.read_text(errors='replace')[-20000:]+'\n')
     try:os.killpg(child.pid,signal.SIGTERM)
     except ProcessLookupError:pass
     try:child.wait(timeout=3)
