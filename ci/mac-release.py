@@ -6,9 +6,21 @@ REPO='steelx888-afk/SKS-Downloads'
 TAG=os.environ.get('CACHE_TAG') or 'mac-native-cache-019-'+os.environ['GITHUB_RUN_ID']
 LOG=TEMP/('mac-build-'+os.environ.get('PRODUCT','prepare')+'-'+os.environ.get('BUILD_ARCH','any')+'.log')
 def command(args,cwd=None,env=None,capture=False):
- result=subprocess.run([str(a) for a in args],cwd=cwd,env=env,text=True,stdout=subprocess.PIPE if capture else LOG.open('a'),stderr=LOG.open('a'))
- if result.returncode:raise RuntimeError('Build command failed: '+pathlib.Path(str(args[0])).name+' (private log retained)')
- return result.stdout.strip() if capture else None
+ if capture:
+  result=subprocess.run([str(a) for a in args],cwd=cwd,env=env,text=True,stdout=subprocess.PIPE,stderr=LOG.open('a'))
+  if result.returncode:raise RuntimeError('Build command failed: '+pathlib.Path(str(args[0])).name+' (private log retained)')
+  return result.stdout.strip()
+ with LOG.open('a') as log:
+  child=subprocess.Popen([str(a) for a in args],cwd=cwd,env=env,stdout=log,stderr=log)
+  while True:
+   try:code=child.wait(timeout=60);break
+   except subprocess.TimeoutExpired:
+    # Keep source-bearing diagnostics in the authenticated draft, never public Actions output.
+    if os.environ.get('PRODUCT'):
+     progress=TEMP/('progress-'+LOG.name);shutil.copyfile(LOG,progress)
+     subprocess.run(['gh','release','upload',TAG,'-R',REPO,'--clobber',str(progress)],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=30)
+     print('Build still running; private progress snapshot retained.',flush=True)
+ if code:raise RuntimeError('Build command failed: '+pathlib.Path(str(args[0])).name+' (private log retained)')
 def upload(*files):command(['gh','release','upload',TAG,'-R',REPO,'--clobber',*files])
 def extract(archive,destination):
  destination.mkdir(parents=True,exist_ok=True)
@@ -19,6 +31,11 @@ def remove_owned(target):
  if target.is_dir():shutil.rmtree(target)
  elif target.exists():target.unlink()
 def prepare():
+ if os.environ.get('CACHE_TAG'):
+  assert re.fullmatch(r'mac-native-cache-019-\d+',TAG)
+  command(['gh','release','view',TAG,'-R',REPO,'--json','isDraft'],capture=True)
+  with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('cache_tag='+TAG+'\n')
+  print('Reusing existing private native payload cache.',flush=True);return
  command(['gh','release','create',TAG,'-R',REPO,'--draft','--target',os.environ['GITHUB_SHA'],'--title','Temporary private Mac build cache 0.1.19','--notes','Compiled build staging only. Deleted after verified publication.'])
  out=TEMP/'mac-cache';out.mkdir(exist_ok=True)
  command(['gh','release','download','lab-latest','-R',REPO,'--pattern','SKS-LAB-0.1.19-x64.AppImage','--dir',out])
@@ -39,6 +56,14 @@ def native():
  app=os.environ['PRODUCT'];arch=os.environ['BUILD_ARCH'];source=ROOT/'private-source'
  actual=command(['git','rev-parse','HEAD'],cwd=source,capture=True);assert actual==CONFIG['products'][app]['commit']
  package=json.loads((source/'apps/desktop/package.json').read_text());assert package['version']==CONFIG['version'] and package['sks']['id']==app
+ existing=json.loads(command(['gh','release','view',TAG,'-R',REPO,'--json','assets'],capture=True))
+ names={a['name'] for a in existing['assets'] if a['state']=='uploaded'}
+ if {f'build-{app}-{arch}.json',f'native-{app}-{arch}.tar.gz'}<=names and (arch!='arm64' or f'renderer-{app}.tar.gz' in names):
+  folder=TEMP/'previous-native';folder.mkdir(exist_ok=True)
+  command(['gh','release','download',TAG,'-R',REPO,'--pattern',f'build-{app}-{arch}.json','--dir',folder])
+  receipt=json.loads((folder/f'build-{app}-{arch}.json').read_text());asset=next(a for a in existing['assets'] if a['name']==receipt['nativePayload'])
+  assert receipt['sourceCommit']==actual and receipt['arch']==arch and asset['digest']=='sha256:'+receipt['nativeSha256']
+  print('Reused completed native '+app+' '+arch+' payload.',flush=True);return
  print('Installing locked build dependencies for '+app+' '+arch,flush=True)
  command(['npm','ci','--no-audit','--no-fund'],cwd=source)
  archive=TEMP/'public-media-019.tar.gz';command(['gh','release','download',TAG,'-R',REPO,'--pattern',archive.name,'--dir',TEMP])
@@ -56,7 +81,9 @@ def native():
  print('Restored '+str(restored)+' exact public source media objects without private LFS billing.',flush=True)
  view=pathlib.Path(command(['node','--input-type=module','-e',"import {prepareSourceView} from './scripts/source-view.mjs'; console.log(prepareSourceView());"],cwd=source,capture=True))
  print('Building native '+app+' '+arch+' payload.',flush=True)
- command(['node','apps/desktop/scripts/pack-app.mjs'],cwd=view,env={**os.environ,'PYTHONUNBUFFERED':'1','PIP_NO_CACHE_DIR':'1','NODE_OPTIONS':'--max-old-space-size=4096'})
+ build_env={**os.environ,'PYTHONUNBUFFERED':'1','PIP_NO_CACHE_DIR':'1','PIP_PREFER_BINARY':'1','NODE_OPTIONS':'--max-old-space-size=4096'}
+ if arch=='x64':build_env['PIP_CONSTRAINT']=str(ROOT/'ci/mac-intel-constraints.txt')
+ command(['node','apps/desktop/scripts/pack-app.mjs'],cwd=view,env=build_env)
  desktop=view/'apps/desktop';out=TEMP/'native-out';out.mkdir(exist_ok=True)
  native_archive=out/f'native-{app}-{arch}.tar.gz';command(['tar','-czf',native_archive,'-C',desktop/'resources','sks-agent','runtime','cluster'])
  assert native_archive.stat().st_size<2*1024**3;upload(native_archive)

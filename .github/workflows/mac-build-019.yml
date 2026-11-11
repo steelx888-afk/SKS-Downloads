@@ -1,6 +1,21 @@
 name: Build native Mac release payloads
 on:
   workflow_dispatch:
+    inputs:
+      cache_tag:
+        description: Existing private staging cache to resume, blank for a fresh build
+        type: string
+        required: false
+      architecture:
+        description: Native payloads to build
+        type: choice
+        options: [both, x64, arm64]
+        default: both
+      product:
+        description: Product to build
+        type: choice
+        options: [all, lab, designz, proz]
+        default: all
 permissions:
   contents: write
 concurrency:
@@ -16,6 +31,8 @@ jobs:
     timeout-minutes: 15
     outputs:
       cache_tag: ${{ steps.cache.outputs.cache_tag }}
+    env:
+      CACHE_TAG: ${{ inputs.cache_tag }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -32,13 +49,8 @@ jobs:
       fail-fast: false
       max-parallel: 5
       matrix:
-        app: [lab, designz, proz]
-        include:
-          - runner: macos-15
-            arch: arm64
-          - runner: macos-15-intel
-            arch: x64
-        runner: [macos-15, macos-15-intel]
+        app: ${{ fromJSON(inputs.product == 'lab' && '["lab"]' || inputs.product == 'designz' && '["designz"]' || inputs.product == 'proz' && '["proz"]' || '["lab","designz","proz"]') }}
+        runner: ${{ fromJSON(inputs.architecture == 'x64' && '["macos-15-intel"]' || inputs.architecture == 'arm64' && '["macos-15"]' || '["macos-15","macos-15-intel"]') }}
     env:
       PRODUCT: ${{ matrix.app }}
       BUILD_ARCH: ${{ matrix.runner == 'macos-15' && 'arm64' || 'x64' }}

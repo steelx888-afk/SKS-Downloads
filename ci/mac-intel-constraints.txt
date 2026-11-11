@@ -1,0 +1,6 @@
+# Native CPython 3.12 Intel macOS wheels, inside the source application's ranges.
+# Newer upstream releases have stopped distributing Intel Mac binaries.
+onnxruntime==1.23.2
+sentencepiece==0.2.2
+numba==0.62.1
+llvmlite==0.45.1
