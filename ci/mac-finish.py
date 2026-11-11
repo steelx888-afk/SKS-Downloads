@@ -167,7 +167,7 @@ def verify():
   if time.time()>=deadline-10:raise RuntimeError('Shared ten-minute test budget exhausted; no further app tests started.')
   unpacked=TEMP/('verify-'+app);unpacked.mkdir(exist_ok=True);command(['ditto','-x','-k',archive,unpacked])
   bundle=next(unpacked.glob('*.app'));info=plistlib.load((bundle/'Contents/Info.plist').open('rb'));assert info['CFBundleShortVersionString']=='0.1.19'
-  binary=bundle/'Contents/MacOS'/info['CFBundleExecutable'];command(['lipo','-verify_arch','x86_64','arm64',binary]);command(['codesign','--verify','--deep','--strict',bundle])
+  binary=bundle/'Contents/MacOS'/info['CFBundleExecutable'];command(['lipo',binary,'-verify_arch','x86_64','arm64']);command(['codesign','--verify','--deep','--strict',bundle])
   asar=bundle/'Contents/Resources/app.asar'
   js="const {createRequire}=require('node:module'); const a=createRequire(process.argv[1])('@electron/asar'); console.log(a.extractFile(process.argv[2],'package.json').toString());"
   manifest=json.loads(command(['node','-e',js,tools/'package.json',asar],capture=True));assert manifest['sks']['id']==app and manifest['version']=='0.1.19'
