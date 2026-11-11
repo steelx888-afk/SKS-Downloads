@@ -31,7 +31,7 @@ def wait_native(app):
  required={f'native-{app}-{arch}.tar.gz' for arch in ['arm64','x64']}|{f'build-{app}-{arch}.json' for arch in ['arm64','x64']}|{f'renderer-{app}.tar.gz'}
  end=time.time()+1200
  while time.time()<end:
-  release=json.loads(command(['gh','api','repos/'+REPO+'/releases/tags/'+TAG],capture=True))
+  release=json.loads(command(['gh','release','view',TAG,'-R',REPO,'--json','assets'],capture=True))
   available={a['name'] for a in release['assets'] if a['state']=='uploaded'}
   if required<=available:return
   time.sleep(20)
