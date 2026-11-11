@@ -142,11 +142,13 @@ def verify():
 def publish():
  app=os.environ['PRODUCT'];source=source_root(app);out=TEMP/'publish';out.mkdir(exist_ok=True)
  download(f'proof-{app}-*.json',out)
+ verified_hashes=set()
  for arch in ['arm64','x64']:
   proof=json.loads((out/f'proof-{app}-{arch}.json').read_text());assert proof['ok'] and proof['sourceCommit']==CONFIG['products'][app]['commit'] and proof['testedAtMs']<=proof['deadlineMs']
+  verified_hashes.add(proof['archiveSha256'])
  for pattern in [f'SKS-{app.upper()}-0.1.19-universal.*',f'latest-mac-{app}.yml']:download(pattern,out)
  shutil.copyfile(out/f'latest-mac-{app}.yml',out/'latest-mac.yml')
- assert sha(out/f'SKS-{app.upper()}-0.1.19-universal.zip')==proof['archiveSha256']
+ assert verified_hashes=={sha(out/f'SKS-{app.upper()}-0.1.19-universal.zip')}
  print('Publishing verified Mac '+app+' installer and update channel.',flush=True)
  command(['node',source/'apps/desktop/scripts/publish-release.mjs','--platform=mac','--directory='+str(out)],cwd=source)
  receipt={'app':app,'version':'0.1.19','sourceCommit':CONFIG['products'][app]['commit'],'platform':'mac','nativeArchitectures':['arm64','x64'],'files':[]}
