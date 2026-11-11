@@ -19,7 +19,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: mac-native-019
+  group: ${{ inputs.cache_tag && 'mac-native-resume-019' || 'mac-native-019' }}
   cancel-in-progress: false
 env:
   GIT_LFS_SKIP_SMUDGE: '1'
