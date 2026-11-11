@@ -1,0 +1,11 @@
+version: 0.1.19
+files:
+  - url: SKS-PROZ-0.1.19-universal.zip
+    sha512: t2qLEvDwt2mdVrTqpljmpYoWgf6dkvAImOSgv7AOabCFnCFmSSjbO6s9cY5oov2sJGaaPD3X4UGgNSiK6eL5Iw==
+    size: 1984712620
+  - url: SKS-PROZ-0.1.19-universal.dmg
+    sha512: EsP0t2jf2s6H2D4qmO43EpF224DA32MJf2+Qw+Mlma1D9Ht7sesdd8OymDKVRk2yM/ZipdxHNKUrsztPuPX5Iw==
+    size: 1979065607
+path: SKS-PROZ-0.1.19-universal.zip
+sha512: t2qLEvDwt2mdVrTqpljmpYoWgf6dkvAImOSgv7AOabCFnCFmSSjbO6s9cY5oov2sJGaaPD3X4UGgNSiK6eL5Iw==
+releaseDate: '2026-11-11T15:06:27.510Z'
