@@ -1,9 +1,9 @@
-version: 0.1.2
+version: 0.1.19
 files:
-  - url: SKS-PROZ-0.1.2-x64.AppImage
-    sha512: LI8fxLPw9sat+UR3VZQv3s9YCp+jwfAJl7qIzM0OdyxGMf4dZjAQVj8xgyW66fkD/zkSnL9XrJZG5mwfo8uY0Q==
-    size: 2018045779
-    blockMapSize: 1994599
-path: SKS-PROZ-0.1.2-x64.AppImage
-sha512: LI8fxLPw9sat+UR3VZQv3s9YCp+jwfAJl7qIzM0OdyxGMf4dZjAQVj8xgyW66fkD/zkSnL9XrJZG5mwfo8uY0Q==
-releaseDate: '2026-11-08T04:33:31.881Z'
+  - url: SKS-PROZ-0.1.19-x64.AppImage
+    sha512: 48JbuhBsz2cpjUNbaPa2NZTl5a9Qol2j0GYoXcM50XZrkypgOCT/c3Oa/ogaA62pvWMmNi13cK/sYs5180sjbQ==
+    size: 2000136687
+    blockMapSize: 1976835
+path: SKS-PROZ-0.1.19-x64.AppImage
+sha512: 48JbuhBsz2cpjUNbaPa2NZTl5a9Qol2j0GYoXcM50XZrkypgOCT/c3Oa/ogaA62pvWMmNi13cK/sYs5180sjbQ==
+releaseDate: '2026-11-11T08:59:46.613Z'
