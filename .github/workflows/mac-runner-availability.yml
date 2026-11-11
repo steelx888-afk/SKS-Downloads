@@ -1,0 +1,19 @@
+name: Mac release runner availability
+on:
+  workflow_dispatch:
+permissions: {}
+jobs:
+  native-mac:
+    name: Native Mac ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [macos-15, macos-15-intel]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 2
+    steps:
+      - name: Report native release host
+        shell: bash
+        run: |
+          uname -sm
+          sw_vers -productVersion
