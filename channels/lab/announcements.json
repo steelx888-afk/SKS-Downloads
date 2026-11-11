@@ -3,6 +3,25 @@
   "appId": "lab",
   "releases": [
     {
+      "version": "0.1.19",
+      "title": "Connected creative tools and company defaults",
+      "summary": "Updated creative studios, CAD workflows, company model defaults, Frame and chat behavior in the current desktop workspace.",
+      "highlights": [
+        "Use the original StudioX and MeshX interfaces through approved company MuAPI models.",
+        "Follow affordable company specialist defaults with ordered fallbacks and reset controls.",
+        "Use updated chat, speech, CAD, Materials and automatic Frame sizing.",
+        "Keep the latest Company, Social and Deep Research tools in LAB.",
+        "Include current source support and WhatsApp connection fixes."
+      ],
+      "publishedAt": "2026-11-11T09:02:19.000Z",
+      "platforms": {
+        "linux": {
+          "filename": "SKS-LAB-0.1.19-x64.AppImage",
+          "publishedAt": "2026-11-11T09:02:19.000Z"
+        }
+      }
+    },
+    {
       "version": "0.1.18",
       "title": "LAB StudioX Workflow source update",
       "summary": "StudioX Workflow consolidates the workflow entry while retaining the shared FlowX engine. Version remains 0.1.18. Source update only: the existing version and tag are unchanged. No new installers; existing downloads retain their published versions.",
