@@ -65,7 +65,9 @@ def native():
   assert receipt['sourceCommit']==actual and receipt['arch']==arch and asset['digest']=='sha256:'+receipt['nativeSha256']
   print('Reused completed native '+app+' '+arch+' payload.',flush=True);return
  print('Installing locked build dependencies for '+app+' '+arch,flush=True)
- command(['npm','ci','--no-audit','--no-fund'],cwd=source)
+ # Native payload preparation never launches Electron. Avoid its unused, large
+ # postinstall download here; universal assembly downloads both shells itself.
+ command(['npm','ci','--no-audit','--no-fund','--foreground-scripts'],cwd=source,env={**os.environ,'ELECTRON_SKIP_BINARY_DOWNLOAD':'1'})
  archive=TEMP/'public-media-019.tar.gz';command(['gh','release','download',TAG,'-R',REPO,'--pattern',archive.name,'--dir',TEMP])
  media=TEMP/'media';extract(archive,media)
  restored=0
