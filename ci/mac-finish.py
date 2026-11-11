@@ -51,6 +51,32 @@ def native_minimum(desktop,app):
  receipt=TEMP/f'compatibility-{app}.json';receipt.write_text(json.dumps({'app':app,'minimumMacOS':minimum,'inspectedNativeBinaries':len(binaries),'sourceCommit':CONFIG['products'][app]['commit']}));upload(receipt)
  print('Bundled native runtime minimum macOS: '+minimum,flush=True)
  return minimum
+
+def portable_node_commands(root):
+ repaired=0
+ for bin_dir in root.rglob('node_modules/.bin'):
+  modules=bin_dir.parent;packages=[]
+  for item in modules.iterdir():
+   if item.name.startswith('@') and item.is_dir():packages.extend(item.iterdir())
+   elif not item.name.startswith('.'):packages.append(item)
+  targets={}
+  for package in packages:
+   manifest=package/'package.json'
+   if not manifest.is_file():continue
+   value=json.loads(manifest.read_text());bins=value.get('bin',{})
+   if isinstance(bins,str):bins={value.get('name',package.name).split('/')[-1]:bins}
+   for name,relative in bins.items():
+    target=package/relative
+    if target.is_file():targets[name]=target
+  for link in bin_dir.iterdir():
+   if not link.is_symlink():continue
+   target=targets.get(link.name)
+   if target is None:raise RuntimeError('Missing packaged npm command target: '+str(link.relative_to(root)))
+   target.resolve().relative_to(root.resolve())
+   link.unlink();link.symlink_to(os.path.relpath(target,link.parent));target.chmod(target.stat().st_mode|0o111);repaired+=1
+ dangling=[str(p.relative_to(root)) for p in root.rglob('*') if p.is_symlink() and not p.exists()]
+ if dangling:raise RuntimeError('Dangling packaged runtime links: '+', '.join(dangling[:12]))
+ print('Made '+str(repaired)+' packaged npm command links portable.',flush=True)
 def wait_native(app):
  required={f'native-{app}-{arch}.tar.gz' for arch in ['arm64','x64']}|{f'build-{app}-{arch}.json' for arch in ['arm64','x64']}|{f'renderer-{app}.tar.gz'}
  end=time.time()+1200
@@ -71,6 +97,7 @@ def assemble():
   if (unpacked/'cluster').exists():shutil.copytree(unpacked/'cluster',desktop/'resources/cluster',dirs_exist_ok=True)
   remove_owned(unpacked);remove_owned(archive)
  extract(cache/f'renderer-{app}.tar.gz',desktop);remove_owned(cache/f'renderer-{app}.tar.gz')
+ portable_node_commands(desktop/'resources/sks-agent')
  env={**os.environ,'GITHUB_WORKSPACE':str(view),'CSC_IDENTITY_AUTO_DISCOVERY':'false','CI':'true','SKS_MAC_MINIMUM_SYSTEM_VERSION':native_minimum(desktop,app)}
  print('Preparing copied Mac delivery media for '+app,flush=True)
  media_archive=cache/f'mac-media-{app}.tar.gz';media_receipt=cache/f'mac-media-{app}.json'
