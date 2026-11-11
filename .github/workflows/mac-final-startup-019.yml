@@ -1,0 +1,34 @@
+name: Finish remaining native Mac startup checks
+on:
+  workflow_dispatch:
+    inputs:
+      cache_tag:
+        description: Exact private staging release containing the completed 0.1.19 installers
+        required: true
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: mac-final-startup-019
+  cancel-in-progress: false
+env:
+  GH_TOKEN: ${{ github.token }}
+  CACHE_TAG: ${{ inputs.cache_tag }}
+jobs:
+  startup:
+    name: DESIGNZ and PROZ startup on ${{ matrix.arch }}
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-15
+            arch: arm64
+          - runner: macos-15-intel
+            arch: x64
+    env:
+      BUILD_ARCH: ${{ matrix.arch }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 ci/mac-final-startup.py
