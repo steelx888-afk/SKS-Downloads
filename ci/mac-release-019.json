@@ -1,0 +1,8 @@
+{
+ "version":"0.1.19",
+ "products":{
+  "lab":{"repository":"steelx888-afk/SKS-LAB","commit":"fb9dec5f07798b6a72371f2d3b9bef89a99dd1f0","code":"E"},
+  "designz":{"repository":"steelx888-afk/SKS-DESIGNZ","commit":"e605d26f997f380ae2c67b126dd5b8c9cb408134","code":"A"},
+  "proz":{"repository":"steelx888-afk/SKS-PROZ","commit":"59d5bccede493169ca1549ac223e15ea572d3156","code":"B"}
+ }
+}

@@ -1,0 +1,62 @@
+name: Build native Mac release payloads
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: mac-native-019
+  cancel-in-progress: false
+env:
+  GH_TOKEN: ${{ github.token }}
+  NODE_OPTIONS: --max-old-space-size=4096
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    outputs:
+      cache_tag: ${{ steps.cache.outputs.cache_tag }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - id: cache
+        run: python3 ci/mac-release.py prepare
+  native:
+    needs: prepare
+    name: Build ${{ matrix.app }} ${{ matrix.arch }}
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 55
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        app: [lab, designz, proz]
+        include:
+          - runner: macos-15
+            arch: arm64
+          - runner: macos-15-intel
+            arch: x64
+        runner: [macos-15, macos-15-intel]
+    env:
+      PRODUCT: ${{ matrix.app }}
+      BUILD_ARCH: ${{ matrix.runner == 'macos-15' && 'arm64' || 'x64' }}
+      CACHE_TAG: ${{ needs.prepare.outputs.cache_tag }}
+      PIP_NO_CACHE_DIR: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: steelx888-afk/SKS-${{ matrix.app == 'lab' && 'LAB' || matrix.app == 'designz' && 'DESIGNZ' || 'PROZ' }}
+          ref: v0.1.19
+          path: private-source
+          ssh-key: ${{ secrets[format('MAC_SOURCE_{0}', matrix.app == 'lab' && 'LAB' || matrix.app == 'designz' && 'DESIGNZ' || 'PROZ')] }}
+          persist-credentials: false
+          lfs: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 ci/mac-release.py native
