@@ -13,8 +13,12 @@
         "Company, Social and Deep Research are disabled in this edition for now; saved data is retained.",
         "Preserve this application identity, private data directory, themes and update channel."
       ],
-      "publishedAt": "2026-11-11T09:02:18.000Z",
+      "publishedAt": "2026-11-11T08:53:49.000Z",
       "platforms": {
+        "windows": {
+          "filename": "SKS-PROZ-Setup-0.1.19-x64.exe",
+          "publishedAt": "2026-11-11T08:53:49.000Z"
+        },
         "linux": {
           "filename": "SKS-PROZ-0.1.19-x64.AppImage",
           "publishedAt": "2026-11-11T09:02:18.000Z"
