@@ -27,8 +27,17 @@ def remove_owned(target):
  elif target.exists():target.unlink()
 def extract(archive,destination):
  destination.mkdir(parents=True,exist_ok=True);command(['tar','-xzf',archive,'-C',destination])
+def wait_native(app):
+ required={f'native-{app}-{arch}.tar.gz' for arch in ['arm64','x64']}|{f'build-{app}-{arch}.json' for arch in ['arm64','x64']}|{f'renderer-{app}.tar.gz'}
+ end=time.time()+1200
+ while time.time()<end:
+  release=json.loads(command(['gh','api','repos/'+REPO+'/releases/tags/'+TAG],capture=True))
+  available={a['name'] for a in release['assets'] if a['state']=='uploaded'}
+  if required<=available:return
+  time.sleep(20)
+ raise RuntimeError('The matching native build payloads are not ready; no app test was started.')
 def assemble():
- app=os.environ['PRODUCT'];source=source_root(app);view=source_view(source);desktop=view/'apps/desktop';cache=TEMP/'assembly';cache.mkdir(exist_ok=True)
+ app=os.environ['PRODUCT'];source=source_root(app);view=source_view(source);desktop=view/'apps/desktop';cache=TEMP/'assembly';cache.mkdir(exist_ok=True);wait_native(app)
  for pattern in [f'native-{app}-*.tar.gz',f'build-{app}-*.json',f'renderer-{app}.tar.gz']:download(pattern,cache)
  for arch in ['arm64','x64']:
   archive=cache/f'native-{app}-{arch}.tar.gz';receipt=json.loads((cache/f'build-{app}-{arch}.json').read_text());assert receipt['sourceCommit']==CONFIG['products'][app]['commit'] and receipt['nativeSha256']==sha(archive)

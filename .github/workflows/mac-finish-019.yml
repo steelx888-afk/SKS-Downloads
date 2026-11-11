@@ -1,8 +1,5 @@
 name: Verify and publish universal Mac releases
 on:
-  workflow_run:
-    workflows: [Build native Mac release payloads]
-    types: [completed]
   workflow_dispatch:
     inputs:
       cache_tag:
