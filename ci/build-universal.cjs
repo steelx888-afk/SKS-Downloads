@@ -6,7 +6,7 @@ Module._load=function(name,parent,...rest){
  const value=original.call(this,name,parent,...rest);
  if(name==='electron-builder'&&parent?.filename===entry){
   const {Arch}=from('builder-util');
-  return {...value,build:options=>value.build({...options,targets:value.Platform.MAC.createTarget(['dmg','zip'],Arch.universal),publish:'never'})};
+  return {...value,build:options=>value.build({...options,config:{...options.config,mac:{...options.config?.mac,minimumSystemVersion:process.env.SKS_MAC_MINIMUM_SYSTEM_VERSION}},targets:value.Platform.MAC.createTarget(['dmg','zip'],Arch.universal),publish:'never'})};
  }
  return value;
 };

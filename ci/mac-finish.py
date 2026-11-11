@@ -27,6 +27,30 @@ def remove_owned(target):
  elif target.exists():target.unlink()
 def extract(archive,destination):
  destination.mkdir(parents=True,exist_ok=True);command(['tar','-xzf',archive,'-C',destination])
+
+def native_minimum(desktop,app):
+ # Installer compatibility must include the actual bundled Node/Python libraries,
+ # not just Electron's lower deployment target. Inspect headers without executing them.
+ magic={b'\xfe\xed\xfa\xce',b'\xce\xfa\xed\xfe',b'\xfe\xed\xfa\xcf',b'\xcf\xfa\xed\xfe',b'\xca\xfe\xba\xbe',b'\xbe\xba\xfe\xca',b'\xca\xfe\xba\xbf',b'\xbf\xba\xfe\xca'}
+ binaries=[];seen=set();versions=[(12,0)]
+ for root in [desktop/'resources/sks-agent',desktop/'resources/runtime']:
+  for file in root.rglob('*'):
+   if not file.is_file() or file.resolve() in seen:continue
+   seen.add(file.resolve())
+   with file.open('rb') as f:header=f.read(4)
+   if header in magic:binaries.append(file)
+ for offset in range(0,len(binaries),24):
+  text=command(['otool','-l',*binaries[offset:offset+24]],capture=True);kind=None
+  for line in text.splitlines():
+   bits=line.split()
+   if bits[:2]==['Load','command']:kind=None
+   elif bits[:1]==['cmd'] and len(bits)>1:kind=bits[1]
+   elif len(bits)==2 and ((kind=='LC_BUILD_VERSION' and bits[0]=='minos') or (kind=='LC_VERSION_MIN_MACOSX' and bits[0]=='version')):
+    versions.append(tuple(int(part) for part in bits[1].split('.')))
+ minimum='.'.join(str(part) for part in max(versions))
+ receipt=TEMP/f'compatibility-{app}.json';receipt.write_text(json.dumps({'app':app,'minimumMacOS':minimum,'inspectedNativeBinaries':len(binaries),'sourceCommit':CONFIG['products'][app]['commit']}));upload(receipt)
+ print('Bundled native runtime minimum macOS: '+minimum,flush=True)
+ return minimum
 def wait_native(app):
  required={f'native-{app}-{arch}.tar.gz' for arch in ['arm64','x64']}|{f'build-{app}-{arch}.json' for arch in ['arm64','x64']}|{f'renderer-{app}.tar.gz'}
  end=time.time()+1200
@@ -47,7 +71,7 @@ def assemble():
   if (unpacked/'cluster').exists():shutil.copytree(unpacked/'cluster',desktop/'resources/cluster',dirs_exist_ok=True)
   remove_owned(unpacked);remove_owned(archive)
  extract(cache/f'renderer-{app}.tar.gz',desktop);remove_owned(cache/f'renderer-{app}.tar.gz')
- env={**os.environ,'GITHUB_WORKSPACE':str(view),'CSC_IDENTITY_AUTO_DISCOVERY':'false','CI':'true'}
+ env={**os.environ,'GITHUB_WORKSPACE':str(view),'CSC_IDENTITY_AUTO_DISCOVERY':'false','CI':'true','SKS_MAC_MINIMUM_SYSTEM_VERSION':native_minimum(desktop,app)}
  print('Preparing copied Mac delivery media for '+app,flush=True)
  command(['node','apps/desktop/scripts/optimize-mac-media.mjs'],cwd=view,env=env)
  command(['node','apps/desktop/scripts/clean-ci-staging.mjs'],cwd=view,env=env)
