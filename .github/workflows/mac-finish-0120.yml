@@ -1,0 +1,112 @@
+name: Verify and publish 0.1.20 universal Mac releases
+on:
+  workflow_run:
+    workflows: [Build 0.1.20 desktop releases]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      cache_tag:
+        description: Existing 0.1.20 private staging cache
+        required: true
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: mac-publish-0120
+  cancel-in-progress: false
+env:
+  RELEASE_CONFIG: ci/release-0120.json
+  GH_TOKEN: ${{ github.token }}
+  CACHE_TAG: ${{ inputs.cache_tag || format('mac-native-cache-0120-{0}', github.event.workflow_run.id) }}
+  NODE_OPTIONS: --max-old-space-size=4096
+  GIT_LFS_SKIP_SMUDGE: '1'
+  TEST_CLOCK_FILE: verification-clock.json
+jobs:
+  assemble:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    name: Assemble ${{ matrix.app }} universal Mac
+    runs-on: macos-15
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        app: [lab, designz, proz]
+    env:
+      PRODUCT: ${{ matrix.app }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: steelx888-afk/SKS-${{ matrix.app == 'lab' && 'LAB' || matrix.app == 'designz' && 'DESIGNZ' || 'PROZ' }}
+          ref: v0.1.20
+          path: private-source
+          ssh-key: ${{ secrets[format('RELEASE_SOURCE_{0}', matrix.app == 'lab' && 'LAB' || matrix.app == 'designz' && 'DESIGNZ' || 'PROZ')] }}
+          persist-credentials: false
+          lfs: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 ci/mac-finish.py assemble
+  clock:
+    needs: assemble
+    if: ${{ always() && !cancelled() && needs.assemble.result == 'success' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    outputs:
+      deadline: ${{ steps.clock.outputs.deadline }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: clock
+        run: python3 ci/mac-finish.py clock
+  verify:
+    needs: [assemble, clock]
+    if: ${{ always() && !cancelled() && needs.clock.result == 'success' }}
+    name: Verify 0.1.20 Mac apps on ${{ matrix.arch }}
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-15
+            arch: arm64
+          - runner: macos-15-intel
+            arch: x64
+    env:
+      BUILD_ARCH: ${{ matrix.arch }}
+      TEST_DEADLINE_MS: ${{ needs.clock.outputs.deadline }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: python3 ci/mac-finish.py verify
+  publish:
+    needs: verify
+    if: ${{ always() && !cancelled() && needs.verify.result == 'success' }}
+    name: Publish ${{ matrix.app }} 0.1.20 Mac downloads
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        app: [lab, designz, proz]
+    env:
+      PRODUCT: ${{ matrix.app }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: steelx888-afk/SKS-${{ matrix.app == 'lab' && 'LAB' || matrix.app == 'designz' && 'DESIGNZ' || 'PROZ' }}
+          ref: v0.1.20
+          path: private-source
+          ssh-key: ${{ secrets[format('RELEASE_SOURCE_{0}', matrix.app == 'lab' && 'LAB' || matrix.app == 'designz' && 'DESIGNZ' || 'PROZ')] }}
+          persist-credentials: false
+          lfs: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: python3 ci/mac-finish.py publish

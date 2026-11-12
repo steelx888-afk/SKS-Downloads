@@ -1,8 +1,9 @@
 import os,sys,json,pathlib,subprocess,hashlib,shutil,plistlib,time,signal,urllib.request,urllib.error,concurrent.futures
 ROOT=pathlib.Path(__file__).resolve().parent.parent
-CONFIG=json.loads((ROOT/'ci/mac-release-019.json').read_text(encoding='utf-8-sig'))
+CONFIG_PATH=ROOT/os.environ.get('RELEASE_CONFIG','ci/mac-release-019.json')
+CONFIG=json.loads(CONFIG_PATH.read_text(encoding='utf-8-sig'));VERSION=CONFIG['version'];SERIES=VERSION.replace('.','')
 TEMP=pathlib.Path(os.environ['RUNNER_TEMP']);REPO='steelx888-afk/SKS-Downloads';TAG=os.environ['CACHE_TAG']
-assert TAG.startswith('mac-native-cache-019-') and TAG.rsplit('-',1)[1].isdigit()
+assert TAG.startswith(f'mac-native-cache-{SERIES}-') and TAG.rsplit('-',1)[1].isdigit()
 LOG=TEMP/('mac-finish-'+os.environ.get('PRODUCT','any')+'-'+os.environ.get('BUILD_ARCH','any')+'.log')
 def command(args,cwd=None,env=None,capture=False):
  with LOG.open('a') as log:
@@ -128,8 +129,8 @@ def assemble():
  files=[]
  for suffix in ['.dmg','.zip','.blockmap','.yml']:
   files.extend((desktop/'release').glob('*'+suffix))
- assert any(f.name==f'SKS-{app.upper()}-0.1.19-universal.dmg' for f in files)
- assert any(f.name==f'SKS-{app.upper()}-0.1.19-universal.zip' for f in files)
+ assert any(f.name==f'SKS-{app.upper()}-{VERSION}-universal.dmg' for f in files)
+ assert any(f.name==f'SKS-{app.upper()}-{VERSION}-universal.zip' for f in files)
  assert all(f.stat().st_size<2*1024**3 for f in files)
  for f in files:
   if f.name=='latest-mac.yml':
@@ -156,10 +157,10 @@ def verify():
  arch=os.environ['BUILD_ARCH'];expected='arm64' if arch=='arm64' else 'x86_64';assert os.uname().machine==expected
  deadline=int(os.environ['TEST_DEADLINE_MS'])/1000
  cache=TEMP/'verify';cache.mkdir(exist_ok=True)
- download('SKS-*-0.1.19-universal.zip',cache)
+ download(f'SKS-*-{VERSION}-universal.zip',cache)
  tools=TEMP/'verify-tools';command(['npm','install','--prefix',tools,'--no-audit','--no-fund','--ignore-scripts','@electron/asar@4.0.1'])
  for app in ['lab','designz','proz']:
-  archive=cache/f'SKS-{app.upper()}-0.1.19-universal.zip';archive_hash=sha(archive);proof=cache/f'proof-{app}-{arch}.json'
+  archive=cache/f'SKS-{app.upper()}-{VERSION}-universal.zip';archive_hash=sha(archive);proof=cache/f'proof-{app}-{arch}.json'
   previous=subprocess.run(['gh','release','download',TAG,'-R',REPO,'--pattern',proof.name,'--dir',cache,'--clobber'],capture_output=True)
   if previous.returncode==0:
    value=json.loads(proof.read_text())
@@ -167,11 +168,11 @@ def verify():
     print('Reused passed native verification for '+app+' '+arch,flush=True);continue
   if time.time()>=deadline-10:raise RuntimeError('Shared ten-minute test budget exhausted; no further app tests started.')
   unpacked=TEMP/('verify-'+app);unpacked.mkdir(exist_ok=True);command(['ditto','-x','-k',archive,unpacked])
-  bundle=next(unpacked.glob('*.app'));info=plistlib.load((bundle/'Contents/Info.plist').open('rb'));assert info['CFBundleShortVersionString']=='0.1.19'
+  bundle=next(unpacked.glob('*.app'));info=plistlib.load((bundle/'Contents/Info.plist').open('rb'));assert info['CFBundleShortVersionString']==VERSION
   binary=bundle/'Contents/MacOS'/info['CFBundleExecutable'];command(['lipo',binary,'-verify_arch','x86_64','arm64']);command(['codesign','--verify','--deep','--strict',bundle])
   asar=bundle/'Contents/Resources/app.asar'
   js="const {createRequire}=require('node:module'); const a=createRequire(process.argv[1])('@electron/asar'); console.log(a.extractFile(process.argv[2],'package.json').toString());"
-  manifest=json.loads(command(['node','-e',js,tools/'package.json',asar],capture=True));assert manifest['sks']['id']==app and manifest['version']=='0.1.19'
+  manifest=json.loads(command(['node','-e',js,tools/'package.json',asar],capture=True));assert manifest['sks']['id']==app and manifest['version']==VERSION
   flags=manifest['sks']['features'];assert all(flags[x] is (app=='lab') for x in ['company','social','deepResearch'])
   state=TEMP/('isolated-'+app);state.mkdir(exist_ok=True);debug_port=19300
   env={**os.environ,'HOME':str(state),'SKS_HOME':str(state/'agent-home'),'SKS_APP_ID':app};env.pop('ELECTRON_RUN_AS_NODE',None)
@@ -203,7 +204,7 @@ def verify():
      time.sleep(.3)
     assert page_ready,'Packaged renderer did not load.'
     assert time.time()<=deadline
-    result={'ok':True,'app':app,'arch':arch,'machine':os.uname().machine,'macOS':command(['sw_vers','-productVersion'],capture=True),'sourceCommit':CONFIG['products'][app]['commit'],'version':'0.1.19','archiveSha256':archive_hash,'universalShell':True,'signatureValid':True,'packagedAppStarted':True,'rendererLoaded':True,'nativeAgentReady':True,'productIdentity':app,'protectedDeskDeniedUnsigned':True,'signedOutAdapterReady':True,'featureAvailabilityCorrect':True,'testedAtMs':int(time.time()*1000),'deadlineMs':int(deadline*1000),'screenControlUsed':False}
+    result={'ok':True,'app':app,'arch':arch,'machine':os.uname().machine,'macOS':command(['sw_vers','-productVersion'],capture=True),'sourceCommit':CONFIG['products'][app]['commit'],'version':VERSION,'archiveSha256':archive_hash,'universalShell':True,'signatureValid':True,'packagedAppStarted':True,'rendererLoaded':True,'nativeAgentReady':True,'productIdentity':app,'protectedDeskDeniedUnsigned':True,'signedOutAdapterReady':True,'featureAvailabilityCorrect':True,'testedAtMs':int(time.time()*1000),'deadlineMs':int(deadline*1000),'screenControlUsed':False}
     proof.write_text(json.dumps(result,indent=2));upload(proof);print('Passed native Mac '+app+' '+arch,flush=True)
    finally:
     for parent in [state/'Library/Application Support',pathlib.Path.home()/'Library/Application Support']:
@@ -225,15 +226,15 @@ def publish():
  for arch in ['arm64','x64']:
   proof=json.loads((out/f'proof-{app}-{arch}.json').read_text());assert proof['ok'] and proof['sourceCommit']==CONFIG['products'][app]['commit'] and proof['testedAtMs']<=proof['deadlineMs']
   verified_hashes.add(proof['archiveSha256'])
- for pattern in [f'SKS-{app.upper()}-0.1.19-universal.*',f'latest-mac-{app}.yml']:download(pattern,out)
+ for pattern in [f'SKS-{app.upper()}-{VERSION}-universal.*',f'latest-mac-{app}.yml']:download(pattern,out)
  shutil.copyfile(out/f'latest-mac-{app}.yml',out/'latest-mac.yml')
- assert verified_hashes=={sha(out/f'SKS-{app.upper()}-0.1.19-universal.zip')}
+ assert verified_hashes=={sha(out/f'SKS-{app.upper()}-{VERSION}-universal.zip')}
  print('Publishing verified Mac '+app+' installer and update channel.',flush=True)
  command(['node',source/'apps/desktop/scripts/publish-release.mjs','--platform=mac','--directory='+str(out)],cwd=source)
- receipt={'app':app,'version':'0.1.19','sourceCommit':CONFIG['products'][app]['commit'],'platform':'mac','nativeArchitectures':['arm64','x64'],'files':[]}
+ receipt={'app':app,'version':VERSION,'sourceCommit':CONFIG['products'][app]['commit'],'platform':'mac','nativeArchitectures':['arm64','x64'],'files':[]}
  for suffix in ['dmg','zip']:
-  file=out/f'SKS-{app.upper()}-0.1.19-universal.{suffix}';receipt['files'].append({'name':file.name,'size':file.stat().st_size,'sha256':sha(file)})
- receipt_file=out/f'publication-{app}-mac.json';receipt_file.write_text(json.dumps(receipt,indent=2));upload(receipt_file);print('Published Mac '+app+' 0.1.19.',flush=True)
+  file=out/f'SKS-{app.upper()}-{VERSION}-universal.{suffix}';receipt['files'].append({'name':file.name,'size':file.stat().st_size,'sha256':sha(file)})
+ receipt_file=out/f'publication-{app}-mac.json';receipt_file.write_text(json.dumps(receipt,indent=2));upload(receipt_file);print('Published Mac '+app+' '+VERSION+'.',flush=True)
 try:{'assemble':assemble,'clock':clock,'verify':verify,'publish':publish}[sys.argv[1]]()
 except Exception as error:
  print(str(error) or type(error).__name__,file=sys.stderr,flush=True)

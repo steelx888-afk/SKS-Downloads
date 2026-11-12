@@ -1,9 +1,10 @@
 import os,sys,json,pathlib,subprocess,hashlib,shutil,tarfile,re,time
 ROOT=pathlib.Path(__file__).resolve().parent.parent
-CONFIG=json.loads((ROOT/'ci/mac-release-019.json').read_text(encoding='utf-8-sig'))
+CONFIG_PATH=ROOT/os.environ.get('RELEASE_CONFIG','ci/mac-release-019.json')
+CONFIG=json.loads(CONFIG_PATH.read_text(encoding='utf-8-sig'));VERSION=CONFIG['version'];SERIES=VERSION.replace('.','')
 TEMP=pathlib.Path(os.environ['RUNNER_TEMP'])
 REPO='steelx888-afk/SKS-Downloads'
-TAG=os.environ.get('CACHE_TAG') or 'mac-native-cache-019-'+os.environ['GITHUB_RUN_ID']
+TAG=os.environ.get('CACHE_TAG') or f'mac-native-cache-{SERIES}-'+os.environ['GITHUB_RUN_ID']
 LOG=TEMP/('mac-build-'+os.environ.get('PRODUCT','prepare')+'-'+os.environ.get('BUILD_ARCH','any')+'.log')
 def command(args,cwd=None,env=None,capture=False):
  if capture:
@@ -36,11 +37,11 @@ def remove_owned(target):
  elif target.exists():target.unlink()
 def prepare():
  if os.environ.get('CACHE_TAG'):
-  assert re.fullmatch(r'mac-native-cache-019-\d+',TAG)
+  assert re.fullmatch(rf'mac-native-cache-{SERIES}-\d+',TAG)
   command(['gh','release','view',TAG,'-R',REPO,'--json','isDraft'],capture=True)
   with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('cache_tag='+TAG+'\n')
   print('Reusing existing private native payload cache.',flush=True);return
- command(['gh','release','create',TAG,'-R',REPO,'--draft','--target',os.environ['GITHUB_SHA'],'--title','Temporary private Mac build cache 0.1.19','--notes','Compiled build staging only. Deleted after verified publication.'])
+ command(['gh','release','create',TAG,'-R',REPO,'--draft','--target',os.environ['GITHUB_SHA'],'--title',f'Temporary private Mac build cache {VERSION}','--notes','Compiled build staging only. Deleted after verified publication.'])
  out=TEMP/'mac-cache';out.mkdir(exist_ok=True)
  command(['gh','release','download','lab-latest','-R',REPO,'--pattern','SKS-LAB-0.1.19-x64.AppImage','--dir',out])
  binary=out/'SKS-LAB-0.1.19-x64.AppImage'
@@ -52,7 +53,7 @@ def prepare():
  tools=TEMP/'asar-tools';command(['npm','install','--prefix',tools,'--ignore-scripts','--no-audit','--no-fund','@electron/asar@4.0.1'])
  media=TEMP/'published-media';media.mkdir(exist_ok=True)
  command(['node',ROOT/'ci/extract-public-media.cjs',asars[0],media],env={**os.environ,'ASAR_MODULE':str(tools/'package.json')})
- archive=TEMP/'public-media-019.tar.gz';command(['tar','-czf',archive,'-C',media,'.']);assert archive.stat().st_size<2*1024**3
+ archive=TEMP/f'public-media-{SERIES}.tar.gz';command(['tar','-czf',archive,'-C',media,'.']);assert archive.stat().st_size<2*1024**3
  upload(archive)
  with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('cache_tag='+TAG+'\n')
  print('Prepared shared media cache from verified, published installer.',flush=True)
@@ -72,7 +73,7 @@ def native():
  # Native payload preparation never launches Electron. Avoid its unused, large
  # postinstall download here; universal assembly downloads both shells itself.
  command(['npm','ci','--no-audit','--no-fund','--foreground-scripts'],cwd=source,env={**os.environ,'ELECTRON_SKIP_BINARY_DOWNLOAD':'1'})
- archive=TEMP/'public-media-019.tar.gz';command(['gh','release','download',TAG,'-R',REPO,'--pattern',archive.name,'--dir',TEMP])
+ archive=TEMP/f'public-media-{SERIES}.tar.gz';command(['gh','release','download',TAG,'-R',REPO,'--pattern',archive.name,'--dir',TEMP])
  media=TEMP/'media';extract(archive,media)
  restored=0
  for p in (source/'apps/web/public').rglob('*'):

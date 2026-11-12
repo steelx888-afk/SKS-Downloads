@@ -1,0 +1,93 @@
+name: Build 0.1.20 desktop releases
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: desktop-release-0120
+  cancel-in-progress: false
+env:
+  RELEASE_CONFIG: ci/release-0120.json
+  GIT_LFS_SKIP_SMUDGE: '1'
+  GH_TOKEN: ${{ github.token }}
+  NODE_OPTIONS: --max-old-space-size=4096
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    outputs:
+      cache_tag: ${{ steps.cache.outputs.cache_tag }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - id: cache
+        run: python3 ci/mac-release.py prepare
+  native-mac:
+    needs: prepare
+    name: Native Mac ${{ matrix.app }} ${{ matrix.arch }}
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        app: [lab, designz, proz]
+        runner: [macos-15, macos-15-intel]
+    env:
+      PRODUCT: ${{ matrix.app }}
+      BUILD_ARCH: ${{ matrix.runner == 'macos-15' && 'arm64' || 'x64' }}
+      CACHE_TAG: ${{ needs.prepare.outputs.cache_tag }}
+      PIP_NO_CACHE_DIR: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: steelx888-afk/SKS-${{ matrix.app == 'lab' && 'LAB' || matrix.app == 'designz' && 'DESIGNZ' || 'PROZ' }}
+          ref: v0.1.20
+          path: private-source
+          ssh-key: ${{ secrets[format('RELEASE_SOURCE_{0}', matrix.app == 'lab' && 'LAB' || matrix.app == 'designz' && 'DESIGNZ' || 'PROZ')] }}
+          persist-credentials: false
+          lfs: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 ci/mac-release.py native
+  desktop:
+    needs: prepare
+    name: ${{ matrix.platform }} ${{ matrix.app }}
+    runs-on: ${{ matrix.platform == 'windows' && 'windows-2025' || 'ubuntu-22.04' }}
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        app: [lab, designz, proz]
+        platform: [windows, linux]
+    env:
+      PRODUCT: ${{ matrix.app }}
+      BUILD_PLATFORM: ${{ matrix.platform }}
+      CACHE_TAG: ${{ needs.prepare.outputs.cache_tag }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: steelx888-afk/SKS-${{ matrix.app == 'lab' && 'LAB' || matrix.app == 'designz' && 'DESIGNZ' || 'PROZ' }}
+          ref: v0.1.20
+          path: private-source
+          ssh-key: ${{ secrets[format('RELEASE_SOURCE_{0}', matrix.app == 'lab' && 'LAB' || matrix.app == 'designz' && 'DESIGNZ' || 'PROZ')] }}
+          persist-credentials: false
+          lfs: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - if: matrix.platform == 'linux'
+        run: sudo apt-get update && sudo apt-get install -y libfuse2 libgtk-3-0 libnss3 libasound2 libxss1 xvfb
+      - run: python ci/desktop-release.py
