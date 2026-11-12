@@ -12,11 +12,13 @@
         "Separate Cookbook from the desktop runtime and remove its stale web client and automatic discovery path.",
         "Preserve FlowX exclusions, product identity and LAB's Company, Social and Deep Research capabilities."
       ],
-      "publishedAt": "2026-11-12T09:05:58Z",
-      "publication": "version",
-      "sourceCommit": "557f49084e3318ba6c2c5613bdbfcab78c90643b",
-      "sourceUrl": "https://github.com/steelx888-afk/SKS-LAB/releases/tag/v0.1.20",
-      "platforms": {}
+      "publishedAt": "2026-11-12T10:15:44.000Z",
+      "platforms": {
+        "linux": {
+          "filename": "SKS-LAB-0.1.20-x64.AppImage",
+          "publishedAt": "2026-11-12T10:15:44.000Z"
+        }
+      }
     },
     {
       "version": "0.1.19",
