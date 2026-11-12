@@ -67,8 +67,9 @@ def native():
   folder=TEMP/'previous-native';folder.mkdir(exist_ok=True)
   command(['gh','release','download',TAG,'-R',REPO,'--pattern',f'build-{app}-{arch}.json','--dir',folder])
   receipt=json.loads((folder/f'build-{app}-{arch}.json').read_text());asset=next(a for a in existing['assets'] if a['name']==receipt['nativePayload'])
-  assert receipt['sourceCommit']==actual and receipt['arch']==arch and asset['digest']=='sha256:'+receipt['nativeSha256']
-  print('Reused completed native '+app+' '+arch+' payload.',flush=True);return
+  if receipt['sourceCommit']==actual and receipt['arch']==arch and asset['digest']=='sha256:'+receipt['nativeSha256']:
+   print('Reused completed native '+app+' '+arch+' payload.',flush=True);return
+  print('Cached payload belongs to an older source commit; rebuilding '+app+' '+arch,flush=True)
  print('Installing locked build dependencies for '+app+' '+arch,flush=True)
  # Native payload preparation never launches Electron. Avoid its unused, large
  # postinstall download here; universal assembly downloads both shells itself.
