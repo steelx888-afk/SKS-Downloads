@@ -94,7 +94,10 @@ def wait_native(app):
  while time.time()<end:
   release=json.loads(command(['gh','release','view',TAG,'-R',REPO,'--json','assets'],capture=True))
   available={a['name'] for a in release['assets'] if a['state']=='uploaded'}
-  if required<=available:return
+  if required<=available:
+   receipts=TEMP/('wait-receipts-'+app)
+   download(f'build-{app}-*.json',receipts)
+   if all(json.loads((receipts/f'build-{app}-{arch}.json').read_text()).get('sourceCommit')==CONFIG['products'][app]['commit'] for arch in ['arm64','x64']):return
   time.sleep(20)
  raise RuntimeError('The matching native build payloads are not ready; no app test was started.')
 def assemble():
