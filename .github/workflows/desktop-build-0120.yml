@@ -19,7 +19,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: desktop-release-0120
+  group: desktop-release-0120-${{ inputs.platforms || 'all' }}
   cancel-in-progress: false
 env:
   RELEASE_CONFIG: ci/release-0120.json
