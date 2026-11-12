@@ -1,9 +1,9 @@
-version: 0.1.19
+version: 0.1.20
 files:
-  - url: SKS-DESIGNZ-0.1.19-x64.AppImage
-    sha512: SACLTrICNAxND70/Y9rgWpSGD1+j6czFydeNt+mkVS5TaewsJNAkXaVCdhqet2yGTqG7dDcsYxSWGI6cYrMjZg==
-    size: 2000113457
-    blockMapSize: 1978181
-path: SKS-DESIGNZ-0.1.19-x64.AppImage
-sha512: SACLTrICNAxND70/Y9rgWpSGD1+j6czFydeNt+mkVS5TaewsJNAkXaVCdhqet2yGTqG7dDcsYxSWGI6cYrMjZg==
-releaseDate: '2026-11-11T08:47:16.926Z'
+  - url: SKS-DESIGNZ-0.1.20-x64.AppImage
+    sha512: DVUhPFgjW1a0a1LL99k2W+QMFUxEDf71qN3sV5owL+MWOY/3kTl9KtSLmfzabZc1bo7RMCZBcT4UM+vCZqCFGw==
+    size: 2010739278
+    blockMapSize: 1987170
+path: SKS-DESIGNZ-0.1.20-x64.AppImage
+sha512: DVUhPFgjW1a0a1LL99k2W+QMFUxEDf71qN3sV5owL+MWOY/3kTl9KtSLmfzabZc1bo7RMCZBcT4UM+vCZqCFGw==
+releaseDate: '2026-11-12T10:37:42.331Z'
