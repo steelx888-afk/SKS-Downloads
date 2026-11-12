@@ -40,7 +40,7 @@ def main():
  command(['npm','ci','--no-audit','--no-fund'],cwd=SOURCE)
  restore_media()
  view=pathlib.Path(command(['node','--input-type=module','-e',"import {prepareSourceView} from './scripts/source-view.mjs'; console.log(prepareSourceView());"],cwd=SOURCE,capture=True))
- env={**os.environ,'CI':'true','CSC_IDENTITY_AUTO_DISCOVERY':'false','NODE_OPTIONS':'--max-old-space-size=4096','PYTHONUNBUFFERED':'1','PIP_NO_CACHE_DIR':'1'}
+ env={**os.environ,'CI':'true','GITHUB_WORKSPACE':str(view),'CSC_IDENTITY_AUTO_DISCOVERY':'false','NODE_OPTIONS':'--max-old-space-size=4096','PYTHONUNBUFFERED':'1','PIP_NO_CACHE_DIR':'1'}
  command(['node','apps/desktop/scripts/pack-app.mjs'],cwd=view,env=env)
  command(['node','apps/desktop/scripts/clean-ci-staging.mjs'],cwd=view,env=env)
  desktop=view/'apps/desktop'
