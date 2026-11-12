@@ -8,8 +8,10 @@ TAG=os.environ['CACHE_TAG'];APP=os.environ['PRODUCT'];PLATFORM=os.environ['BUILD
 SOURCE=ROOT/'private-source';LOG=TEMP/f'desktop-{APP}-{PLATFORM}.log'
 
 def command(args,cwd=None,env=None,capture=False):
+ args=[str(a) for a in args]
+ if os.name=='nt' and pathlib.Path(args[0]).name in {'npm','npx'}:args[0]+='.cmd'
  with LOG.open('a',encoding='utf-8') as log:
-  result=subprocess.run([str(a) for a in args],cwd=cwd,env=env,text=True,stdout=subprocess.PIPE if capture else log,stderr=log)
+  result=subprocess.run(args,cwd=cwd,env=env,text=True,stdout=subprocess.PIPE if capture else log,stderr=log)
  if result.returncode:raise RuntimeError('Release command failed: '+pathlib.Path(str(args[0])).name+' (private log retained)')
  return result.stdout.strip() if capture else None
 
