@@ -3,6 +3,22 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "0.1.20",
+      "title": "Cleaner focused creative workspace",
+      "summary": "Plugin snapshots and desktop packaging are isolated from Cookbook and excluded modules while DESIGNZ retains its required shell and creative runtime support.",
+      "highlights": [
+        "Keep plugin snapshots independent of Cookbook discovery and packaging.",
+        "Restore required desktop shell source and the supported test source view.",
+        "Keep Cookbook, TabiiX and Social outside the DESIGNZ product boundary.",
+        "Preserve DESIGNZ identity, saved data, creative tools and existing update channels."
+      ],
+      "publishedAt": "2026-11-12T09:05:58Z",
+      "publication": "version",
+      "sourceCommit": "f3f8a5484506013470e5387f8b286be8d9fb13e1",
+      "sourceUrl": "https://github.com/steelx888-afk/SKS-DESIGNZ/releases/tag/v0.1.20",
+      "platforms": {}
+    },
+    {
       "version": "0.1.19",
       "title": "Updated creative and CAD workspace",
       "summary": "Current LAB shared features arrive in SKS DESIGNZ, with a focused workspace for creative and CAD work.",
