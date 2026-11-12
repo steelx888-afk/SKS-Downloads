@@ -12,11 +12,13 @@
         "Keep Cookbook, TabiiX and Social outside the PROZ product boundary.",
         "Preserve PROZ identity, saved data, creative tools and existing update channels."
       ],
-      "publishedAt": "2026-11-12T09:05:58Z",
-      "publication": "version",
-      "sourceCommit": "56686c872d7dafe814e7b7d57e1e2f24e1a4c4c6",
-      "sourceUrl": "https://github.com/steelx888-afk/SKS-PROZ/releases/tag/v0.1.20",
-      "platforms": {}
+      "publishedAt": "2026-11-12T10:40:34.000Z",
+      "platforms": {
+        "linux": {
+          "filename": "SKS-PROZ-0.1.20-x64.AppImage",
+          "publishedAt": "2026-11-12T10:40:34.000Z"
+        }
+      }
     },
     {
       "version": "0.1.19",
