@@ -17,7 +17,7 @@ concurrency:
 env:
   RELEASE_CONFIG: ci/release-0120.json
   GH_TOKEN: ${{ github.token }}
-  CACHE_TAG: ${{ inputs.cache_tag || format('mac-native-cache-0120-{0}', github.event.workflow_run.id) }}
+  CACHE_TAG: ${{ inputs.cache_tag || 'mac-native-cache-0120-43192916513' }}
   NODE_OPTIONS: --max-old-space-size=4096
   GIT_LFS_SKIP_SMUDGE: '1'
   TEST_CLOCK_FILE: verification-clock.json
