@@ -92,7 +92,8 @@ def native():
  if arch=='x64':build_env['PIP_CONSTRAINT']=str(ROOT/'ci/mac-intel-constraints.txt')
  command(['node','apps/desktop/scripts/pack-app.mjs'],cwd=view,env=build_env)
  desktop=view/'apps/desktop';out=TEMP/'native-out';out.mkdir(exist_ok=True)
- native_archive=out/f'native-{app}-{arch}.tar.gz';command(['tar','-czf',native_archive,'-C',desktop/'resources','sks-agent','runtime','cluster'])
+ native_archive=out/f'native-{app}-{arch}.tar.gz';payload=['sks-agent','runtime']+(['cluster'] if (desktop/'resources/cluster').exists() else [])
+ command(['tar','-czf',native_archive,'-C',desktop/'resources',*payload])
  assert native_archive.stat().st_size<2*1024**3;upload(native_archive)
  if arch=='arm64':
   renderer=out/f'renderer-{app}.tar.gz';command(['tar','-czf',renderer,'-C',desktop,'renderer','dist','assets']);assert renderer.stat().st_size<2*1024**3;upload(renderer)
