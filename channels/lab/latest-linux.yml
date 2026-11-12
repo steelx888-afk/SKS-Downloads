@@ -1,9 +1,9 @@
 version: 0.1.20
 files:
   - url: SKS-LAB-0.1.20-x64.AppImage
-    sha512: +6yErxNJOxJHTODBe7dRFOjJg8TZSxlFUFq3gfp4uRsqew6as6C2IhfCTSOTSnaTiUX1tAVwooSEob38gDLDQA==
-    size: 2009057149
-    blockMapSize: 1984401
+    sha512: 8esnxoJvggTaE4cboEQ/BmKgNo0uAQEeO4jRPIZIrlpxAGaWFd8NueYzgRMUZWpkA6LiIb3jyy8uSyOHYIeACQ==
+    size: 2010849709
+    blockMapSize: 1987009
 path: SKS-LAB-0.1.20-x64.AppImage
-sha512: +6yErxNJOxJHTODBe7dRFOjJg8TZSxlFUFq3gfp4uRsqew6as6C2IhfCTSOTSnaTiUX1tAVwooSEob38gDLDQA==
-releaseDate: '2026-11-12T10:15:37.965Z'
+sha512: 8esnxoJvggTaE4cboEQ/BmKgNo0uAQEeO4jRPIZIrlpxAGaWFd8NueYzgRMUZWpkA6LiIb3jyy8uSyOHYIeACQ==
+releaseDate: '2026-11-12T10:37:35.794Z'
