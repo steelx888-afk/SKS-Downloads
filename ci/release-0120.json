@@ -3,17 +3,17 @@
   "products": {
     "lab": {
       "repository": "steelx888-afk/SKS-LAB",
-      "commit": "557f49084e3318ba6c2c5613bdbfcab78c90643b",
+      "commit": "ca0b2719762b807486dcdc7d5b25f029822c7945",
       "code": "E"
     },
     "designz": {
       "repository": "steelx888-afk/SKS-DESIGNZ",
-      "commit": "f3f8a5484506013470e5387f8b286be8d9fb13e1",
+      "commit": "ec47717fc7189a5cc540cd7404a29f2b003eb4d8",
       "code": "A"
     },
     "proz": {
       "repository": "steelx888-afk/SKS-PROZ",
-      "commit": "56686c872d7dafe814e7b7d57e1e2f24e1a4c4c6",
+      "commit": "27f3a74f0d6668a0760598e866b01faa9bc3bb8e",
       "code": "B"
     }
   }
