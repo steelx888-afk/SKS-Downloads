@@ -18,6 +18,10 @@
           "filename": "SKS-DESIGNZ-Setup-0.1.20-x64.exe",
           "publishedAt": "2026-11-12T10:42:45.000Z"
         },
+        "mac": {
+          "filename": "SKS-DESIGNZ-0.1.20-universal.dmg",
+          "publishedAt": "2026-11-12T11:49:44.000Z"
+        },
         "linux": {
           "filename": "SKS-DESIGNZ-0.1.20-x64.AppImage",
           "publishedAt": "2026-11-12T10:37:46.000Z"
