@@ -3,6 +3,25 @@
   "appId": "lab",
   "releases": [
     {
+      "version": "0.1.21",
+      "title": "A Windows installer that launches.",
+      "summary": "The Windows installer now opens the branded SKS Lab desktop app instead of exiting at startup, and the installed shortcut launches the app directly.",
+      "highlights": [
+        "Launch the installed SKS Lab app from its own desktop and Start Menu shortcut.",
+        "Show the SKS Lab icon and version in the installed executable instead of Electron defaults.",
+        "Align the packaged asar integrity fuse with the Windows build so the app no longer exits at startup.",
+        "Keep the 0.1.20 workspace, company media and specialist runtime capabilities.",
+        "The installer remains unsigned; Windows Smart App Control may block it until the app is trusted or the policy is off."
+      ],
+      "publishedAt": "2026-11-12T17:56:58.000Z",
+      "platforms": {
+        "windows": {
+          "filename": "SKS-LAB-Setup-0.1.21-x64.exe",
+          "publishedAt": "2026-11-12T17:56:58.000Z"
+        }
+      }
+    },
+    {
       "version": "0.1.20",
       "title": "Reliable company media and cleaner plugin boundaries",
       "summary": "Company media jobs, specialist runtimes, chat controls and plugin boundaries are more reliable while LAB retains its complete workspace capabilities.",
