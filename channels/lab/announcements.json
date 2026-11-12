@@ -3,6 +3,22 @@
   "appId": "lab",
   "releases": [
     {
+      "version": "0.1.20",
+      "title": "Reliable company media and cleaner plugin boundaries",
+      "summary": "Company media jobs, specialist runtimes, chat controls and plugin boundaries are more reliable while LAB retains its complete workspace capabilities.",
+      "highlights": [
+        "Route chat media through approved company jobs with clearer previews and dependable specialist runtime support.",
+        "Keep the chat mode selector readable over conversation content.",
+        "Separate Cookbook from the desktop runtime and remove its stale web client and automatic discovery path.",
+        "Preserve FlowX exclusions, product identity and LAB's Company, Social and Deep Research capabilities."
+      ],
+      "publishedAt": "2026-11-12T09:05:58Z",
+      "publication": "version",
+      "sourceCommit": "557f49084e3318ba6c2c5613bdbfcab78c90643b",
+      "sourceUrl": "https://github.com/steelx888-afk/SKS-LAB/releases/tag/v0.1.20",
+      "platforms": {}
+    },
+    {
       "version": "0.1.19",
       "title": "Connected creative tools and company defaults",
       "summary": "Updated creative studios, CAD workflows, company model defaults, Frame and chat behavior in the current desktop workspace.",
