@@ -3,6 +3,22 @@
   "appId": "proz",
   "releases": [
     {
+      "version": "0.1.20",
+      "title": "Cleaner focused creative workspace",
+      "summary": "Plugin snapshots and desktop packaging are isolated from Cookbook and excluded modules while PROZ retains its required shell and creative runtime support.",
+      "highlights": [
+        "Keep plugin snapshots independent of Cookbook discovery and packaging.",
+        "Restore required desktop shell source and the supported test source view.",
+        "Keep Cookbook, TabiiX and Social outside the PROZ product boundary.",
+        "Preserve PROZ identity, saved data, creative tools and existing update channels."
+      ],
+      "publishedAt": "2026-11-12T09:05:58Z",
+      "publication": "version",
+      "sourceCommit": "56686c872d7dafe814e7b7d57e1e2f24e1a4c4c6",
+      "sourceUrl": "https://github.com/steelx888-afk/SKS-PROZ/releases/tag/v0.1.20",
+      "platforms": {}
+    },
+    {
       "version": "0.1.19",
       "title": "Updated creative and CAD workspace",
       "summary": "Current LAB shared features arrive in SKS PROZ, with a focused workspace for creative and CAD work.",
