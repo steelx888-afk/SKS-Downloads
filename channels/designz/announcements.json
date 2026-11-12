@@ -12,11 +12,13 @@
         "Keep Cookbook, TabiiX and Social outside the DESIGNZ product boundary.",
         "Preserve DESIGNZ identity, saved data, creative tools and existing update channels."
       ],
-      "publishedAt": "2026-11-12T09:05:58Z",
-      "publication": "version",
-      "sourceCommit": "f3f8a5484506013470e5387f8b286be8d9fb13e1",
-      "sourceUrl": "https://github.com/steelx888-afk/SKS-DESIGNZ/releases/tag/v0.1.20",
-      "platforms": {}
+      "publishedAt": "2026-11-12T10:37:46.000Z",
+      "platforms": {
+        "linux": {
+          "filename": "SKS-DESIGNZ-0.1.20-x64.AppImage",
+          "publishedAt": "2026-11-12T10:37:46.000Z"
+        }
+      }
     },
     {
       "version": "0.1.19",
