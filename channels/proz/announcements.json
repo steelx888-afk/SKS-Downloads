@@ -3,6 +3,27 @@
   "appId": "proz",
   "releases": [
     {
+      "version": "0.1.24",
+      "title": "System version controls and one Windows installer",
+      "summary": "Version and update controls now live in Settings, System. Updates are checked automatically but downloaded and installed only when you choose, with progress and a clear restart step. Windows now uses one web installer that downloads the latest application package.",
+      "highlights": [
+        "See the installed version, available version, last check, and update status in Settings, System.",
+        "Check for updates manually or let the automatic check notify you once per new version.",
+        "Download only when you choose, follow the percentage in the upgrade screen, then restart and install.",
+        "See an in-app banner for available and ready updates without losing the Settings status.",
+        "Use one Windows web installer for every release; it installs the latest application package at install time.",
+        "Replace an existing SKS PROZ installation with a confirmation prompt while keeping settings and data.",
+        "Keep PROZ capabilities, product identity, saved data, and the existing update channel."
+      ],
+      "publishedAt": "2026-11-14T16:30:28.000Z",
+      "platforms": {
+        "windows": {
+          "filename": "SKS-PROZ-latest-x64.7z",
+          "publishedAt": "2026-11-14T16:30:28.000Z"
+        }
+      }
+    },
+    {
       "version": "0.1.23",
       "title": "Independent plugin library and role access",
       "summary": "SKS PROZ now installs, updates, and launches its plugin applications from an independent library. Administrators can limit which plugins appear for each staff role.",
