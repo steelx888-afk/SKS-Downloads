@@ -1,8 +1,8 @@
-version: 0.1.22
+version: 0.1.23
 files:
-  - url: SKS-LAB-Setup-0.1.22-x64.exe
-    sha512: Ew9tfoqlUDpTS5QsOsbLuiNPVnUKOnF1LAzvcVYHa8wh9zfB8yoadD8ktGwoyASFwB+GKVrl/7cr/3EbNV8aAg==
-    size: 1732496621
-path: SKS-LAB-Setup-0.1.22-x64.exe
-sha512: Ew9tfoqlUDpTS5QsOsbLuiNPVnUKOnF1LAzvcVYHa8wh9zfB8yoadD8ktGwoyASFwB+GKVrl/7cr/3EbNV8aAg==
-releaseDate: '2026-11-14T04:56:06.486Z'
+  - url: SKS-LAB-Setup-0.1.23-x64.exe
+    sha512: ftu6mp1BLOlw4CWYbba6fCyMu8OXoAft0q5Jeawzcmyq9oekKsgrU+DTE92DCFTR0jk2mrkQfJ3NwgR7w4cONA==
+    size: 1733395488
+path: SKS-LAB-Setup-0.1.23-x64.exe
+sha512: ftu6mp1BLOlw4CWYbba6fCyMu8OXoAft0q5Jeawzcmyq9oekKsgrU+DTE92DCFTR0jk2mrkQfJ3NwgR7w4cONA==
+releaseDate: '2026-11-14T06:02:11.457Z'
