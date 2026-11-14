@@ -3,6 +3,27 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "0.1.23",
+      "title": "Independent plugin library and role access",
+      "summary": "SKS DESIGNZ now installs, updates, and launches its plugin applications from an independent library. Administrators can limit which plugins appear for each staff role.",
+      "highlights": [
+        "Install, update, and remove plugin applications without replacing SKS DESIGNZ.",
+        "Open MeshX, StudioX, SLIDEX, SpreadX, and DocsX as independent applications.",
+        "Use versioned managed installs with SHA-256 verified Windows packages and rollback.",
+        "See an in-app notice when a newer plugin release is available, then update manually.",
+        "Hide plugin applications that the signed-in staff role is not allowed to use.",
+        "Keep existing source-folder installs available while managed installs are adopted.",
+        "Keep Tabiix outside the DESIGNZ product boundary and preserve saved data."
+      ],
+      "publishedAt": "2026-11-14T05:16:32.000Z",
+      "platforms": {
+        "windows": {
+          "filename": "SKS-DESIGNZ-Setup-0.1.23-x64.exe",
+          "publishedAt": "2026-11-14T05:16:32.000Z"
+        }
+      }
+    },
+    {
       "version": "0.1.20",
       "title": "Cleaner focused creative workspace",
       "summary": "Plugin snapshots and desktop packaging are isolated from Cookbook and excluded modules while DESIGNZ retains its required shell and creative runtime support.",
