@@ -1,4 +1,4 @@
-version: 0.1.25
+version: 0.1.26
 files:
   - url: SKS-LAB-Web-Setup-x64.exe
     sha512: Mu5+jSu9nN53CAD6Zb/N3gH934Sy7ZzbkWeXz4ZMbUyzMVywxg+YS23aGyGMaipd66OReXN21peVrIt7BhS19g==
@@ -7,10 +7,10 @@ path: SKS-LAB-Web-Setup-x64.exe
 sha512: Mu5+jSu9nN53CAD6Zb/N3gH934Sy7ZzbkWeXz4ZMbUyzMVywxg+YS23aGyGMaipd66OReXN21peVrIt7BhS19g==
 packages:
   x64:
-    size: 1746228234
-    sha512: AxTuX5atnp+PvJTgz3Njzbmdo9hCn4ayvWkpTijd8BcV3dbb+tyXfBUilRBA0eRNf/YVC6ab4Xlb/Dry1Pu3NA==
-    blockMapSize: 1763077
-    path: SKS-LAB-latest-x64.7z
-    file: sks-lab-0.1.25-x64.nsis.7z
-releaseDate: '2026-11-14T13:43:59.846Z'
+    size: 1748135045
+    sha512: G84nQkPbMDjZXbb06l+yMg4l1Nw2eVOgHh4tM5pgxcqTCJy0P41iSQEEc/ZNAfWkNYc6PdzGHO+3Qyyd4XI2Ig==
+    blockMapSize: 1767020
+    path: SKS-LAB-0.1.26-x64.7z
+    file: sks-lab-0.1.26-x64.nsis.7z
+releaseDate: '2026-11-14T18:52:47.104Z'
 size: 747002
