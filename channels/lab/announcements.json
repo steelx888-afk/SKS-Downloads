@@ -3,6 +3,27 @@
   "appId": "lab",
   "releases": [
     {
+      "version": "0.1.23",
+      "title": "Independent plugin library and role access",
+      "summary": "SKS LAB now installs, updates, and launches its plugin applications from an independent library. Administrators can limit which plugins appear for each staff role.",
+      "highlights": [
+        "Install, update, and remove plugin applications without replacing SKS LAB.",
+        "Open MeshX, StudioX, SLIDEX, SpreadX, DocsX, and Tabiix as independent applications.",
+        "Use versioned managed installs with SHA-256 verified Windows packages and rollback.",
+        "See an in-app notice when a newer plugin release is available, then update manually.",
+        "Hide plugin applications that the signed-in staff role is not allowed to use.",
+        "Keep existing source-folder installs available while managed installs are adopted.",
+        "Preserve LAB identity, saved data, company capabilities, and the existing update channel."
+      ],
+      "publishedAt": "2026-11-14T06:02:31.000Z",
+      "platforms": {
+        "windows": {
+          "filename": "SKS-LAB-Setup-0.1.23-x64.exe",
+          "publishedAt": "2026-11-14T06:02:31.000Z"
+        }
+      }
+    },
+    {
       "version": "0.1.22",
       "title": "Independent plugin library and role access",
       "summary": "SKS LAB now installs, updates, and launches its plugin applications from an independent library. Administrators can limit which plugins appear for each staff role.",
