@@ -3,6 +3,27 @@
   "appId": "lab",
   "releases": [
     {
+      "version": "0.1.26",
+      "title": "Reliable update download and install",
+      "summary": "Updates now download as a versioned application package, show a clear preparing-and-verifying state after reaching 100 percent, and can retry instead of sitting on a frozen download screen.",
+      "highlights": [
+        "See a Preparing update state while the downloaded package is verified and prepared.",
+        "Download a package whose name is unique to the release, avoiding stale fixed-package delivery.",
+        "Get a clear retry action if the downloaded update cannot be prepared.",
+        "Keep the existing single fixed Windows web installer for new installs.",
+        "See fresh built-in studios as available and Download them before opening them.",
+        "Keep the version and update controls in Settings, System.",
+        "Preserve Company, plugin, and saved data behavior."
+      ],
+      "publishedAt": "2026-11-14T18:53:21.000Z",
+      "platforms": {
+        "windows": {
+          "filename": "SKS-LAB-latest-x64.7z",
+          "publishedAt": "2026-11-14T18:53:21.000Z"
+        }
+      }
+    },
+    {
       "version": "0.1.25",
       "title": "Glassy Company workspace and connected studios",
       "summary": "The Company workspace now uses the Glassy Light material system, and MeshX and StudioX open inside SKS LAB with the company MuAPI connection instead of asking for personal keys.",
