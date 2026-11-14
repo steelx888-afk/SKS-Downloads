@@ -1,8 +1,8 @@
-version: 0.1.20
+version: 0.1.22
 files:
-  - url: SKS-PROZ-Setup-0.1.20-x64.exe
-    sha512: 0Bi+upnaHs2Wjda316pYXhjWdMX3VMDnGJ6QS+P0/kUPRgaD3H+NegagknBl37FLVud6M44vF+Hk7FB3Hdp/WQ==
-    size: 1733647289
-path: SKS-PROZ-Setup-0.1.20-x64.exe
-sha512: 0Bi+upnaHs2Wjda316pYXhjWdMX3VMDnGJ6QS+P0/kUPRgaD3H+NegagknBl37FLVud6M44vF+Hk7FB3Hdp/WQ==
-releaseDate: '2026-11-12T10:49:40.376Z'
+  - url: SKS-PROZ-Setup-0.1.22-x64.exe
+    sha512: BJCc/KpJ4vzDF2rna32vgRtee5dVxGpwGKFzqdgYgMJ3k+ZcRlgErjyGN2hF/lrBjiywCF7NMdhqeDHJFnLkHg==
+    size: 1650563058
+path: SKS-PROZ-Setup-0.1.22-x64.exe
+sha512: BJCc/KpJ4vzDF2rna32vgRtee5dVxGpwGKFzqdgYgMJ3k+ZcRlgErjyGN2hF/lrBjiywCF7NMdhqeDHJFnLkHg==
+releaseDate: '2026-11-14T04:41:28.916Z'
