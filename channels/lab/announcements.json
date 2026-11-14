@@ -3,6 +3,25 @@
   "appId": "lab",
   "releases": [
     {
+      "version": "0.1.25",
+      "title": "Glassy Company workspace and connected studios",
+      "summary": "The Company workspace now uses the Glassy Light material system, and MeshX and StudioX open inside SKS LAB with the company MuAPI connection instead of asking for personal keys.",
+      "highlights": [
+        "Use a translucent glass topbar, hero, company switcher, office toolbar, conversation, departments, jobs, and company-creation surfaces.",
+        "Keep the dark 3D office as the focal artwork while the surrounding workspace matches the rest of the app.",
+        "Open MeshX and StudioX inside SKS LAB with the Company API connection and their tool sets available.",
+        "Use the Plugins page to download managed plugin versions and check for updates.",
+        "Keep the existing version, update, and Settings → System behavior."
+      ],
+      "publishedAt": "2026-11-14T13:45:06.000Z",
+      "platforms": {
+        "windows": {
+          "filename": "SKS-LAB-latest-x64.7z",
+          "publishedAt": "2026-11-14T13:45:06.000Z"
+        }
+      }
+    },
+    {
       "version": "0.1.24",
       "title": "System settings and one Windows installer",
       "summary": "Version and update controls now live in Settings, System. Updates are checked automatically but downloaded and installed only when you choose, with a progress screen and a clear restart step. Windows now uses one small web installer that downloads the latest application package.",
