@@ -3,6 +3,26 @@
   "appId": "proz",
   "releases": [
     {
+      "version": "0.1.25",
+      "title": "Reliable update download and install",
+      "summary": "Updates now download as a versioned application package, show a clear preparing-and-verifying state after reaching 100 percent, and can retry instead of sitting on a frozen download screen.",
+      "highlights": [
+        "See a Preparing update state while the downloaded package is verified and prepared.",
+        "Download a package whose name is unique to the release, avoiding stale fixed-package delivery.",
+        "Get a clear retry action if the downloaded update cannot be prepared.",
+        "Keep the existing single fixed Windows web installer for new installs.",
+        "Keep the version and update controls in Settings, System.",
+        "Preserve PROZ capabilities, product identity, and saved data."
+      ],
+      "publishedAt": "2026-11-14T19:51:56.000Z",
+      "platforms": {
+        "windows": {
+          "filename": "SKS-PROZ-latest-x64.7z",
+          "publishedAt": "2026-11-14T19:51:56.000Z"
+        }
+      }
+    },
+    {
       "version": "0.1.24",
       "title": "System version controls and one Windows installer",
       "summary": "Version and update controls now live in Settings, System. Updates are checked automatically but downloaded and installed only when you choose, with progress and a clear restart step. Windows now uses one web installer that downloads the latest application package.",
