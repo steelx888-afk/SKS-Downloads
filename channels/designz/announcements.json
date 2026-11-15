@@ -3,6 +3,22 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "0.1.26",
+      "title": "Company media, StudioX and specialist defaults",
+      "summary": "Company media now lists its image, video, audio and 3D tasks and routes chat media through the company media gateway. Chat image edits send the source image to edit-capable company models. Embedded StudioX is restored, and company specialists follow their defaults until a role is customized.",
+      "highlights": [
+        "See image, video, audio and 3D tasks for company media models in Settings.",
+        "Route chat image, video and audio requests through the company media gateway.",
+        "Edit an image in chat with the source image passed to an edit-capable company model.",
+        "Use embedded StudioX again from DESIGNZ, with the repo shortcut kept.",
+        "Follow company specialist defaults unless a role has been customized.",
+        "Preserve DESIGNZ capabilities, product identity, and saved data."
+      ],
+      "publishedAt": "2026-11-15T08:38:09.103Z",
+      "platforms": {},
+      "publication": "version"
+    },
+    {
       "version": "0.1.25",
       "title": "Reliable update download and install",
       "summary": "Updates now download as a versioned application package, show a clear preparing-and-verifying state after reaching 100 percent, and can retry instead of sitting on a frozen download screen.",
