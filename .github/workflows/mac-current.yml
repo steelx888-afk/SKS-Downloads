@@ -121,7 +121,7 @@ jobs:
     if: ${{ always() && !cancelled() && !inputs.reuse_assembly }}
     name: Assemble ${{ inputs.product }} universal Mac
     runs-on: ${{ inputs.assemble_runner }}
-    timeout-minutes: 40
+    timeout-minutes: 90
     env:
       CACHE_TAG: ${{ needs.prepare.outputs.cache_tag }}
     steps:
@@ -195,7 +195,7 @@ jobs:
     if: ${{ always() && !cancelled() && !inputs.skip_publish && (needs.verify-arm64.result == 'success' || needs.verify-arm64.result == 'skipped') && (needs.verify-x64.result == 'success' || needs.verify-x64.result == 'skipped') }}
     name: Publish ${{ inputs.product }} Mac downloads
     runs-on: ubuntu-24.04
-    timeout-minutes: 25
+    timeout-minutes: 45
     env:
       CACHE_TAG: ${{ needs.prepare.outputs.cache_tag }}
     steps:
