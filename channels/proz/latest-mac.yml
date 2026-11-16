@@ -1,11 +1,11 @@
-version: 0.1.20
+version: 0.1.29
 files:
-  - url: SKS-PROZ-0.1.20-universal.zip
-    sha512: xrVPFfpra9+AlYzamG4tkScXnr140UwuvAXubymRcZgTodFWhwzFZtQhBIjCUxWJCq2cF2tZdqP5+mpnAbyycw==
-    size: 1983481090
-  - url: SKS-PROZ-0.1.20-universal.dmg
-    sha512: /SVwGZtuLLIp6vC2CYQdyzPUTN0wl/QIe4p+6STvh2lJumUqUuTyiD0DXpHH20YNIoGW4Mn9SUylM8SUecrcfg==
-    size: 1977732492
-path: SKS-PROZ-0.1.20-universal.zip
-sha512: xrVPFfpra9+AlYzamG4tkScXnr140UwuvAXubymRcZgTodFWhwzFZtQhBIjCUxWJCq2cF2tZdqP5+mpnAbyycw==
-releaseDate: '2026-11-12T11:20:49.540Z'
+  - url: SKS-PROZ-0.1.29-universal.zip
+    sha512: 2pcN8j7dimPzRcCKFW9sD0ZcIwdzDWQHMaLRQC/Rm5r2JK9ahF7db9U+gKhxgYrJcKWm8l6GObqWNDtD6tvQCQ==
+    size: 1892003498
+  - url: SKS-PROZ-0.1.29-universal.dmg
+    sha512: QEO1hRCXts5MftobbQ7dnY8fo7LpK+fqP7wchfSfOJQG8RpHG5hKT/IBm5LHTivxLyuHyaW8lylke2dqAojCLA==
+    size: 1885849040
+path: SKS-PROZ-0.1.29-universal.zip
+sha512: 2pcN8j7dimPzRcCKFW9sD0ZcIwdzDWQHMaLRQC/Rm5r2JK9ahF7db9U+gKhxgYrJcKWm8l6GObqWNDtD6tvQCQ==
+releaseDate: '2026-11-16T14:25:14.488Z'
