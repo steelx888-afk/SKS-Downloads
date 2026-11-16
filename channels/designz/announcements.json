@@ -17,6 +17,10 @@
         "windows": {
           "filename": "SKS-DESIGNZ-latest-x64.7z",
           "publishedAt": "2026-11-16T13:44:42.000Z"
+        },
+        "mac": {
+          "filename": "SKS-DESIGNZ-0.1.28-universal.dmg",
+          "publishedAt": "2026-11-16T17:31:38.000Z"
         }
       }
     },
