@@ -3,6 +3,24 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "0.1.28",
+      "title": "Independent MeshX and StudioX apps",
+      "summary": "MeshX and StudioX now install and launch as separate applications from DESIGNZ. Their versions come from the plugin catalog and their AI tools remain available after installation. Layers Studio and Cinema Studio inputs also handle valid requests reliably.",
+      "highlights": [
+        "Install, update, and launch MeshX and StudioX from Plugins as independent applications.",
+        "Use their AI tools in DESIGNZ after the corresponding application is installed and enabled.",
+        "Keep MeshX and StudioX versions owned by their separate application releases.",
+        "Use Layers Studio and Cinema Studio with the corrected input handling."
+      ],
+      "publishedAt": "2026-11-16T13:44:42.000Z",
+      "platforms": {
+        "windows": {
+          "filename": "SKS-DESIGNZ-latest-x64.7z",
+          "publishedAt": "2026-11-16T13:44:42.000Z"
+        }
+      }
+    },
+    {
       "version": "0.1.26",
       "title": "Company media, StudioX and specialist defaults",
       "summary": "Company media now lists its image, video, audio and 3D tasks and routes chat media through the company media gateway. Chat image edits send the source image to edit-capable company models. Embedded StudioX is restored, and company specialists follow their defaults until a role is customized.",
