@@ -1,0 +1,16 @@
+name: Runner probe
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  arm64:
+    runs-on: macos-15
+    timeout-minutes: 8
+    steps:
+      - run: echo "arm64 acquired $(uname -m) $(sw_vers -productVersion)"
+  intel:
+    runs-on: macos-15-intel
+    timeout-minutes: 8
+    steps:
+      - run: echo "intel acquired $(uname -m) $(sw_vers -productVersion)"
