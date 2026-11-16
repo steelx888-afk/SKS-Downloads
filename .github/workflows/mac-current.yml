@@ -4,6 +4,12 @@ name: Build and publish current Mac release
 # the private source repositories cannot start hosted runners, so their source
 # is checked out here with a read-only deploy key and built on native Mac
 # runners before the verified universal package is published.
+#
+# GitHub sometimes cannot hand out Apple-silicon runners for long stretches
+# ("The job was not acquired by Runner of type hosted"). The reuse inputs let an
+# operator skip stages whose private staging payloads already exist, and
+# verify_arches lets an Apple-silicon proof produced on real hardware stand in
+# while still running the hosted Intel verification before publishing.
 on:
   workflow_dispatch:
     inputs:
@@ -16,14 +22,26 @@ on:
         description: Reuse an existing private native payload cache (blank to create one)
         type: string
         required: false
-      skip_assembly:
-        description: Reuse an already assembled universal package and only verify/publish
+      reuse_native:
+        description: Reuse already staged native payloads instead of rebuilding them
         type: boolean
         default: false
+      reuse_assembly:
+        description: Reuse an already assembled universal package
+        type: boolean
+        default: false
+      assemble_runner:
+        description: Runner used to assemble the universal application
+        type: string
+        default: macos-15
       verify_arches:
         description: Architectures to verify on hosted runners (arm64,x64 or a subset)
         type: string
         default: arm64,x64
+      skip_publish:
+        description: Stop after verification and stay unpublished
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -64,7 +82,7 @@ jobs:
 
   native-mac:
     needs: prepare
-    if: ${{ !inputs.skip_assembly }}
+    if: ${{ always() && !cancelled() && !inputs.reuse_native }}
     name: Native Mac ${{ inputs.product }} ${{ matrix.arch }}
     runs-on: ${{ matrix.runner }}
     timeout-minutes: 60
@@ -100,9 +118,9 @@ jobs:
 
   assemble:
     needs: [prepare, native-mac]
-    if: ${{ always() && !cancelled() && !inputs.skip_assembly }}
+    if: ${{ always() && !cancelled() && !inputs.reuse_assembly }}
     name: Assemble ${{ inputs.product }} universal Mac
-    runs-on: macos-15
+    runs-on: ${{ inputs.assemble_runner }}
     timeout-minutes: 40
     env:
       CACHE_TAG: ${{ needs.prepare.outputs.cache_tag }}
@@ -165,7 +183,7 @@ jobs:
 
   publish:
     needs: [prepare, verify]
-    if: ${{ always() && !cancelled() && (needs.verify.result == 'success' || needs.verify.result == 'skipped') }}
+    if: ${{ always() && !cancelled() && !inputs.skip_publish && (needs.verify.result == 'success' || needs.verify.result == 'skipped') }}
     name: Publish ${{ inputs.product }} Mac downloads
     runs-on: ubuntu-24.04
     timeout-minutes: 25
