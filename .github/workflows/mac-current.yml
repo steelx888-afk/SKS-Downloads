@@ -211,6 +211,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - name: Install release script dependencies
+        run: npm ci --no-audit --no-fund
+        working-directory: private-source
       - run: python3 ci/mac-finish.py publish
       - name: Publish the reusable fixed Mac installer and metadata
         run: node ci/mac-latest-alias.mjs --app=${{ inputs.product }} --source=private-source --directory="$RUNNER_TEMP/publish"
