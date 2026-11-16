@@ -3,6 +3,24 @@
   "appId": "proz",
   "releases": [
     {
+      "version": "0.1.29",
+      "title": "Independent MeshX and StudioX apps",
+      "summary": "MeshX and StudioX now install and launch as separate applications from PROZ. Their versions come from their own app releases, while AI tools remain available after installation. Embedded StudioX assets are removed from PROZ.",
+      "highlights": [
+        "Install, update, and launch MeshX and StudioX from Plugins as independent applications.",
+        "Use their AI tools in PROZ after the corresponding application is installed and enabled.",
+        "Keep plugin versions separate from the PROZ version.",
+        "Remove the embedded StudioX screen and assets from PROZ."
+      ],
+      "publishedAt": "2026-11-16T13:41:46.000Z",
+      "platforms": {
+        "windows": {
+          "filename": "SKS-PROZ-latest-x64.7z",
+          "publishedAt": "2026-11-16T13:41:46.000Z"
+        }
+      }
+    },
+    {
       "version": "0.1.25",
       "title": "Reliable update download and install",
       "summary": "Updates now download as a versioned application package, show a clear preparing-and-verifying state after reaching 100 percent, and can retry instead of sitting on a frozen download screen.",
