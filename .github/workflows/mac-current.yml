@@ -115,7 +115,7 @@ jobs:
       - run: python3 ci/mac-finish.py assemble
 
   clock:
-    needs: assemble
+    needs: [prepare, assemble]
     if: ${{ always() && !cancelled() && needs.assemble.result == 'success' }}
     runs-on: ubuntu-24.04
     timeout-minutes: 5

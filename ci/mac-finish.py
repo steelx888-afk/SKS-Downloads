@@ -160,9 +160,11 @@ def verify():
  arch=os.environ['BUILD_ARCH'];expected='arm64' if arch=='arm64' else 'x86_64';assert os.uname().machine==expected
  deadline=int(os.environ['TEST_DEADLINE_MS'])/1000
  cache=TEMP/'verify';cache.mkdir(exist_ok=True)
- download(f'SKS-*-{VERSION}-universal.zip',cache)
+ download(f'SKS-{os.environ["PRODUCT"].upper()}-{VERSION}-universal.zip',cache)
  tools=TEMP/'verify-tools';command(['npm','install','--prefix',tools,'--no-audit','--no-fund','--ignore-scripts','@electron/asar@4.0.1'])
- for app in ['lab','designz','proz']:
+ # Divergent product versions run one product per workflow run, each with its own
+ # private cache tag, so verification covers exactly the product under test.
+ for app in [os.environ['PRODUCT']]:
   archive=cache/f'SKS-{app.upper()}-{VERSION}-universal.zip';archive_hash=sha(archive);proof=cache/f'proof-{app}-{arch}.json'
   previous=subprocess.run(['gh','release','download',TAG,'-R',REPO,'--pattern',proof.name,'--dir',cache,'--clobber'],capture_output=True)
   if previous.returncode==0:
