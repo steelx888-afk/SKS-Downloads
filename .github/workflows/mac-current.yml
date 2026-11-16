@@ -156,23 +156,32 @@ jobs:
       - id: clock
         run: python3 ci/mac-finish.py clock
 
-  verify:
+  verify-arm64:
     needs: [prepare, assemble, clock]
-    if: ${{ always() && !cancelled() && needs.clock.result == 'success' && contains(inputs.verify_arches, matrix.arch) }}
-    name: Verify ${{ inputs.product }} Mac ${{ matrix.arch }}
-    runs-on: ${{ matrix.runner }}
+    if: ${{ always() && !cancelled() && needs.clock.result == 'success' && contains(inputs.verify_arches, 'arm64') }}
+    name: Verify ${{ inputs.product }} Mac arm64
+    runs-on: macos-15
     timeout-minutes: 10
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - runner: macos-15
-            arch: arm64
-          - runner: macos-15-intel
-            arch: x64
     env:
       CACHE_TAG: ${{ needs.prepare.outputs.cache_tag }}
-      BUILD_ARCH: ${{ matrix.arch }}
+      BUILD_ARCH: arm64
+      TEST_DEADLINE_MS: ${{ needs.clock.outputs.deadline }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: python3 ci/mac-finish.py verify
+
+  verify-x64:
+    needs: [prepare, assemble, clock]
+    if: ${{ always() && !cancelled() && needs.clock.result == 'success' && contains(inputs.verify_arches, 'x64') }}
+    name: Verify ${{ inputs.product }} Mac x64
+    runs-on: macos-15-intel
+    timeout-minutes: 10
+    env:
+      CACHE_TAG: ${{ needs.prepare.outputs.cache_tag }}
+      BUILD_ARCH: x64
       TEST_DEADLINE_MS: ${{ needs.clock.outputs.deadline }}
     steps:
       - uses: actions/checkout@v4
@@ -182,8 +191,8 @@ jobs:
       - run: python3 ci/mac-finish.py verify
 
   publish:
-    needs: [prepare, verify]
-    if: ${{ always() && !cancelled() && !inputs.skip_publish && (needs.verify.result == 'success' || needs.verify.result == 'skipped') }}
+    needs: [prepare, verify-arm64, verify-x64]
+    if: ${{ always() && !cancelled() && !inputs.skip_publish && (needs.verify-arm64.result == 'success' || needs.verify-arm64.result == 'skipped') && (needs.verify-x64.result == 'success' || needs.verify-x64.result == 'skipped') }}
     name: Publish ${{ inputs.product }} Mac downloads
     runs-on: ubuntu-24.04
     timeout-minutes: 25
