@@ -1,0 +1,15 @@
+{
+  "version": "0.1.28",
+  "mediaSource": {
+    "release": "lab-latest",
+    "asset": "SKS-LAB-0.1.20-x64.AppImage"
+  },
+  "products": {
+    "lab": {
+      "repository": "steelx888-afk/SKS-LAB",
+      "sourceRef": "v0.1.28",
+      "commit": "b51a239c11ce0d5ae8aaba92d897f81790c9dd6e",
+      "code": "E"
+    }
+  }
+}

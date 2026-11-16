@@ -1,0 +1,15 @@
+{
+  "version": "0.1.28",
+  "mediaSource": {
+    "release": "designz-latest",
+    "asset": "SKS-DESIGNZ-0.1.20-x64.AppImage"
+  },
+  "products": {
+    "designz": {
+      "repository": "steelx888-afk/SKS-DESIGNZ",
+      "sourceRef": "v0.1.28",
+      "commit": "156285449364c690dc66aacec17ab6353fd2acc5",
+      "code": "A"
+    }
+  }
+}

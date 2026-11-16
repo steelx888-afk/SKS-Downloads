@@ -1,0 +1,15 @@
+{
+  "version": "0.1.29",
+  "mediaSource": {
+    "release": "proz-latest",
+    "asset": "SKS-PROZ-0.1.20-x64.AppImage"
+  },
+  "products": {
+    "proz": {
+      "repository": "steelx888-afk/SKS-PROZ",
+      "sourceRef": "v0.1.29",
+      "commit": "255f9131a34bf9ae0d083adc1a0c60370fefb635",
+      "code": "B"
+    }
+  }
+}

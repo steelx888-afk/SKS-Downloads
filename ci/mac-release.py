@@ -42,10 +42,11 @@ def prepare():
   with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('cache_tag='+TAG+'\n')
   print('Reusing existing private native payload cache.',flush=True);return
  command(['gh','release','create',TAG,'-R',REPO,'--draft','--target',os.environ['GITHUB_SHA'],'--title',f'Temporary private Mac build cache {VERSION}','--notes','Compiled build staging only. Deleted after verified publication.'])
+ source=CONFIG['mediaSource'];assert source['release'] and source['asset'],'The release config needs a published media source.'
  out=TEMP/'mac-cache';out.mkdir(exist_ok=True)
- command(['gh','release','download','lab-latest','-R',REPO,'--pattern','SKS-LAB-0.1.19-x64.AppImage','--dir',out])
- binary=out/'SKS-LAB-0.1.19-x64.AppImage'
- release=json.loads(command(['gh','api','repos/'+REPO+'/releases/tags/lab-latest'],capture=True))
+ command(['gh','release','download',source['release'],'-R',REPO,'--pattern',source['asset'],'--dir',out])
+ binary=out/source['asset']
+ release=json.loads(command(['gh','api','repos/'+REPO+'/releases/tags/'+source['release']],capture=True))
  asset=next(a for a in release['assets'] if a['name']==binary.name)
  h=hashlib.file_digest(binary.open('rb'),'sha256').hexdigest();assert asset['digest']=='sha256:'+h
  binary.chmod(0o755);command([binary,'--appimage-extract'],cwd=out)

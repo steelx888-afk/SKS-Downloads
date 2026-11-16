@@ -1,0 +1,179 @@
+name: Build and publish current Mac release
+
+# Public download-repository CI is the supported route for macOS installers:
+# the private source repositories cannot start hosted runners, so their source
+# is checked out here with a read-only deploy key and built on native Mac
+# runners before the verified universal package is published.
+on:
+  workflow_dispatch:
+    inputs:
+      product:
+        description: Product to build and publish
+        type: choice
+        options: [lab, designz, proz]
+        required: true
+      cache_tag:
+        description: Reuse an existing private native payload cache (blank to create one)
+        type: string
+        required: false
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: mac-current-${{ inputs.product }}
+  cancel-in-progress: false
+
+env:
+  GH_TOKEN: ${{ github.token }}
+  GIT_LFS_SKIP_SMUDGE: '1'
+  NODE_OPTIONS: --max-old-space-size=4096
+  PRODUCT: ${{ inputs.product }}
+  RELEASE_CONFIG: ci/release-${{ inputs.product }}.json
+  TEST_CLOCK_FILE: verification-clock.json
+
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    outputs:
+      cache_tag: ${{ steps.cache.outputs.cache_tag }}
+      source_repository: ${{ steps.source.outputs.repository }}
+      source_ref: ${{ steps.source.outputs.ref }}
+    env:
+      CACHE_TAG: ${{ inputs.cache_tag }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - id: source
+        run: |
+          python3 -c "import json,os;p=json.load(open(os.environ['RELEASE_CONFIG']));a=os.environ['PRODUCT'];row=p['products'][a];print('repository='+row['repository']);print('ref='+row['sourceRef'])" >> "$GITHUB_OUTPUT"
+      - id: cache
+        run: python3 ci/mac-release.py prepare
+
+  native-mac:
+    needs: prepare
+    name: Native Mac ${{ inputs.product }} ${{ matrix.arch }}
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-15
+            arch: arm64
+          - runner: macos-15-intel
+            arch: x64
+    env:
+      BUILD_ARCH: ${{ matrix.arch }}
+      CACHE_TAG: ${{ needs.prepare.outputs.cache_tag }}
+      PIP_NO_CACHE_DIR: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ needs.prepare.outputs.source_repository }}
+          ref: ${{ needs.prepare.outputs.source_ref }}
+          path: private-source
+          ssh-key: ${{ secrets[format('RELEASE_SOURCE_{0}', inputs.product == 'lab' && 'LAB' || inputs.product == 'designz' && 'DESIGNZ' || 'PROZ')] }}
+          persist-credentials: false
+          lfs: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 ci/mac-release.py native
+
+  assemble:
+    needs: [prepare, native-mac]
+    name: Assemble ${{ inputs.product }} universal Mac
+    runs-on: macos-15
+    timeout-minutes: 40
+    env:
+      CACHE_TAG: ${{ needs.prepare.outputs.cache_tag }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ needs.prepare.outputs.source_repository }}
+          ref: ${{ needs.prepare.outputs.source_ref }}
+          path: private-source
+          ssh-key: ${{ secrets[format('RELEASE_SOURCE_{0}', inputs.product == 'lab' && 'LAB' || inputs.product == 'designz' && 'DESIGNZ' || 'PROZ')] }}
+          persist-credentials: false
+          lfs: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 ci/mac-finish.py assemble
+
+  clock:
+    needs: assemble
+    if: ${{ always() && !cancelled() && needs.assemble.result == 'success' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      deadline: ${{ steps.clock.outputs.deadline }}
+    env:
+      CACHE_TAG: ${{ needs.prepare.outputs.cache_tag }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: clock
+        run: python3 ci/mac-finish.py clock
+
+  verify:
+    needs: [prepare, assemble, clock]
+    if: ${{ always() && !cancelled() && needs.clock.result == 'success' }}
+    name: Verify ${{ inputs.product }} Mac ${{ matrix.arch }}
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-15
+            arch: arm64
+          - runner: macos-15-intel
+            arch: x64
+    env:
+      CACHE_TAG: ${{ needs.prepare.outputs.cache_tag }}
+      BUILD_ARCH: ${{ matrix.arch }}
+      TEST_DEADLINE_MS: ${{ needs.clock.outputs.deadline }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: python3 ci/mac-finish.py verify
+
+  publish:
+    needs: [prepare, verify]
+    if: ${{ always() && !cancelled() && needs.verify.result == 'success' }}
+    name: Publish ${{ inputs.product }} Mac downloads
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      CACHE_TAG: ${{ needs.prepare.outputs.cache_tag }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ needs.prepare.outputs.source_repository }}
+          ref: ${{ needs.prepare.outputs.source_ref }}
+          path: private-source
+          ssh-key: ${{ secrets[format('RELEASE_SOURCE_{0}', inputs.product == 'lab' && 'LAB' || inputs.product == 'designz' && 'DESIGNZ' || 'PROZ')] }}
+          persist-credentials: false
+          lfs: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: python3 ci/mac-finish.py publish
+      - name: Publish the reusable fixed Mac installer and metadata
+        run: node ci/mac-latest-alias.mjs --app=${{ inputs.product }} --source=private-source --directory="$RUNNER_TEMP/publish"
