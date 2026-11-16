@@ -1,11 +1,12 @@
-version: 0.1.20
+version: 0.1.28
 files:
-  - url: SKS-LAB-0.1.20-universal.zip
-    sha512: 3EBl3o5XRIGb2fD/zFLhM1ACLMyKp2627R3nBwUzF9937ijUkD56Gg60bkRltWiJ5xtgCyz7LBpK6F3+4IRkrw==
-    size: 1983602879
-  - url: SKS-LAB-0.1.20-universal.dmg
-    sha512: w+/pP0ZT2njZ87drFfA3aumiSz607N8EDCtguNCrrKZLwXa35vhipjob59jMo/jiTAQfgddmYal1T9J3XjQKCA==
-    size: 1978124552
-path: SKS-LAB-0.1.20-universal.zip
-sha512: 3EBl3o5XRIGb2fD/zFLhM1ACLMyKp2627R3nBwUzF9937ijUkD56Gg60bkRltWiJ5xtgCyz7LBpK6F3+4IRkrw==
-releaseDate: '2026-11-12T11:26:40.153Z'
+  - url: SKS-LAB-0.1.28-universal.zip
+    sha512: 5t+2MR818UixhtYhs0T1Vp2MMhz9z2bPn7heRBtE/GCtXNOOm97LAsd+XVNEgH9GfsAVfy2PW8YIfLx3Cav5Ig==
+    size: 1884648579
+  - url: SKS-LAB-0.1.28-universal.dmg
+    sha512: TFfkAONj3BtV2FEJpSCsHEyneIvbgEFEhOCX2AneCZ+R8z9CiWG2Gz5mYcmSOJtFqWQnXbme6hQnnrJDgxesow==
+    size: 1878577748
+path: SKS-LAB-0.1.28-universal.zip
+sha512: 5t+2MR818UixhtYhs0T1Vp2MMhz9z2bPn7heRBtE/GCtXNOOm97LAsd+XVNEgH9GfsAVfy2PW8YIfLx3Cav5Ig==
+releaseDate: '2026-11-16T14:40:29.949Z'
+latest: SKS-LAB-latest-universal.dmg
