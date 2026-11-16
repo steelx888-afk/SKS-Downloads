@@ -17,6 +17,10 @@
         "windows": {
           "filename": "SKS-PROZ-latest-x64.7z",
           "publishedAt": "2026-11-16T13:41:46.000Z"
+        },
+        "mac": {
+          "filename": "SKS-PROZ-0.1.29-universal.dmg",
+          "publishedAt": "2026-11-16T16:39:19.000Z"
         }
       }
     },
