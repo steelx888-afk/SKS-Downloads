@@ -3,6 +3,24 @@
   "appId": "lab",
   "releases": [
     {
+      "version": "0.1.28",
+      "title": "Independent MeshX and StudioX apps",
+      "summary": "MeshX and StudioX now install and launch as separate applications from SKS LAB. Their versions come from their own app releases, while AI tools remain available after installation. The old embedded screens are removed.",
+      "highlights": [
+        "Install, update, and launch MeshX and StudioX from Plugins as independent applications.",
+        "Use their AI tools in LAB after the corresponding application is installed and enabled.",
+        "Keep plugin versions separate from the LAB version.",
+        "Remove the old embedded MeshX and StudioX screens."
+      ],
+      "publishedAt": "2026-11-16T13:39:42.000Z",
+      "platforms": {
+        "windows": {
+          "filename": "SKS-LAB-latest-x64.7z",
+          "publishedAt": "2026-11-16T13:39:42.000Z"
+        }
+      }
+    },
+    {
       "version": "0.1.27",
       "title": "Boxed chat replies and live plugin control",
       "summary": "Assistant replies now sit in a clean glass card, and chat tools can control installed plugin applications through each app's own versioned local API.",
