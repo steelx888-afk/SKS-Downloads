@@ -1,4 +1,4 @@
-version: 0.1.25
+version: 0.1.29
 files:
   - url: SKS-PROZ-Web-Setup-x64.exe
     sha512: 8BcyzTOm19g3n1oYiQxHtCC5fze9pILBEm3grYC5i2yF/y6u8WFh5a6YGVgd0LNo6ApYYgdWyUMfLQ0w/4DISA==
@@ -7,10 +7,10 @@ path: SKS-PROZ-Web-Setup-x64.exe
 sha512: 8BcyzTOm19g3n1oYiQxHtCC5fze9pILBEm3grYC5i2yF/y6u8WFh5a6YGVgd0LNo6ApYYgdWyUMfLQ0w/4DISA==
 packages:
   x64:
-    size: 1651642741
-    sha512: F0+7M0bH/rSxBShviN7/IVIPpVCDWL95ItcQY83gXoaSwRc+hUVjgrw+SNFaUcGcX5ATTlR0wkgl2QyedvB0lA==
-    blockMapSize: 1665323
-    path: SKS-PROZ-0.1.25-x64.7z
-    file: sks-proz-0.1.25-x64.nsis.7z
-releaseDate: '2026-11-14T19:51:31.814Z'
+    size: 1651622215
+    sha512: UaWgaWB629pOId+lZr7hkbNMRDVEh+4W16Pgp2JdKzEDSYkCl1DJu+i7aDiPWBaXeNxy+uj5Y0sWbzHw/doqLQ==
+    blockMapSize: 1667245
+    path: SKS-PROZ-0.1.29-x64.7z
+    file: sks-proz-0.1.29-x64.nsis.7z
+releaseDate: '2026-11-16T13:41:08.251Z'
 size: 738849
