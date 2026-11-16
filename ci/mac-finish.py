@@ -143,9 +143,16 @@ def assemble():
 def clock():
  folder=TEMP/'clock';folder.mkdir(exist_ok=True);name=os.environ.get('TEST_CLOCK_FILE','verification-clock.json');assert name in ['verification-clock.json','diagnostic-clock.json'];file=folder/name
  result=subprocess.run(['gh','release','download',TAG,'-R',REPO,'--pattern',file.name,'--dir',folder],capture_output=True)
- if result.returncode:
-  if name!='verification-clock.json':raise RuntimeError('The explicitly approved diagnostic window has not started; refusing to create or reset it.')
-  now=int(time.time()*1000);file.write_text(json.dumps({'startedAtMs':now,'deadlineMs':now+600000,'limitSeconds':600}));upload(file)
+ now=int(time.time()*1000);missing=result.returncode!=0;expired=False
+ if not missing:
+  try:expired=int(json.loads(file.read_text())['deadlineMs'])<=now
+  except Exception:expired=True
+ # A lapsed window only means the queued macOS runner did not arrive in time, so
+ # a retry must be able to open a fresh shared ten-minute window. The explicitly
+ # approved diagnostic window is still never created or reset here.
+ refresh=(missing or expired) and name=='verification-clock.json'
+ if missing and not refresh:raise RuntimeError('The explicitly approved diagnostic window has not started; refusing to create or reset it.')
+ if refresh:file.write_text(json.dumps({'startedAtMs':now,'deadlineMs':now+600000,'limitSeconds':600}));upload(file)
  value=json.loads(file.read_text());assert value['limitSeconds']==600
  with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('deadline='+str(value['deadlineMs'])+'\n')
  print('Using the existing shared ten-minute window: '+name,flush=True)
