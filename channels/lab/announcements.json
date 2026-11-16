@@ -3,6 +3,22 @@
   "appId": "lab",
   "releases": [
     {
+      "version": "0.1.27",
+      "title": "Boxed chat replies and live plugin control",
+      "summary": "Assistant replies now sit in a clean glass card, and chat tools can control installed plugin applications through each app's own versioned local API.",
+      "highlights": [
+        "Read assistant answers and tool activity inside a tidy card instead of raw text on the thread background.",
+        "Let chat call DocsX, SLIDEX, SpreadX, and Tabiix through each installed app's own local API and version.",
+        "Expose only the plugin actions the installed app version actually implements.",
+        "Finish media turns after an image, video, audio, or 3D result instead of reporting an incomplete draft.",
+        "Keep plugin data, migrations, and versions owned by the plugin applications.",
+        "Preserve existing themes, user bubbles, saved data, and company capabilities."
+      ],
+      "publishedAt": "2026-11-15T14:26:27Z",
+      "publication": "version",
+      "platforms": {}
+    },
+    {
       "version": "0.1.26",
       "title": "Reliable update download and install",
       "summary": "Updates now download as a versioned application package, show a clear preparing-and-verifying state after reaching 100 percent, and can retry instead of sitting on a frozen download screen.",
