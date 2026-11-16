@@ -16,6 +16,14 @@ on:
         description: Reuse an existing private native payload cache (blank to create one)
         type: string
         required: false
+      skip_assembly:
+        description: Reuse an already assembled universal package and only verify/publish
+        type: boolean
+        default: false
+      verify_arches:
+        description: Architectures to verify on hosted runners (arm64,x64 or a subset)
+        type: string
+        default: arm64,x64
 
 permissions:
   contents: write
@@ -56,6 +64,7 @@ jobs:
 
   native-mac:
     needs: prepare
+    if: ${{ !inputs.skip_assembly }}
     name: Native Mac ${{ inputs.product }} ${{ matrix.arch }}
     runs-on: ${{ matrix.runner }}
     timeout-minutes: 60
@@ -91,6 +100,7 @@ jobs:
 
   assemble:
     needs: [prepare, native-mac]
+    if: ${{ always() && !cancelled() && !inputs.skip_assembly }}
     name: Assemble ${{ inputs.product }} universal Mac
     runs-on: macos-15
     timeout-minutes: 40
@@ -116,7 +126,7 @@ jobs:
 
   clock:
     needs: [prepare, assemble]
-    if: ${{ always() && !cancelled() && needs.assemble.result == 'success' }}
+    if: ${{ always() && !cancelled() && (needs.assemble.result == 'success' || needs.assemble.result == 'skipped') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     outputs:
@@ -130,7 +140,7 @@ jobs:
 
   verify:
     needs: [prepare, assemble, clock]
-    if: ${{ always() && !cancelled() && needs.clock.result == 'success' }}
+    if: ${{ always() && !cancelled() && needs.clock.result == 'success' && contains(inputs.verify_arches, matrix.arch) }}
     name: Verify ${{ inputs.product }} Mac ${{ matrix.arch }}
     runs-on: ${{ matrix.runner }}
     timeout-minutes: 10
@@ -155,7 +165,7 @@ jobs:
 
   publish:
     needs: [prepare, verify]
-    if: ${{ always() && !cancelled() && needs.verify.result == 'success' }}
+    if: ${{ always() && !cancelled() && (needs.verify.result == 'success' || needs.verify.result == 'skipped') }}
     name: Publish ${{ inputs.product }} Mac downloads
     runs-on: ubuntu-24.04
     timeout-minutes: 25
