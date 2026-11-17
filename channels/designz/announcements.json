@@ -3,6 +3,23 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "0.1.30",
+      "title": "Reliable desktop package resources",
+      "summary": "Desktop packages include the cluster network helper required by the packaged agent and Mac Thunderbolt setup. Sign-in refreshes a retired company model while preserving personal provider choices. This release also carries the website-controlled plugins and StudioX update improvements from 0.1.29.",
+      "highlights": [
+        "Package the cluster network helper with desktop builds and fail clearly if the source is missing.",
+        "Refresh retired company model selections after sign-in without erasing personal provider choices.",
+        "Keep SKS SI plugin access and StudioX update improvements available in the Windows release."
+      ],
+      "publishedAt": "2026-11-17T09:44:57.000Z",
+      "platforms": {
+        "windows": {
+          "filename": "SKS-DESIGNZ-latest-x64.7z",
+          "publishedAt": "2026-11-17T09:44:57.000Z"
+        }
+      }
+    },
+    {
       "version": "0.1.29",
       "title": "Website-controlled plugins and StudioX updates",
       "summary": "DESIGNZ follows SKS SI application plugin switches. MeshX can be hidden and blocked for DESIGNZ without affecting other SKS apps. Plugin updates, StudioX company workflows, and audio defaults are more reliable.",
