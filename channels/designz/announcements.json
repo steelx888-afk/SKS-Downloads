@@ -3,6 +3,24 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "0.1.29",
+      "title": "Website-controlled plugins and StudioX updates",
+      "summary": "DESIGNZ follows SKS SI application plugin switches. MeshX can be hidden and blocked for DESIGNZ without affecting other SKS apps. Plugin updates, StudioX company workflows, and audio defaults are more reliable.",
+      "highlights": [
+        "Follow SKS SI plugin access changes automatically and block disabled plugins from launching or running agent tools.",
+        "Keep installed plugins intact during updates and refresh the available version catalog.",
+        "Improve guarded StudioX agent and workflow behavior through the company connection.",
+        "Handle fractional Suno audio defaults correctly."
+      ],
+      "publishedAt": "2026-11-17T09:54:56.000Z",
+      "platforms": {
+        "mac": {
+          "filename": "SKS-DESIGNZ-0.1.29-universal.dmg",
+          "publishedAt": "2026-11-17T09:54:56.000Z"
+        }
+      }
+    },
+    {
       "version": "0.1.28",
       "title": "Independent MeshX and StudioX apps",
       "summary": "MeshX and StudioX now install and launch as separate applications from DESIGNZ. Their versions come from the plugin catalog and their AI tools remain available after installation. Layers Studio and Cinema Studio inputs also handle valid requests reliably.",
