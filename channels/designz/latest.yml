@@ -1,4 +1,4 @@
-version: 0.1.30
+version: 0.1.31
 files:
   - url: SKS-DESIGNZ-Web-Setup-x64.exe
     sha512: p9mdzzBHQ46+hbr21JlCaPEX5V4lI5lp4k4WdsFsbgiozIWEgrjJtFK6tuN9UGSbHp/AEZ53hrAPqEFpU1PS0A==
@@ -7,10 +7,10 @@ path: SKS-DESIGNZ-Web-Setup-x64.exe
 sha512: p9mdzzBHQ46+hbr21JlCaPEX5V4lI5lp4k4WdsFsbgiozIWEgrjJtFK6tuN9UGSbHp/AEZ53hrAPqEFpU1PS0A==
 packages:
   x64:
-    size: 1644871383
-    sha512: oQ2hjzdFtOAAcJYycDs7stqlTbtkED29XwpInmzH85+g4pAgMhZ2noEbbkCHkoC5WK3y1jAN+n6NVtgIkEtQfQ==
-    blockMapSize: 1659701
-    path: SKS-DESIGNZ-0.1.30-x64.7z
-    file: sks-designz-0.1.30-x64.nsis.7z
-releaseDate: '2026-11-17T09:43:32.341Z'
+    size: 1645313797
+    sha512: iKTrf45QuryRlGbLivZqKhdtEl4utRWqZ//o9HklgBd3aBg6u2/J1BGaj7jfJ0kgHNotNtqR2Z1i08ZT7fH5yw==
+    blockMapSize: 1657997
+    path: SKS-DESIGNZ-0.1.31-x64.7z
+    file: sks-designz-0.1.31-x64.nsis.7z
+releaseDate: '2026-11-18T04:39:34.328Z'
 size: 720516
