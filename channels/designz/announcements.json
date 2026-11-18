@@ -3,6 +3,22 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "0.1.35",
+      "title": "StudioX Agents and workflow tools",
+      "summary": "StudioX uses your SKS account for Agents and FlowX workflows opened from Designz.",
+      "highlights": [
+        "Open the Agents catalog and chat through your SKS connection.",
+        "Run connected workflow tools and use supported company models from the canvas."
+      ],
+      "publishedAt": "2026-11-18T22:04:39.000Z",
+      "platforms": {
+        "windows": {
+          "filename": "SKS-DESIGNZ-latest-x64.7z",
+          "publishedAt": "2026-11-18T22:04:39.000Z"
+        }
+      }
+    },
+    {
       "version": "0.1.34",
       "title": "StudioX Design Agent connection",
       "summary": "StudioX uses your signed-in SKS account to open Design Agent sessions from Designz.",
