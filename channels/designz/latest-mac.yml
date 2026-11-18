@@ -1,12 +1,11 @@
-version: 0.1.30
+version: 0.1.31
 files:
-  - url: SKS-DESIGNZ-0.1.30-universal.zip
-    sha512: bkQ+uqbBFt3TzIyXXXbogrQPEY67JsyCRvj3FDsNUcrkRZUGPanJyteMwKaowiA6AxdiPydKBGBfEHwy5wqo1w==
-    size: 1870506259
-  - url: SKS-DESIGNZ-0.1.30-universal.dmg
-    sha512: CDPHkb8cgwfBUZGnZPIgG9jh/rtQA3B4VaVWNs6fhNxviKfYjwQe7QHkdoZPGa2E2mh5BZlKDxsy33FL5s0mdg==
-    size: 1864847605
-path: SKS-DESIGNZ-0.1.30-universal.zip
-sha512: bkQ+uqbBFt3TzIyXXXbogrQPEY67JsyCRvj3FDsNUcrkRZUGPanJyteMwKaowiA6AxdiPydKBGBfEHwy5wqo1w==
-releaseDate: '2026-11-17T11:23:12.550Z'
-latest: SKS-DESIGNZ-latest-universal.dmg
+  - url: SKS-DESIGNZ-0.1.31-universal.zip
+    sha512: bBS/+U1AU04NxroykKiVsluLjXs04BFirRLtI9AMTfqdpSEgwhTyxeSWuZLtxnSco9IVmalt4IlfASrkiEqSEw==
+    size: 1649320652
+  - url: SKS-DESIGNZ-0.1.31-universal.dmg
+    sha512: K5VRwA3vX76kByuDZqWKEEEOPNtwXkvO/VN0jOs6j4aWvM6s0ZGwRRC1zmWBi5Nbmyc08GK6hnNKoXZtGnXSWw==
+    size: 1644917117
+path: SKS-DESIGNZ-0.1.31-universal.zip
+sha512: bBS/+U1AU04NxroykKiVsluLjXs04BFirRLtI9AMTfqdpSEgwhTyxeSWuZLtxnSco9IVmalt4IlfASrkiEqSEw==
+releaseDate: '2026-11-18T05:16:33.539Z'
