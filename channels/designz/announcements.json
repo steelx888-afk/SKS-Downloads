@@ -3,6 +3,22 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "0.1.34",
+      "title": "StudioX Design Agent connection",
+      "summary": "StudioX uses your signed-in SKS account to open Design Agent sessions from Designz.",
+      "highlights": [
+        "Start and resume Design Agent conversations from the StudioX plugin.",
+        "Create media in Design Agent using the models available to your SKS account."
+      ],
+      "publishedAt": "2026-11-18T21:04:33.000Z",
+      "platforms": {
+        "windows": {
+          "filename": "SKS-DESIGNZ-latest-x64.7z",
+          "publishedAt": "2026-11-18T21:04:33.000Z"
+        }
+      }
+    },
+    {
       "version": "0.1.32",
       "title": "Reliable plugin installation checks",
       "summary": "External plugins now require an installed package before they can launch. Synced source folders no longer count as installations, and apps listed only in the online catalog are handled as external plugins.",
