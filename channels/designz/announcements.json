@@ -3,6 +3,24 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "0.1.31",
+      "title": "Reliable Mac sign-in and chat packaging",
+      "summary": "The Mac app can connect to SKS SI using its bundled certificate authorities, and packaged chat includes its design skills. Mac builds package the complete agent source and omit npm command links that prevent signing. Chat can also use uploaded BOMs with SpreadX workbooks.",
+      "highlights": [
+        "Connect to SKS SI from the packaged Mac app and finish sign-in in the browser.",
+        "Include the design skills needed for chat replies in Mac packages.",
+        "Build the complete Mac agent and keep command links out of signed app bundles.",
+        "Use chat uploads as sources for SpreadX workbook and BOM updates."
+      ],
+      "publishedAt": "2026-11-18T04:45:19.000Z",
+      "platforms": {
+        "windows": {
+          "filename": "SKS-DESIGNZ-latest-x64.7z",
+          "publishedAt": "2026-11-18T04:45:19.000Z"
+        }
+      }
+    },
+    {
       "version": "0.1.30",
       "title": "Reliable desktop package resources",
       "summary": "Desktop packages include the cluster network helper required by the packaged agent and Mac Thunderbolt setup. Sign-in refreshes a retired company model while preserving personal provider choices. This release also carries the website-controlled plugins and StudioX update improvements from 0.1.29.",
