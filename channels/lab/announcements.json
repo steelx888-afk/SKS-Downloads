@@ -3,6 +3,19 @@
   "appId": "lab",
   "releases": [
     {
+      "version": "1.0.7",
+      "title": "In-app update progress",
+      "summary": "SKS LAB shows download, verification and installation progress during an in-app update.",
+      "highlights": [
+        "See the download percentage and application file preparation as Setup runs.",
+        "Restart to update appears when Setup finishes. Unsuccessful attempts give you a retry option.",
+        "Available as a signed Windows x64 update through LAB and the existing universal Setup."
+      ],
+      "publishedAt": "2026-11-26T14:20:27Z",
+      "publication": "update",
+      "platforms": {}
+    },
+    {
       "version": "1.0.6",
       "title": "Company model settings sync",
       "summary": "SKS LAB refreshes company-managed model settings after changes on the SKS website.",
