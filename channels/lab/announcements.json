@@ -3,6 +3,19 @@
   "appId": "lab",
   "releases": [
     {
+      "version": "1.0.9",
+      "title": "One startup and sign-in screen",
+      "summary": "LAB uses the existing branded loading screen during local startup and sign-in checks.",
+      "highlights": [
+        "App preparation and service verification update the same loading screen.",
+        "The same screen stays visible until the workspace or sign-in page is ready.",
+        "Available as a signed Windows x64 update through LAB and the existing universal Setup."
+      ],
+      "publishedAt": "2026-11-26T15:48:29Z",
+      "publication": "update",
+      "platforms": {}
+    },
+    {
       "version": "1.0.8",
       "title": "Smart View window controls",
       "summary": "Smart View accepts clicks after the pointer returns and has a native Minimize button.",
