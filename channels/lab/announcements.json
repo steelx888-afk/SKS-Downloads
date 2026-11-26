@@ -3,6 +3,19 @@
   "appId": "lab",
   "releases": [
     {
+      "version": "1.0.10",
+      "title": "Reliable exports and downloads in nested Windows folders",
+      "summary": "LAB handles long Windows paths in Research exports and Automation browser downloads.",
+      "highlights": [
+        "Research dossiers can package and clean up nested evidence files.",
+        "Automation workers can open their browsers and save downloads under deeply nested profiles.",
+        "Available as a signed Windows x64 update through LAB and the existing universal Setup."
+      ],
+      "publishedAt": "2026-11-26T16:11:14Z",
+      "publication": "update",
+      "platforms": {}
+    },
+    {
       "version": "1.0.9",
       "title": "One startup and sign-in screen",
       "summary": "LAB uses the existing branded loading screen during local startup and sign-in checks.",
