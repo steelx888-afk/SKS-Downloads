@@ -3,6 +3,19 @@
   "appId": "proz",
   "releases": [
     {
+      "version": "1.0.11",
+      "title": "Windows file paths and Kilo worktrees",
+      "summary": "Materials, Deep Research, and Kilo worktrees handle deeply nested Windows paths.",
+      "highlights": [
+        "Save and reopen Materials files in deeply nested folders.",
+        "Read saved research assets and export dossiers.",
+        "Create Kilo worktrees when the resulting Windows paths are long."
+      ],
+      "publishedAt": "2026-11-26T16:42:05Z",
+      "publication": "update",
+      "platforms": {}
+    },
+    {
       "version": "1.0.10",
       "title": "One startup screen",
       "summary": "PROZ keeps one loading screen while starting local services and checking sign-in.",
