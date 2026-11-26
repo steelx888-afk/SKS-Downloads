@@ -3,6 +3,19 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "1.0.11",
+      "publication": "update",
+      "publishedAt": "2026-11-26T16:09:16.911Z",
+      "title": "Workspace refresh reliability",
+      "summary": "The workspace keeps the latest task and schedule data when refreshes overlap. Update from Settings → System.",
+      "highlights": [
+        "An older schedule response can no longer replace the current list of tasks.",
+        "An outdated request failure no longer shows an error over a successful refresh.",
+        "The existing universal Setup continues to install the latest signed Designz build."
+      ],
+      "platforms": {}
+    },
+    {
       "version": "1.0.10",
       "publication": "update",
       "publishedAt": "2026-11-26T15:49:36.304Z",
