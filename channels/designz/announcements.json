@@ -3,6 +3,24 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "1.0.3",
+      "title": "Compact chat header and Windows installer",
+      "summary": "A thinner chat header and a downloadable Windows installer. Windows may show an Unknown publisher or SmartScreen warning for this unsigned installer.",
+      "highlights": [
+        "Reduced chat header height while keeping readable text and all controls.",
+        "Reinstall bundled StudioX and MeshX after removal while keeping saved plugin data.",
+        "Windows installer downloads the latest compatible version and checks its signed feed and archive checksum."
+      ],
+      "publishedAt": "2026-11-26T05:27:09Z",
+      "publication": "installer",
+      "platforms": {
+        "windows": {
+          "filename": "SKS-DESIGNZ-Setup.exe",
+          "publishedAt": "2026-11-26T05:27:09Z"
+        }
+      }
+    },
+    {
       "version": "1.0.2",
       "publication": "update",
       "title": "Chat Enhance and Windows update",
@@ -11,7 +29,7 @@
       "highlights": [
         "Enhance rewrites the chat draft using the configured small model. It preserves edits while a rewrite is running.",
         "The Windows build starts the same engine ahead of time for a faster first launch.",
-        "Existing stable Windows x64 installations can open Settings → System → Check for updates."
+        "Existing stable Windows x64 installations can open Settings \u2192 System \u2192 Check for updates."
       ],
       "platforms": {}
     },
@@ -463,7 +481,7 @@
     {
       "version": "0.1.4",
       "title": "A fresh welcome to your workspace.",
-      "summary": "A redesigned sign-in experience and animated loading screen bring the app’s identity into its first moments.",
+      "summary": "A redesigned sign-in experience and animated loading screen bring the app\u2019s identity into its first moments.",
       "highlights": [
         "Branded floating-logo animation with subtle lighting and motion.",
         "Clearer browser approval and connection recovery screens.",
