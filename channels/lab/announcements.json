@@ -3,6 +3,19 @@
   "appId": "lab",
   "releases": [
     {
+      "version": "1.0.5",
+      "title": "Chat layout and input recovery",
+      "summary": "Chat layout, model picker and company input recovery fixes. Available through the universal installer and in-app updates.",
+      "highlights": [
+        "Fixed chat overflow beside Frame and model picker layering and provider labels.",
+        "Automatically compact company requests before the gateway input allowance and recover from input-size rejections.",
+        "The existing universal installer and in-app updater automatically select this release."
+      ],
+      "publishedAt": "2026-11-26T07:59:53Z",
+      "publication": "update",
+      "platforms": {}
+    },
+    {
       "version": "1.0.4",
       "title": "Chat layout and input recovery",
       "summary": "Chat layout, model picker and company input recovery fixes. Available through the universal installer and in-app updates.",
