@@ -3,6 +3,19 @@
   "appId": "proz",
   "releases": [
     {
+      "version": "1.0.8",
+      "title": "In-app update progress",
+      "summary": "PROZ now shows when an update starts, displays download and preparation progress, and offers Restart to update when it finishes.",
+      "highlights": [
+        "See progress in the app during downloads and installation.",
+        "Know when Setup needs you to review the installation terms.",
+        "Restart to finish once the update is ready."
+      ],
+      "publishedAt": "2026-11-26T14:21:29Z",
+      "publication": "update",
+      "platforms": {}
+    },
+    {
       "version": "1.0.7",
       "title": "Company model settings sync",
       "summary": "PROZ now shows the Image, Video, Audio, 3D, and Vision models assigned in SKSSI and refreshes them during the session.",
