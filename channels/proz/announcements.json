@@ -3,6 +3,19 @@
   "appId": "proz",
   "releases": [
     {
+      "version": "1.0.9",
+      "title": "Smart View input and minimize",
+      "summary": "Smart View stays responsive when the pointer returns and can fold into its compact bar or minimize to Windows.",
+      "highlights": [
+        "Use Smart View controls after the pointer leaves and returns.",
+        "Fold and reopen the compact bar.",
+        "Minimize Smart View and restore it from Windows."
+      ],
+      "publishedAt": "2026-11-26T15:14:26Z",
+      "publication": "update",
+      "platforms": {}
+    },
+    {
       "version": "1.0.8",
       "title": "In-app update progress",
       "summary": "PROZ now shows when an update starts, displays download and preparation progress, and offers Restart to update when it finishes.",
