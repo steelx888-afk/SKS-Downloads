@@ -3,6 +3,20 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "1.0.8",
+      "publication": "update",
+      "publishedAt": "2026-11-26T14:22:12.471Z",
+      "title": "Clear update progress and completion",
+      "summary": "Designz shows download and verification progress, then confirms the update after restart. Existing Windows x64 installations can update from Settings → System.",
+      "highlights": [
+        "Download and install shows the current update stage and progress.",
+        "Restart to update switches to the verified new build. Finish appears after Designz starts successfully.",
+        "The updater repairs the legacy Windows Start Menu path during upgrades from earlier Designz builds.",
+        "Setup can repair the app and remove older managed builds while preserving your saved work and recovery build."
+      ],
+      "platforms": {}
+    },
+    {
       "version": "1.0.7",
       "publication": "update",
       "publishedAt": "2026-11-26T12:29:40.582Z",
