@@ -3,6 +3,19 @@
   "appId": "proz",
   "releases": [
     {
+      "version": "1.0.7",
+      "title": "Company model settings sync",
+      "summary": "PROZ now shows the Image, Video, Audio, 3D, and Vision models assigned in SKSSI and refreshes them during the session.",
+      "highlights": [
+        "See assigned Company models in Settings.",
+        "Keep your personal model choices when overrides are allowed.",
+        "Install the verified Windows x64 update from the app."
+      ],
+      "publishedAt": "2026-11-26T12:33:27Z",
+      "publication": "update",
+      "platforms": {}
+    },
+    {
       "version": "1.0.6",
       "title": "Chat layout and input recovery",
       "summary": "Chat layout, model picker and company input recovery fixes. Available through the universal installer and in-app updates.",
@@ -56,7 +69,7 @@
       "highlights": [
         "Enhance rewrites the chat draft using the configured small model. It preserves edits while a rewrite is running.",
         "The Windows build starts the same engine ahead of time for a faster first launch.",
-        "Existing stable Windows x64 installations can open Settings \u2192 System \u2192 Check for updates."
+        "Existing stable Windows x64 installations can open Settings → System → Check for updates."
       ],
       "platforms": {}
     },
@@ -90,15 +103,15 @@
         "Keep plugin versions separate from the PROZ version.",
         "Remove the embedded StudioX screen and assets from PROZ."
       ],
-      "publishedAt": "2026-11-16T13:41:46.000Z",
+      "publishedAt": "2026-11-16T13:41:46Z",
       "platforms": {
         "windows": {
           "filename": "SKS-PROZ-latest-x64.7z",
-          "publishedAt": "2026-11-16T13:41:46.000Z"
+          "publishedAt": "2026-11-16T13:41:46Z"
         },
         "mac": {
           "filename": "SKS-PROZ-0.1.29-universal.dmg",
-          "publishedAt": "2026-11-16T16:39:19.000Z"
+          "publishedAt": "2026-11-16T16:39:19Z"
         }
       }
     },
@@ -114,11 +127,11 @@
         "Keep the version and update controls in Settings, System.",
         "Preserve PROZ capabilities, product identity, and saved data."
       ],
-      "publishedAt": "2026-11-14T19:51:56.000Z",
+      "publishedAt": "2026-11-14T19:51:56Z",
       "platforms": {
         "windows": {
           "filename": "SKS-PROZ-latest-x64.7z",
-          "publishedAt": "2026-11-14T19:51:56.000Z"
+          "publishedAt": "2026-11-14T19:51:56Z"
         }
       }
     },
@@ -135,11 +148,11 @@
         "Replace an existing SKS PROZ installation with a confirmation prompt while keeping settings and data.",
         "Keep PROZ capabilities, product identity, saved data, and the existing update channel."
       ],
-      "publishedAt": "2026-11-14T16:30:28.000Z",
+      "publishedAt": "2026-11-14T16:30:28Z",
       "platforms": {
         "windows": {
           "filename": "SKS-PROZ-latest-x64.7z",
-          "publishedAt": "2026-11-14T16:30:28.000Z"
+          "publishedAt": "2026-11-14T16:30:28Z"
         }
       }
     },
@@ -156,11 +169,11 @@
         "Keep existing source-folder installs available while managed installs are adopted.",
         "Preserve PROZ identity, saved data, and the existing update channel."
       ],
-      "publishedAt": "2026-11-14T05:47:09.000Z",
+      "publishedAt": "2026-11-14T05:47:09Z",
       "platforms": {
         "windows": {
           "filename": "SKS-PROZ-Setup-0.1.23-x64.exe",
-          "publishedAt": "2026-11-14T05:47:09.000Z"
+          "publishedAt": "2026-11-14T05:47:09Z"
         }
       }
     },
@@ -177,11 +190,11 @@
         "Keep existing source-folder installs available while managed installs are adopted.",
         "Preserve PROZ identity, saved data, and the existing update channel."
       ],
-      "publishedAt": "2026-11-14T04:41:55.000Z",
+      "publishedAt": "2026-11-14T04:41:55Z",
       "platforms": {
         "windows": {
           "filename": "SKS-PROZ-Setup-0.1.22-x64.exe",
-          "publishedAt": "2026-11-14T04:41:55.000Z"
+          "publishedAt": "2026-11-14T04:41:55Z"
         }
       }
     },
@@ -195,19 +208,19 @@
         "Keep Cookbook, TabiiX and Social outside the PROZ product boundary.",
         "Preserve PROZ identity, saved data, creative tools and existing update channels."
       ],
-      "publishedAt": "2026-11-12T10:40:34.000Z",
+      "publishedAt": "2026-11-12T10:40:34Z",
       "platforms": {
         "windows": {
           "filename": "SKS-PROZ-Setup-0.1.20-x64.exe",
-          "publishedAt": "2026-11-12T10:49:49.000Z"
+          "publishedAt": "2026-11-12T10:49:49Z"
         },
         "mac": {
           "filename": "SKS-PROZ-0.1.20-universal.dmg",
-          "publishedAt": "2026-11-12T11:50:16.000Z"
+          "publishedAt": "2026-11-12T11:50:16Z"
         },
         "linux": {
           "filename": "SKS-PROZ-0.1.20-x64.AppImage",
-          "publishedAt": "2026-11-12T10:40:34.000Z"
+          "publishedAt": "2026-11-12T10:40:34Z"
         }
       }
     },
@@ -222,19 +235,19 @@
         "Company, Social and Deep Research are disabled in this edition for now; saved data is retained.",
         "Preserve this application identity, private data directory, themes and update channel."
       ],
-      "publishedAt": "2026-11-11T08:53:49.000Z",
+      "publishedAt": "2026-11-11T08:53:49Z",
       "platforms": {
         "windows": {
           "filename": "SKS-PROZ-Setup-0.1.19-x64.exe",
-          "publishedAt": "2026-11-11T08:53:49.000Z"
+          "publishedAt": "2026-11-11T08:53:49Z"
         },
         "mac": {
           "filename": "SKS-PROZ-0.1.19-universal.dmg",
-          "publishedAt": "2026-11-11T16:24:40.000Z"
+          "publishedAt": "2026-11-11T16:24:40Z"
         },
         "linux": {
           "filename": "SKS-PROZ-0.1.19-x64.AppImage",
-          "publishedAt": "2026-11-11T09:02:18.000Z"
+          "publishedAt": "2026-11-11T09:02:18Z"
         }
       }
     },
@@ -283,11 +296,11 @@
         "See SKS SI branding and Beta version information during both native startup and the sign-in check.",
         "Identify the Beta release in the app header, sign-in screen and Settings information page while keeping automatic updates enabled."
       ],
-      "publishedAt": "2026-11-09T09:28:52.000Z",
+      "publishedAt": "2026-11-09T09:28:52Z",
       "platforms": {
         "windows": {
           "filename": "SKS-PROZ-Setup-0.1.14-x64.exe",
-          "publishedAt": "2026-11-09T09:28:52.000Z"
+          "publishedAt": "2026-11-09T09:28:52Z"
         }
       }
     },
@@ -302,11 +315,11 @@
         "See provider and model logos in catalogs, model details and company models, with clear provider artwork when a model has no individual image.",
         "Cloud-app availability still depends on vendor approval; this release does not enable public Google or Figma access."
       ],
-      "publishedAt": "2026-11-09T08:26:34.000Z",
+      "publishedAt": "2026-11-09T08:26:34Z",
       "platforms": {
         "windows": {
           "filename": "SKS-PROZ-Setup-0.1.13-x64.exe",
-          "publishedAt": "2026-11-09T08:26:34.000Z"
+          "publishedAt": "2026-11-09T08:26:34Z"
         }
       }
     },
@@ -321,11 +334,11 @@
         "Sample previews stay separate from live tasks and schedules on your own desk.",
         "Remove a stale decorative backdrop reference while retaining the live theme effects."
       ],
-      "publishedAt": "2026-11-09T07:50:14.000Z",
+      "publishedAt": "2026-11-09T07:50:14Z",
       "platforms": {
         "windows": {
           "filename": "SKS-PROZ-Setup-0.1.12-x64.exe",
-          "publishedAt": "2026-11-09T07:50:14.000Z"
+          "publishedAt": "2026-11-09T07:50:14Z"
         }
       }
     },
@@ -338,11 +351,11 @@
         "New Canva connection attempts stop before browser sign-in.",
         "Existing approved connections retain their Disconnect control."
       ],
-      "publishedAt": "2026-11-09T04:59:20.000Z",
+      "publishedAt": "2026-11-09T04:59:20Z",
       "platforms": {
         "windows": {
           "filename": "SKS-PROZ-Setup-0.1.10-x64.exe",
-          "publishedAt": "2026-11-09T04:59:20.000Z"
+          "publishedAt": "2026-11-09T04:59:20Z"
         }
       }
     },
@@ -357,11 +370,11 @@
         "Select personal models and specialist fallback chains while keeping company credentials separate.",
         "Retain the refreshed application and plugin logos throughout the workspace."
       ],
-      "publishedAt": "2026-11-09T04:22:33.000Z",
+      "publishedAt": "2026-11-09T04:22:33Z",
       "platforms": {
         "windows": {
           "filename": "SKS-PROZ-Setup-0.1.9-x64.exe",
-          "publishedAt": "2026-11-09T04:22:33.000Z"
+          "publishedAt": "2026-11-09T04:22:33Z"
         }
       }
     },
@@ -375,11 +388,11 @@
         "Real document, spreadsheet, presentation, and creative-canvas previews.",
         "More reliable FlowX canvas access while using managed accounts."
       ],
-      "publishedAt": "2026-11-08T20:24:41.000Z",
+      "publishedAt": "2026-11-08T20:24:41Z",
       "platforms": {
         "windows": {
           "filename": "SKS-PROZ-Setup-0.1.6-x64.exe",
-          "publishedAt": "2026-11-08T20:24:41.000Z"
+          "publishedAt": "2026-11-08T20:24:41Z"
         }
       }
     },
@@ -392,28 +405,28 @@
         "Window controls stay in sync when maximizing and restoring.",
         "Installed apps consistently open the interface included with their update."
       ],
-      "publishedAt": "2026-11-08T14:28:06.000Z",
+      "publishedAt": "2026-11-08T14:28:06Z",
       "platforms": {
         "windows": {
           "filename": "SKS-PROZ-Setup-0.1.5-x64.exe",
-          "publishedAt": "2026-11-08T14:28:06.000Z"
+          "publishedAt": "2026-11-08T14:28:06Z"
         }
       }
     },
     {
       "version": "0.1.4",
       "title": "A fresh welcome to your workspace.",
-      "summary": "A redesigned sign-in experience and animated loading screen bring the app\u2019s identity into its first moments.",
+      "summary": "A redesigned sign-in experience and animated loading screen bring the app’s identity into its first moments.",
       "highlights": [
         "Branded floating-logo animation with subtle lighting and motion.",
         "Clearer browser approval and connection recovery screens.",
         "Verified restoration of valid saved sign-ins across restarts."
       ],
-      "publishedAt": "2026-11-08T13:07:34.000Z",
+      "publishedAt": "2026-11-08T13:07:34Z",
       "platforms": {
         "windows": {
           "filename": "SKS-PROZ-Setup-0.1.4-x64.exe",
-          "publishedAt": "2026-11-08T13:07:34.000Z"
+          "publishedAt": "2026-11-08T13:07:34Z"
         }
       }
     }
