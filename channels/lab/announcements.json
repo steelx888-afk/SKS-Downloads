@@ -3,6 +3,19 @@
   "appId": "lab",
   "releases": [
     {
+      "version": "1.0.8",
+      "title": "Smart View window controls",
+      "summary": "Smart View accepts clicks after the pointer returns and has a native Minimize button.",
+      "highlights": [
+        "Click the panel normally after moving the pointer away and back.",
+        "Minimize and restore Smart View, then use Return to chat to reopen the full workspace.",
+        "Available as a signed Windows x64 update through LAB and the existing universal Setup."
+      ],
+      "publishedAt": "2026-11-26T15:16:59Z",
+      "publication": "update",
+      "platforms": {}
+    },
+    {
       "version": "1.0.7",
       "title": "In-app update progress",
       "summary": "SKS LAB shows download, verification and installation progress during an in-app update.",
