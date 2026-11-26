@@ -3,6 +3,20 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "1.0.7",
+      "publication": "update",
+      "publishedAt": "2026-11-26T12:29:40.582Z",
+      "title": "Live company model settings",
+      "summary": "Designz now follows the media and vision settings published for the app on SKSSI. Existing Windows x64 installations can update from Settings → System.",
+      "highlights": [
+        "Image, video, audio, 3D, and vision defaults follow Designz policy when company defaults are enabled.",
+        "The app refreshes the model list and settings during the signed-in account check.",
+        "The prompt-training preference and speech-to-text configuration are visible in Models. Provider API keys stay on SKSSI.",
+        "The update preserves saved work and keeps the previous version for recovery."
+      ],
+      "platforms": {}
+    },
+    {
       "version": "1.0.6",
       "title": "Chat layout and input recovery",
       "summary": "Chat layout, model picker and company input recovery fixes. Available through the universal installer and in-app updates.",
@@ -57,7 +71,7 @@
       "highlights": [
         "Enhance rewrites the chat draft using the configured small model. It preserves edits while a rewrite is running.",
         "The Windows build starts the same engine ahead of time for a faster first launch.",
-        "Existing stable Windows x64 installations can open Settings \u2192 System \u2192 Check for updates."
+        "Existing stable Windows x64 installations can open Settings → System → Check for updates."
       ],
       "platforms": {}
     },
@@ -509,7 +523,7 @@
     {
       "version": "0.1.4",
       "title": "A fresh welcome to your workspace.",
-      "summary": "A redesigned sign-in experience and animated loading screen bring the app\u2019s identity into its first moments.",
+      "summary": "A redesigned sign-in experience and animated loading screen bring the app’s identity into its first moments.",
       "highlights": [
         "Branded floating-logo animation with subtle lighting and motion.",
         "Clearer browser approval and connection recovery screens.",
