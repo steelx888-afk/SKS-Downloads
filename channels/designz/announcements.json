@@ -3,6 +3,26 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "1.0.0",
+      "publication": "source",
+      "title": "A rebuilt design workspace",
+      "summary": "SKS DESIGNZ 1.0.0 uses the prepared Sera foundation for chat, Brain, settings, effort and workspace tools, with its original purple logo. This is a source release. Public Windows installers are pending publisher verification and are not available for this version. Retired beta installers are not offered as 1.0.0.",
+      "highlights": [
+        "Retain Plugins and design workspace tools; Social and Automation are excluded from this product.",
+        "Keep a separate DESIGNZ profile and account connection, with company defaults and personal provider choices.",
+        "Preserve the original DESIGNZ logo in the window, chat header and installed application.",
+        "Local native startup, restart and feature boundaries have been checked. Real Google sign-in and live company-model generation in this rebuilt app remain pending final acceptance.",
+        "Signed release checks and managed-version recovery are included; a public Windows installer awaits publisher verification."
+      ],
+      "publishedAt": "2026-11-26T01:30:11Z",
+      "platforms": {},
+      "source": {
+        "repository": "https://github.com/steelx888-afk/SKS-DESIGNZ",
+        "tag": "v1.0.0",
+        "commit": "348258b653d7e927c979d3a149f994c6f77cf9d5"
+      }
+    },
+    {
       "version": "0.1.35",
       "title": "StudioX Agents and workflow tools",
       "summary": "StudioX uses your SKS account for Agents and FlowX workflows opened from Designz.",

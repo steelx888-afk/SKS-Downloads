@@ -3,6 +3,26 @@
   "appId": "proz",
   "releases": [
     {
+      "version": "1.0.0",
+      "publication": "source",
+      "title": "A rebuilt everyday workspace",
+      "summary": "SKS PROZ 1.0.0 brings the prepared Sera foundation to everyday chat, Brain, settings and workspace planning, retaining its original orange logo. This is a source release. Public Windows installers are pending publisher verification and are not available for this version. Retired beta installers are not offered as 1.0.0.",
+      "highlights": [
+        "Provide chat, Brain, effort controls, materials and workspace planning; Social, Plugins and Automation are excluded from this product.",
+        "Keep a separate PROZ profile and account connection, with company defaults and personal provider choices.",
+        "Preserve the original PROZ logo in the window, chat header and installed application.",
+        "Local native startup, restart and feature boundaries have been checked. Real Google sign-in and live company-model generation in this rebuilt app remain pending final acceptance.",
+        "Signed release checks and managed-version recovery are included; a public Windows installer awaits publisher verification."
+      ],
+      "publishedAt": "2026-11-26T01:30:08Z",
+      "platforms": {},
+      "source": {
+        "repository": "https://github.com/steelx888-afk/SKS-PROZ",
+        "tag": "v1.0.0",
+        "commit": "5088f74c0fa4e55e6ccbaa76e58b5a71570fae55"
+      }
+    },
+    {
       "version": "0.1.29",
       "title": "Independent MeshX and StudioX apps",
       "summary": "MeshX and StudioX now install and launch as separate applications from PROZ. Their versions come from their own app releases, while AI tools remain available after installation. Embedded StudioX assets are removed from PROZ.",

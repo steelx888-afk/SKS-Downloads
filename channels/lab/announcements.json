@@ -3,6 +3,26 @@
   "appId": "lab",
   "releases": [
     {
+      "version": "1.0.0",
+      "publication": "source",
+      "title": "The rebuilt LAB foundation",
+      "summary": "SKS LAB 1.0.0 brings the prepared Sera foundation into the main LAB product with its original identity. This is a source release. Public Windows installers are pending publisher verification and are not available for this version. Retired beta installers are not offered as 1.0.0.",
+      "highlights": [
+        "Keep the original LAB logo while bringing together chat, Brain, settings, effort controls, Frame and workspace planning from the prepared foundation.",
+        "Retain LAB Social and plugin capabilities, with company model defaults and separate plugin provider settings.",
+        "Use the SKSSI account, company-provider and credit bridge with per-application access controls.",
+        "Preserve existing LAB preview work and verify updates before activating a new managed version.",
+        "The original Sera/Joy reference remains unchanged. Windows installer publication requires a verified publisher identity."
+      ],
+      "publishedAt": "2026-11-26T01:27:42Z",
+      "platforms": {},
+      "source": {
+        "repository": "https://github.com/steelx888-afk/SKS-LAB",
+        "tag": "v1.0.0",
+        "commit": "484868215a05a5c5426376621c72da2c0b5fcb92"
+      }
+    },
+    {
       "version": "0.1.28",
       "title": "Independent MeshX and StudioX apps",
       "summary": "MeshX and StudioX now install and launch as separate applications from SKS LAB. Their versions come from their own app releases, while AI tools remain available after installation. The old embedded screens are removed.",
