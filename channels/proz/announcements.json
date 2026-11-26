@@ -3,6 +3,18 @@
   "appId": "proz",
   "releases": [
     {
+      "version": "1.0.10",
+      "title": "One startup screen",
+      "summary": "PROZ keeps one loading screen while starting local services and checking sign-in.",
+      "highlights": [
+        "See local services and sign-in progress on the same screen.",
+        "Retry on the startup screen if local services are temporarily unavailable."
+      ],
+      "publishedAt": "2026-11-26T15:47:46Z",
+      "publication": "update",
+      "platforms": {}
+    },
+    {
       "version": "1.0.9",
       "title": "Smart View input and minimize",
       "summary": "Smart View stays responsive when the pointer returns and can fold into its compact bar or minimize to Windows.",
