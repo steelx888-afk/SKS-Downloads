@@ -1,0 +1,65 @@
+{
+  "name": "Reconstruct verified Windows payload",
+  "on": {
+    "workflow_dispatch": {
+      "inputs": {
+        "product": {
+          "required": true,
+          "type": "choice",
+          "options": [
+            "lab",
+            "proz",
+            "designz"
+          ]
+        },
+        "base_version": {
+          "required": true,
+          "type": "string"
+        },
+        "version": {
+          "required": true,
+          "type": "string"
+        },
+        "delta_sha256": {
+          "required": true,
+          "type": "string"
+        }
+      }
+    }
+  },
+  "permissions": {
+    "contents": "write"
+  },
+  "jobs": {
+    "restore": {
+      "runs-on": "windows-latest",
+      "timeout-minutes": 20,
+      "env": {
+        "GH_TOKEN": "${{ secrets.GITHUB_TOKEN }}",
+        "PRODUCT": "${{ inputs.product }}",
+        "BASE_VERSION": "${{ inputs.base_version }}",
+        "VERSION": "${{ inputs.version }}",
+        "DELTA_SHA256": "${{ inputs.delta_sha256 }}"
+      },
+      "steps": [
+        {
+          "uses": "actions/checkout@v4"
+        },
+        {
+          "uses": "actions/setup-python@v5",
+          "with": {
+            "python-version": "3.12.10"
+          }
+        },
+        {
+          "name": "Install pinned binary delta decoder",
+          "run": "python -m pip install --target delta-tools bsdiff4==1.4.4"
+        },
+        {
+          "name": "Reconstruct and verify exact tested payload",
+          "run": "python release/restore_release.py"
+        }
+      ]
+    }
+  }
+}
