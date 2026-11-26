@@ -3,6 +3,19 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "1.0.10",
+      "publication": "update",
+      "publishedAt": "2026-11-26T15:49:36.304Z",
+      "title": "One startup screen",
+      "summary": "Designz uses one loading screen while it starts local services and verifies your sign-in. Update from Settings → System.",
+      "highlights": [
+        "The main loading screen stays visible through local startup and sign-in verification.",
+        "Designz opens your workspace after startup or shows the sign-in screen when needed.",
+        "The existing universal Setup continues to install the latest signed Designz build."
+      ],
+      "platforms": {}
+    },
+    {
       "version": "1.0.9",
       "publication": "update",
       "publishedAt": "2026-11-26T15:16:09.586Z",
