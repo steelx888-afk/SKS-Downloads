@@ -3,6 +3,19 @@
   "appId": "lab",
   "releases": [
     {
+      "version": "1.0.6",
+      "title": "Company model settings sync",
+      "summary": "SKS LAB refreshes company-managed model settings after changes on the SKS website.",
+      "highlights": [
+        "See the effective company image, video, audio, 3D and vision models in LAB settings.",
+        "Company settings refresh while LAB is open and honor the company override policy.",
+        "Available as a signed Windows x64 update through LAB and the existing universal Setup."
+      ],
+      "publishedAt": "2026-11-26T12:33:01Z",
+      "publication": "update",
+      "platforms": {}
+    },
+    {
       "version": "1.0.5",
       "title": "Chat layout and input recovery",
       "summary": "Chat layout, model picker and company input recovery fixes. Available through the universal installer and in-app updates.",
@@ -54,7 +67,7 @@
       "publishedAt": "2026-11-26T04:15:21Z",
       "highlights": [
         "Enhance rewrites the chat draft using the configured small model. It preserves edits while a rewrite is running.",
-        "Existing stable Windows x64 installations can open Settings \u2192 System \u2192 Check for updates."
+        "Existing stable Windows x64 installations can open Settings → System → Check for updates."
       ],
       "platforms": {}
     },
@@ -88,15 +101,15 @@
         "Keep plugin versions separate from the LAB version.",
         "Remove the old embedded MeshX and StudioX screens."
       ],
-      "publishedAt": "2026-11-16T13:39:42.000Z",
+      "publishedAt": "2026-11-16T13:39:42Z",
       "platforms": {
         "windows": {
           "filename": "SKS-LAB-latest-x64.7z",
-          "publishedAt": "2026-11-16T13:39:42.000Z"
+          "publishedAt": "2026-11-16T13:39:42Z"
         },
         "mac": {
           "filename": "SKS-LAB-0.1.28-universal.dmg",
-          "publishedAt": "2026-11-16T16:30:50.000Z"
+          "publishedAt": "2026-11-16T16:30:50Z"
         }
       }
     },
@@ -129,11 +142,11 @@
         "Keep the version and update controls in Settings, System.",
         "Preserve Company, plugin, and saved data behavior."
       ],
-      "publishedAt": "2026-11-14T18:53:21.000Z",
+      "publishedAt": "2026-11-14T18:53:21Z",
       "platforms": {
         "windows": {
           "filename": "SKS-LAB-latest-x64.7z",
-          "publishedAt": "2026-11-14T18:53:21.000Z"
+          "publishedAt": "2026-11-14T18:53:21Z"
         }
       }
     },
@@ -146,13 +159,13 @@
         "Keep the dark 3D office as the focal artwork while the surrounding workspace matches the rest of the app.",
         "Open MeshX and StudioX inside SKS LAB with the Company API connection and their tool sets available.",
         "Use the Plugins page to download managed plugin versions and check for updates.",
-        "Keep the existing version, update, and Settings \u2192 System behavior."
+        "Keep the existing version, update, and Settings → System behavior."
       ],
-      "publishedAt": "2026-11-14T13:45:06.000Z",
+      "publishedAt": "2026-11-14T13:45:06Z",
       "platforms": {
         "windows": {
           "filename": "SKS-LAB-latest-x64.7z",
-          "publishedAt": "2026-11-14T13:45:06.000Z"
+          "publishedAt": "2026-11-14T13:45:06Z"
         }
       }
     },
@@ -169,11 +182,11 @@
         "Replace an existing SKS LAB installation with a confirmation prompt while keeping settings and data.",
         "Keep LAB capabilities, product identity, saved data, and the existing update channel."
       ],
-      "publishedAt": "2026-11-14T08:22:11.000Z",
+      "publishedAt": "2026-11-14T08:22:11Z",
       "platforms": {
         "windows": {
           "filename": "SKS-LAB-latest-x64.7z",
-          "publishedAt": "2026-11-14T08:22:11.000Z"
+          "publishedAt": "2026-11-14T08:22:11Z"
         }
       }
     },
@@ -190,11 +203,11 @@
         "Keep existing source-folder installs available while managed installs are adopted.",
         "Preserve LAB identity, saved data, company capabilities, and the existing update channel."
       ],
-      "publishedAt": "2026-11-14T06:02:31.000Z",
+      "publishedAt": "2026-11-14T06:02:31Z",
       "platforms": {
         "windows": {
           "filename": "SKS-LAB-Setup-0.1.23-x64.exe",
-          "publishedAt": "2026-11-14T06:02:31.000Z"
+          "publishedAt": "2026-11-14T06:02:31Z"
         }
       }
     },
@@ -211,11 +224,11 @@
         "Keep existing source-folder installs available while managed installs are adopted.",
         "Preserve LAB identity, saved data, company capabilities, and the existing update channel."
       ],
-      "publishedAt": "2026-11-14T04:56:33.000Z",
+      "publishedAt": "2026-11-14T04:56:33Z",
       "platforms": {
         "windows": {
           "filename": "SKS-LAB-Setup-0.1.22-x64.exe",
-          "publishedAt": "2026-11-14T04:56:33.000Z"
+          "publishedAt": "2026-11-14T04:56:33Z"
         }
       }
     },
@@ -230,11 +243,11 @@
         "Keep the 0.1.20 workspace, company media and specialist runtime capabilities.",
         "The installer remains unsigned; Windows Smart App Control may block it until the app is trusted or the policy is off."
       ],
-      "publishedAt": "2026-11-12T17:56:58.000Z",
+      "publishedAt": "2026-11-12T17:56:58Z",
       "platforms": {
         "windows": {
           "filename": "SKS-LAB-Setup-0.1.21-x64.exe",
-          "publishedAt": "2026-11-12T17:56:58.000Z"
+          "publishedAt": "2026-11-12T17:56:58Z"
         }
       }
     },
@@ -248,19 +261,19 @@
         "Separate Cookbook from the desktop runtime and remove its stale web client and automatic discovery path.",
         "Preserve FlowX exclusions, product identity and LAB's Company, Social and Deep Research capabilities."
       ],
-      "publishedAt": "2026-11-12T10:37:40.000Z",
+      "publishedAt": "2026-11-12T10:37:40Z",
       "platforms": {
         "windows": {
           "filename": "SKS-LAB-Setup-0.1.20-x64.exe",
-          "publishedAt": "2026-11-12T10:42:22.000Z"
+          "publishedAt": "2026-11-12T10:42:22Z"
         },
         "mac": {
           "filename": "SKS-LAB-0.1.20-universal.dmg",
-          "publishedAt": "2026-11-12T11:50:33.000Z"
+          "publishedAt": "2026-11-12T11:50:33Z"
         },
         "linux": {
           "filename": "SKS-LAB-0.1.20-x64.AppImage",
-          "publishedAt": "2026-11-12T10:37:40.000Z"
+          "publishedAt": "2026-11-12T10:37:40Z"
         }
       }
     },
@@ -275,19 +288,19 @@
         "Keep the latest Company, Social and Deep Research tools in LAB.",
         "Include current source support and WhatsApp connection fixes."
       ],
-      "publishedAt": "2026-11-11T08:53:49.000Z",
+      "publishedAt": "2026-11-11T08:53:49Z",
       "platforms": {
         "windows": {
           "filename": "SKS-LAB-Setup-0.1.19-x64.exe",
-          "publishedAt": "2026-11-11T08:53:49.000Z"
+          "publishedAt": "2026-11-11T08:53:49Z"
         },
         "mac": {
           "filename": "SKS-LAB-0.1.19-universal.dmg",
-          "publishedAt": "2026-11-11T15:57:30.000Z"
+          "publishedAt": "2026-11-11T15:57:30Z"
         },
         "linux": {
           "filename": "SKS-LAB-0.1.19-x64.AppImage",
-          "publishedAt": "2026-11-11T09:02:19.000Z"
+          "publishedAt": "2026-11-11T09:02:19Z"
         }
       }
     },
@@ -360,11 +373,11 @@
         "See SKS SI branding and Beta version information during both native startup and the sign-in check.",
         "Identify the Beta release in the app header, sign-in screen and Settings information page while keeping automatic updates enabled."
       ],
-      "publishedAt": "2026-11-09T09:22:30.000Z",
+      "publishedAt": "2026-11-09T09:22:30Z",
       "platforms": {
         "windows": {
           "filename": "SKS-LAB-Setup-0.1.14-x64.exe",
-          "publishedAt": "2026-11-09T09:22:30.000Z"
+          "publishedAt": "2026-11-09T09:22:30Z"
         }
       }
     },
@@ -379,11 +392,11 @@
         "See provider and model logos in catalogs, model details and company models, with clear provider artwork when a model has no individual image.",
         "Cloud-app availability still depends on vendor approval; this release does not enable public Google or Figma access."
       ],
-      "publishedAt": "2026-11-09T08:26:33.000Z",
+      "publishedAt": "2026-11-09T08:26:33Z",
       "platforms": {
         "windows": {
           "filename": "SKS-LAB-Setup-0.1.13-x64.exe",
-          "publishedAt": "2026-11-09T08:26:33.000Z"
+          "publishedAt": "2026-11-09T08:26:33Z"
         }
       }
     },
@@ -398,11 +411,11 @@
         "Sample previews stay separate from live tasks and schedules on your own desk.",
         "Remove a stale decorative backdrop reference while retaining the live theme effects."
       ],
-      "publishedAt": "2026-11-09T07:50:14.000Z",
+      "publishedAt": "2026-11-09T07:50:14Z",
       "platforms": {
         "windows": {
           "filename": "SKS-LAB-Setup-0.1.12-x64.exe",
-          "publishedAt": "2026-11-09T07:50:14.000Z"
+          "publishedAt": "2026-11-09T07:50:14Z"
         }
       }
     },
@@ -415,11 +428,11 @@
         "New Canva connection attempts stop before browser sign-in.",
         "Existing approved connections retain their Disconnect control."
       ],
-      "publishedAt": "2026-11-09T04:59:20.000Z",
+      "publishedAt": "2026-11-09T04:59:20Z",
       "platforms": {
         "windows": {
           "filename": "SKS-LAB-Setup-0.1.10-x64.exe",
-          "publishedAt": "2026-11-09T04:59:20.000Z"
+          "publishedAt": "2026-11-09T04:59:20Z"
         }
       }
     },
@@ -434,11 +447,11 @@
         "Select personal models and specialist fallback chains while keeping company credentials separate.",
         "Retain the refreshed application and plugin logos throughout the workspace."
       ],
-      "publishedAt": "2026-11-09T04:22:33.000Z",
+      "publishedAt": "2026-11-09T04:22:33Z",
       "platforms": {
         "windows": {
           "filename": "SKS-LAB-Setup-0.1.9-x64.exe",
-          "publishedAt": "2026-11-09T04:22:33.000Z"
+          "publishedAt": "2026-11-09T04:22:33Z"
         }
       }
     },
@@ -453,11 +466,11 @@
         "More reliable FlowX canvas access while using managed accounts.",
         "Cookbook Downloads searches the model catalog from the correct tab."
       ],
-      "publishedAt": "2026-11-08T20:24:41.000Z",
+      "publishedAt": "2026-11-08T20:24:41Z",
       "platforms": {
         "windows": {
           "filename": "SKS-LAB-Setup-0.1.6-x64.exe",
-          "publishedAt": "2026-11-08T20:24:41.000Z"
+          "publishedAt": "2026-11-08T20:24:41Z"
         }
       }
     },
@@ -470,28 +483,28 @@
         "Window controls stay in sync when maximizing and restoring.",
         "Installed apps consistently open the interface included with their update."
       ],
-      "publishedAt": "2026-11-08T14:28:06.000Z",
+      "publishedAt": "2026-11-08T14:28:06Z",
       "platforms": {
         "windows": {
           "filename": "SKS-LAB-Setup-0.1.5-x64.exe",
-          "publishedAt": "2026-11-08T14:28:06.000Z"
+          "publishedAt": "2026-11-08T14:28:06Z"
         }
       }
     },
     {
       "version": "0.1.4",
       "title": "A fresh welcome to your workspace.",
-      "summary": "A redesigned sign-in experience and animated loading screen bring the app\u2019s identity into its first moments.",
+      "summary": "A redesigned sign-in experience and animated loading screen bring the app’s identity into its first moments.",
       "highlights": [
         "Branded floating-logo animation with subtle lighting and motion.",
         "Clearer browser approval and connection recovery screens.",
         "Verified restoration of valid saved sign-ins across restarts."
       ],
-      "publishedAt": "2026-11-08T13:07:33.000Z",
+      "publishedAt": "2026-11-08T13:07:33Z",
       "platforms": {
         "windows": {
           "filename": "SKS-LAB-Setup-0.1.4-x64.exe",
-          "publishedAt": "2026-11-08T13:07:33.000Z"
+          "publishedAt": "2026-11-08T13:07:33Z"
         }
       }
     }
