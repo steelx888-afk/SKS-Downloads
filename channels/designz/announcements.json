@@ -3,6 +3,19 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "1.0.2",
+      "publication": "update",
+      "title": "Chat Enhance and Windows update",
+      "summary": "Stable Windows x64 installations can update in the app. The Windows setup download is still pending publisher verification.",
+      "publishedAt": "2026-11-26T04:29:50Z",
+      "highlights": [
+        "Enhance rewrites the chat draft using the configured small model. It preserves edits while a rewrite is running.",
+        "The Windows build starts the same engine ahead of time for a faster first launch.",
+        "Existing stable Windows x64 installations can open Settings → System → Check for updates."
+      ],
+      "platforms": {}
+    },
+    {
       "version": "1.0.0",
       "publication": "source",
       "title": "A rebuilt design workspace",
