@@ -3,6 +3,19 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "1.0.13",
+      "publication": "update",
+      "publishedAt": "2026-11-27T18:03:24.372Z",
+      "title": "Long chat recovery and a compact Frame",
+      "summary": "Restore interrupted queued messages, follow replies as they stream, and keep drawing references with the right chat. Update from Settings → System.",
+      "highlights": [
+        "Chat recovery now resets its retry budget after completed tool progress and reduces oversized replay context.",
+        "A compact Frame toolbar leaves more space for documents and CAD. Restore preview resumes captures from minimized native applications.",
+        "The existing universal Setup continues to install the latest signed Designz build."
+      ],
+      "platforms": {}
+    },
+    {
       "version": "1.0.12",
       "publication": "update",
       "publishedAt": "2026-11-27T14:33:10.539Z",
