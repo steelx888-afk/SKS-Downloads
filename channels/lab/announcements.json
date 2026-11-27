@@ -3,6 +3,20 @@
   "appId": "lab",
   "releases": [
     {
+      "version": "1.0.12",
+      "title": "Microphone dictation in chat",
+      "summary": "Dictate into a chat draft, edit it during transcription, and send it when you are ready.",
+      "highlights": [
+        "Choose Dictate, speak, then choose Stop dictation to append your words to the current draft.",
+        "If transcription fails or returns no speech, your existing draft and edits stay in the composer.",
+        "Cancelling a recording releases the microphone. Changing chats discards a late transcript.",
+        "Use the engine in Audio settings or save a device transcription endpoint under Models."
+      ],
+      "publishedAt": "2026-11-27T14:36:48Z",
+      "publication": "update",
+      "platforms": {}
+    },
+    {
       "version": "1.0.11",
       "title": "Chat, Brain and Office reliability improvements",
       "summary": "LAB keeps unconfirmed chat drafts, recovers interrupted Brain saves, and preserves concurrent settings changes.",
