@@ -3,6 +3,19 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "1.0.12",
+      "publication": "update",
+      "publishedAt": "2026-11-27T14:33:10.539Z",
+      "title": "Chat recovery, Brain Frame and workbook updates",
+      "summary": "Restore interrupted queued messages, follow replies as they stream, and keep drawing references with the right chat. Update from Settings → System.",
+      "highlights": [
+        "Saving a default model or reasoning display preference keeps an active reply running.",
+        "Concurrent Frame opens share a reference. SpreadX handles parallel workbook edits, and SlideX can export a reopened deck.",
+        "The existing universal Setup continues to install the latest signed Designz build."
+      ],
+      "platforms": {}
+    },
+    {
       "version": "1.0.11",
       "publication": "update",
       "publishedAt": "2026-11-26T16:09:16.911Z",
