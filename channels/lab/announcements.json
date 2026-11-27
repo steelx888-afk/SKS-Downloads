@@ -3,6 +3,22 @@
   "appId": "lab",
   "releases": [
     {
+      "version": "1.0.11",
+      "title": "Chat, Brain and Office reliability improvements",
+      "summary": "LAB keeps unconfirmed chat drafts, recovers interrupted Brain saves, and preserves concurrent settings changes.",
+      "highlights": [
+        "Chat keeps unsaved input when a local service is unavailable.",
+        "Brain recovers interrupted saves and preserves edits to the bundled manufacturing skill at startup.",
+        "Concurrent changes to different project settings are kept.",
+        "Stopping a tool or worker cleans up its pending calls and approvals.",
+        "SpreadX preserves formula values with embedded images. DocsX can finish image-based PDF exports.",
+        "Smart View keeps update controls inside the window."
+      ],
+      "publishedAt": "2026-11-27T11:09:54Z",
+      "publication": "update",
+      "platforms": {}
+    },
+    {
       "version": "1.0.10",
       "title": "Reliable exports and downloads in nested Windows folders",
       "summary": "LAB handles long Windows paths in Research exports and Automation browser downloads.",
