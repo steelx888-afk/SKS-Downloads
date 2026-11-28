@@ -3,6 +3,19 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "1.0.14",
+      "publication": "update",
+      "publishedAt": "2026-11-28T02:53:43.653Z",
+      "title": "Real-model chat recovery verified",
+      "summary": "A verification release of the long-chat recovery and compact Frame behavior, now checked with the real model and FreeCAD.",
+      "highlights": [
+        "Automatic compaction preserved the same chat and its design requirements during a real DeepSeek and FreeCAD session.",
+        "Three concurrent furniture jobs completed; all 155 CAD objects reopened with their geometry intact.",
+        "Application behavior is unchanged from 1.0.13. Version metadata is aligned, and the same universal Setup installs the latest signed release."
+      ],
+      "platforms": {}
+    },
+    {
       "version": "1.0.13",
       "publication": "update",
       "publishedAt": "2026-11-27T18:03:24.372Z",
