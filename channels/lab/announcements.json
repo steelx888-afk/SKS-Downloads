@@ -3,6 +3,20 @@
   "appId": "lab",
   "releases": [
     {
+      "version": "1.0.14",
+      "title": "Reliable chat approvals and Office plugin updates",
+      "summary": "Chat approvals recover from invalid tool inputs. LAB includes the DocsX update and offers SpreadX 0.1.5.",
+      "highlights": [
+        "A malformed tool request cannot block the approval list for valid requests.",
+        "Update DocsX from Plugins to preserve headings, lists and tables when creating documents from Markdown.",
+        "SpreadX 0.1.5 includes the five-sheet Product Manufacturing Master.",
+        "Fresh profiles receive the Office and BOM skills, with existing skill edits preserved."
+      ],
+      "publishedAt": "2026-11-28T08:49:05Z",
+      "publication": "update",
+      "platforms": {}
+    },
+    {
       "version": "1.0.13",
       "title": "Thinner Frame and DocsX headers and better chat recovery",
       "summary": "Frame and DocsX leave more room for your work, and long chats recover more reliably when a model reaches its context limit.",
