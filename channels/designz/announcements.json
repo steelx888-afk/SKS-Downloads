@@ -3,6 +3,19 @@
   "appId": "designz",
   "releases": [
     {
+      "version": "1.0.15",
+      "publication": "update",
+      "publishedAt": "2026-11-28T08:44:15.426Z",
+      "title": "More reliable Chat and office workflows",
+      "summary": "This update fixes tool approval recovery and improves how Sera works with design drawings and office plugins.",
+      "highlights": [
+        "A malformed tool call no longer blocks later approval requests in the same chat.",
+        "Fresh profiles include the drawing and office workflow skills, and plugin listings respect Designz compatibility.",
+        "Application behavior is unchanged from 1.0.14. Version metadata is aligned, and the same universal Setup installs the latest signed release."
+      ],
+      "platforms": {}
+    },
+    {
       "version": "1.0.14",
       "publication": "update",
       "publishedAt": "2026-11-28T02:53:43.653Z",
