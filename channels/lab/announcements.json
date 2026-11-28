@@ -3,6 +3,20 @@
   "appId": "lab",
   "releases": [
     {
+      "version": "1.0.13",
+      "title": "Thinner Frame and DocsX headers and better chat recovery",
+      "summary": "Frame and DocsX leave more room for your work, and long chats recover more reliably when a model reaches its context limit.",
+      "highlights": [
+        "Frame now puts its layout controls on one row and combines screen controls with the active tab.",
+        "The DocsX document title bar is thinner, giving more space to the editor.",
+        "Saved chats keep their original attachments and tool results during recovery.",
+        "Long tool-using chats can recover from repeated overflows as work progresses."
+      ],
+      "publishedAt": "2026-11-28T02:48:51Z",
+      "publication": "update",
+      "platforms": {}
+    },
+    {
       "version": "1.0.12",
       "title": "Microphone dictation in chat",
       "summary": "Dictate into a chat draft, edit it during transcription, and send it when you are ready.",
